@@ -1,5 +1,5 @@
 {
-  "name": "ldap-manager-ui",
+  "name": "ns8-user-manager",
   "version": "0.0.0",
   "private": true,
   "scripts": {

@@ -2,8 +2,8 @@
 
 set -e
 
-dev_image=${DEV_IMAGE:-"ldap-manager-dev"}
-container_name=ldap-manager-dev
+dev_image=${DEV_IMAGE:-"ns-user-manager"}
+container_name=ns-user-manager
 
 build_image() {
     podman build \
@@ -37,7 +37,6 @@ else
     --interactive \
     --tty \
     --publish 5173:5173 \
-    --publish 4173:4173 \
     --volume "$(pwd)":/app:Z \
     "${dev_image}"
 fi
