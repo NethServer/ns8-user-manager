@@ -1,46 +1,47 @@
-# ldap-manager-ui
+# NS8 User Manager
 
-This template should help get you started developing with Vue 3 in Vite.
+FrontEnd manager for AD/LDAP installed in NS8.
 
-## Recommended IDE Setup
+## Development
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+To develop and build the UI, you'll just need [podman](https://podman.io/) to be installed. Everything will be run
+inside a container, to keep at minimum dependency discrepancies between developers.
 
-## Type Support for `.vue` Imports in TS
+The script `dev.sh` is provided to ease the development.
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+### Booting up the UI
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+To boot the UI, simply run
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```shell
+./dev.sh
 ```
 
-### Compile and Hot-Reload for Development
+This will build the development container (if not already built), and run the UI in development mode. You'll find it
+served at http://localhost:5173. The UI will be hot-reloaded on any change.
 
-```sh
-npm run dev
+### Accessing the container
+
+The container can execute different commands, simply put them after the `dev.sh` command. I.E. to access the container's
+shell, run
+
+```shell
+./dev.sh bash
 ```
 
-### Type-Check, Compile and Minify for Production
+Or, to run `npm` without accessing the container, you can:
 
-```sh
-npm run build
+```shell
+./dev.sh npm run lint
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+The command `build` is a special one, rebuilds the development container even if it already exists.
 
-```sh
-npm run lint
-```
+## Build
+
+To build the UI, simply run `./build.sh`, this will build the UI in isolated environment, the result will be put in
+the `dist` folder.
+
+## License
+
+All the repo is licensed under [GPL 3.0 or later](LICENSE) license.

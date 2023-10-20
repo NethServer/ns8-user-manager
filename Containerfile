@@ -11,14 +11,14 @@ COPY package-lock.json .
 RUN npm ci
 COPY public public
 COPY src src
+COPY .postcssrc.json .
 COPY env.d.ts .
 COPY index.html .
+COPY tailwind.config.ts .
 COPY tsconfig.app.json .
 COPY tsconfig.json .
 COPY tsconfig.node.json .
-COPY tsconfig.vitest.json .
 COPY vite.config.ts .
-COPY vitest.config.ts .
 RUN npm run build
 
 FROM docker.io/nginx:stable-alpine-slim as prod

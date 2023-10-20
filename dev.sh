@@ -2,25 +2,35 @@
 
 set -e
 
-dev_image=${DEV_IMAGE:-"ldap-manager-dev"}
-container_name=ldap-manager-dev
+dev_image=${DEV_IMAGE:-"ns-user-manager"}
+container_name=ns-user-manager
 
 build_image() {
     podman build \
         --force-rm \
         --layers \
-        --target dev \
-        --tag "${dev_image}" \
+        --target "$1" \
+        --tag "$2" \
         .
 }
 
 if [ "$1" = "build" ]; then
-    build_image
+    build_image "dev" "$dev_image"
     exit 0
 fi
 
+if [ "$1" = "prod" ]; then
+    build_image "prod" "$dev_image:prod"
+    podman run \
+        --rm \
+        --publish 8080:80 \
+        "$dev_image:prod"
+    exit 0
+fi
+
+
 if ! podman image exists "$dev_image"; then
-    build_image
+    build_image "dev" "$dev_image"
 fi
 
 # params given will be appended at the end of the command
@@ -37,7 +47,6 @@ else
     --interactive \
     --tty \
     --publish 5173:5173 \
-    --publish 4173:4173 \
     --volume "$(pwd)":/app:Z \
     "${dev_image}"
 fi

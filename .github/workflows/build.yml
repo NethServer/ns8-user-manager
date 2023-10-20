@@ -1,0 +1,23 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  ui:
+    name: UI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          ./build.sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-${{ github.sha }}
+          path: dist
+          retention-days: 7
