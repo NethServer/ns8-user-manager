@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import colors from 'tailwindcss/colors'
 
 export default {
   content: [
@@ -7,7 +8,11 @@ export default {
     './node_modules/@nethserver/vue-tailwind-lib/dist/vue-tailwind-lib.es.js'
   ],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        primary: colors.blue
+      }
+    }
   },
   plugins: []
 } satisfies Config
