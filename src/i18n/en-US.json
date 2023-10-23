@@ -1,1 +1,10 @@
-{}
+{
+  "login_form": {
+    "welcome": "Welcome",
+    "sign_in_description": "Sign in to access your account settings",
+    "username": "Username",
+    "password": "Password",
+    "remember_me": "Remember me",
+    "sign_in": "Sign in"
+  }
+}

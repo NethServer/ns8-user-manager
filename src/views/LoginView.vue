@@ -14,13 +14,13 @@ import { NeButton, NeCheckbox, NeTextInput } from '@nethserver/vue-tailwind-lib'
         <img alt="NethServer 8 logo" class="dark:hidden" src="@/assets/nethserver-dark.svg" />
       </div>
       <div>
-        <p class="text-xl">Welcome</p>
-        <p class="text-sm font-normal">Sign in to access your account settings</p>
+        <p class="text-xl">{{ $t('login_form.welcome') }}</p>
+        <p class="text-sm font-normal">{{ $t('login_form.sign_in_description') }}</p>
       </div>
-      <NeTextInput label="Username" />
-      <NeTextInput is-password label="Password" />
-      <NeCheckbox label="Remember me" />
-      <NeButton kind="primary" class="w-full">Sign In</NeButton>
+      <NeTextInput :label="$t('login_form.username')" />
+      <NeTextInput is-password :label="$t('login_form.password')" />
+      <NeCheckbox :label="$t('login_form.remember_me')" />
+      <NeButton kind="primary" class="w-full">{{ $t('login_form.sign_in') }}</NeButton>
     </div>
   </div>
 </template>
