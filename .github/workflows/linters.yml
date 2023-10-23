@@ -7,7 +7,7 @@ on:
 jobs:
   prettier:
     name: Prettier
-    runs-on: ubuntu-latestu
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: reviewdog/action-setup@v1
@@ -18,7 +18,7 @@ jobs:
 
   eslint:
     name: Eslint
-    runs-on: ubuntu-latestu
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: reviewdog/action-setup@v1
