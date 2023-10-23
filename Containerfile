@@ -21,8 +21,5 @@ COPY tsconfig.node.json .
 COPY vite.config.ts .
 RUN npm run build
 
-FROM docker.io/nginx:stable-alpine-slim as prod
-COPY --from=build /app/dist /usr/share/nginx/html
-
 FROM scratch as dist
 COPY --from=build /app/dist /
