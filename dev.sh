@@ -19,12 +19,15 @@ if [ "$1" = "build" ]; then
     exit 0
 fi
 
-if [ "$1" = "prod" ]; then
-    build_image "prod" "$dev_image:prod"
+if [ "$1" = "preview" ]; then
+    build_image "build" "$dev_image:build"
     podman run \
         --rm \
-        --publish 8080:80 \
-        "$dev_image:prod"
+        --interactive \
+        --tty \
+        --publish 4173:4173 \
+        "$dev_image:build" \
+        npm run preview
     exit 0
 fi
 
