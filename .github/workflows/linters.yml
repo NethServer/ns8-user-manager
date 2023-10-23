@@ -4,6 +4,11 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
 jobs:
   prettier:
     name: Prettier
@@ -14,15 +19,18 @@ jobs:
       - name: Run prettier
         run: |
           ./dev.sh npm ci
-          ./dev.sh npm run format | reviewdog -f=diff -reporter=github-pr-check
+          ./dev.sh npm run format
+      - uses: reviewdog/action-suggester@v1
+        with:
+          tool_name: prettier
+          fail_on_error: true
 
   eslint:
     name: Eslint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: reviewdog/action-setup@v1
       - name: Run eslint
         run: |
           ./dev.sh npm ci
-          ./dev.sh npm run lint:check -- -f checkstyle | reviewdog -f=checkstyle -reporter=github-pr-check
+          ./dev.sh npm run lint
