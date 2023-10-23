@@ -1,0 +1,28 @@
+name: Linters
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-setup@v1
+      - name: Run prettier
+        run: |
+          ./dev.sh npm ci
+          ./dev.sh npm run format | reviewdog -f=diff -reporter=github-pr-check
+
+  eslint:
+    name: Eslint
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-setup@v1
+      - name: Run eslint
+        run: |
+          ./dev.sh npm ci
+          ./dev.sh npm run lint:check -- -f checkstyle | reviewdog -f=checkstyle -reporter=github-pr-check
