@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
+html {
     @apply text-gray-900 dark:text-gray-50;
-    font-family: 'Poppins', sans-serif;
-  }
 }
