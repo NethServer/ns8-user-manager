@@ -14,8 +14,11 @@ export default {
       },
       fontFamily: {
         sans: ['Poppins', 'sans-serif']
+      },
+      animation: {
+        'spin-fast': 'spin 0.5s linear infinite'
       }
     }
   },
-  plugins: []
+  plugins: [require('@tailwindcss/forms')]
 } satisfies Config
