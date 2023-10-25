@@ -18,6 +18,7 @@
     "@fontsource/poppins": "^5.0.8",
     "@nethserver/vue-tailwind-lib": "^0.0.86",
     "@rushstack/eslint-patch": "^1.3.3",
+    "@tailwindcss/forms": "^0.5.6",
     "@tsconfig/node18": "^18.2.2",
     "@types/node": "^18.18.5",
     "@vitejs/plugin-vue": "^4.4.0",
