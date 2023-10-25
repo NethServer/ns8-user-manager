@@ -3,7 +3,7 @@ import LandingPage from '../components/LandingPage.vue'
 </script>
 
 <template>
-  <main>
+  <div class="flex h-full w-full items-center justify-center">
     <LandingPage />
-  </main>
+  </div>
 </template>
