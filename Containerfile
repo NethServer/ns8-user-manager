@@ -1,4 +1,4 @@
-FROM docker.io/node:20.8.1 as base
+FROM docker.io/node:20.9.0 as base
 WORKDIR /app
 RUN npm config set update-notifier false
 
