@@ -1,6 +1,11 @@
 name: Release Please
 
 on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - 'release-please*'
   workflow_dispatch:
 
 permissions:
@@ -10,6 +15,7 @@ permissions:
 jobs:
   release-please:
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.merged == true
     steps:
       - uses: actions/checkout@v4
       - run: |
@@ -21,6 +27,6 @@ jobs:
           package-name: ns8-user-manager
       - name: Attach Release
         if: ${{ steps.release.outputs.release_created }}
-        run:
-          mv dist ns8-user-manager-${{ steps.release.outputs.tag_name }}
-          gh release upload ${{ steps.release.outputs.tag_name }} ns8-user-manager-${{ steps.release.outputs.tag_name }}
+        run: |
+          tar czf ns8-user-manager-${{ steps.release.outputs.tag_name }}.tar.gz -C dist .
+          gh release upload ${{ steps.release.outputs.tag_name }} ns8-user-manager-${{ steps.release.outputs.tag_name }}.tar.gz
