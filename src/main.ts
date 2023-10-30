@@ -29,7 +29,7 @@ app.use(
 )
 
 // setup axios
-axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT ?? ''
+axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT ?? './'
 axios.defaults.timeout = 500
 
 axios.interceptors.request.use((config) => {
