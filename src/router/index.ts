@@ -5,19 +5,26 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
+      path: '/:pathMatch(.*)*',
+      name: 'not_found',
+      redirect: { name: 'home' }
+    },
+    {
       path: '/',
+      name: 'home',
+      redirect: { name: 'user_account' },
       component: () => import('../views/BaseTemplate.vue'),
-      beforeEnter: () => {
-        const { previouslyLogged } = useAuth()
-        if (!previouslyLogged.value) {
-          return { name: 'login' }
-        }
-      },
       children: [
         {
           path: 'user/account',
           name: 'user_account',
-          component: () => import('../views/HomeView.vue')
+          component: () => import('../views/HomeView.vue'),
+          beforeEnter: () => {
+            const { previouslyLogged } = useAuth()
+            if (!previouslyLogged.value) {
+              return { name: 'login' }
+            }
+          }
         }
       ]
     },
