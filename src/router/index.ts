@@ -8,8 +8,8 @@ const router = createRouter({
       component: () => import('../views/BaseTemplate.vue'),
       children: [
         {
-          path: '/',
-          name: 'home',
+          path: 'user/account',
+          name: 'user_account',
           component: () => import('../views/HomeView.vue')
         }
       ]

@@ -21,7 +21,7 @@ const validationMessage = ref<string>()
 
 onBeforeMount(() => {
   if (previouslyLogged.value) {
-    router.replace({ name: 'home' })
+    router.replace({ name: 'user_account' })
   }
 })
 
@@ -32,7 +32,7 @@ async function handleLogin() {
     loading.value = true
     try {
       await login(username.value, password.value)
-      await router.replace({ name: 'home' })
+      await router.replace({ name: 'user_account' })
     } catch (exception: any) {
       if (axios.isAxiosError(exception) && exception.response != undefined) {
         if (exception.response.status == 401) {

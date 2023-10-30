@@ -4,7 +4,8 @@
     "network": "Network error"
   },
   "base_template": {
-    "logout": "Logout"
+    "logout": "Logout",
+    "account_settings": "Account settings"
   },
   "login_form": {
     "welcome": "Welcome",
