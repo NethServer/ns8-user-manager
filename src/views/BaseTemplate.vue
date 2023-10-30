@@ -8,7 +8,7 @@ import { useAuth } from '@/composables/useAuth'
 import router from '@/router'
 import SidebarMenu from '@/components/SidebarMenu.vue'
 
-const { logout } = useAuth()
+const { logout, uid } = useAuth()
 
 function handleLogout() {
   logout()
@@ -22,13 +22,13 @@ function handleLogout() {
       class="hidden w-80 flex-col gap-y-8 border-r border-gray-300 px-2 py-8 dark:border-gray-800 sm:flex"
     >
       <div>
-        <div class="mb-8 flex flex-col items-center justify-center gap-y-1">
+        <div class="mb-8 flex flex-col items-center justify-center gap-y-2">
           <FontAwesomeIcon
             :icon="faCircleUser"
             class="h-24 w-24 text-gray-700 dark:text-gray-200"
           />
           <div class="text-center">
-            <p class="font-medium">Placeholder</p>
+            <p class="font-medium">{{ uid }}</p>
           </div>
         </div>
         <SidebarMenu />

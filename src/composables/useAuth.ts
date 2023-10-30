@@ -4,10 +4,14 @@ import axios from 'axios'
 interface LoginResponse {
   token: string
   expire: string
+  claims: {
+    uid: string
+  }
 }
 
 const TOKEN_KEY = 'token'
 const EXPIRE_KEY = 'expire'
+const UID_KEY = 'uid'
 
 export function useAuth() {
   /**
@@ -19,6 +23,11 @@ export function useAuth() {
    * Expire date from localStorage
    */
   const expire = computed((): string | null => localStorage.getItem(EXPIRE_KEY))
+
+  /**
+   * User ID from localStorage
+   */
+  const uid = computed((): string | null => localStorage.getItem(UID_KEY))
 
   /**
    * Whether the user has previously logged in or not
@@ -39,6 +48,7 @@ export function useAuth() {
     })
     localStorage.setItem(TOKEN_KEY, response.data.token)
     localStorage.setItem(EXPIRE_KEY, response.data.expire)
+    localStorage.setItem(UID_KEY, response.data.claims.uid)
   }
 
   /**
@@ -47,7 +57,8 @@ export function useAuth() {
   function logout() {
     localStorage.removeItem(TOKEN_KEY)
     localStorage.removeItem(EXPIRE_KEY)
+    localStorage.removeItem(UID_KEY)
   }
 
-  return { token, expire, previouslyLogged, login, logout }
+  return { token, expire, uid, previouslyLogged, login, logout }
 }
