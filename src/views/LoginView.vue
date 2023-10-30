@@ -5,12 +5,12 @@ import {
   NeInlineNotification,
   NeTextInput
 } from '@nethserver/vue-tailwind-lib'
-import { onBeforeMount, ref } from 'vue'
+import { ref } from 'vue'
 import { useAuth } from '@/composables/useAuth'
 import router from '@/router'
 import axios from 'axios'
 
-const { previouslyLogged, login } = useAuth()
+const { login } = useAuth()
 
 const username = ref('')
 const password = ref('')
@@ -18,12 +18,6 @@ const password = ref('')
 const loading = ref(false)
 const errorMessage = ref<string>()
 const validationMessage = ref<string>()
-
-onBeforeMount(() => {
-  if (previouslyLogged.value) {
-    router.replace({ name: 'user_account' })
-  }
-})
 
 async function handleLogin() {
   if (!loading.value) {
@@ -70,8 +64,8 @@ async function handleLogin() {
           v-model="username"
           :invalid-message="validationMessage != undefined ? $t(validationMessage) : ''"
           :label="$t('login_form.username')"
-          required
           autofocus
+          required
         />
         <NeTextInput v-model="password" :label="$t('login_form.password')" is-password required />
         <NeCheckbox :label="$t('login_form.remember_me')" />

@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { useAuth } from '@/composables/useAuth'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -6,6 +7,12 @@ const router = createRouter({
     {
       path: '/',
       component: () => import('../views/BaseTemplate.vue'),
+      beforeEnter: () => {
+        const { previouslyLogged } = useAuth()
+        if (!previouslyLogged.value) {
+          return { name: 'login' }
+        }
+      },
       children: [
         {
           path: 'user/account',
@@ -17,7 +24,13 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue')
+      component: () => import('../views/LoginView.vue'),
+      beforeEnter: () => {
+        const { previouslyLogged } = useAuth()
+        if (previouslyLogged.value) {
+          return { name: 'user_account' }
+        }
+      }
     }
   ]
 })
