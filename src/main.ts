@@ -30,7 +30,7 @@ app.use(
 
 // setup axios
 axios.defaults.baseURL = import.meta.env.VITE_ENDPOINT ?? './'
-axios.defaults.timeout = 500
+axios.defaults.timeout = 5000
 
 axios.interceptors.request.use((config) => {
   if (localStorage.getItem('token') != null) {
