@@ -7,10 +7,11 @@ import {
 } from '@nethserver/vue-tailwind-lib'
 import { ref } from 'vue'
 import { useAuth } from '@/composables/useAuth'
-import router from '@/router'
 import axios from 'axios'
+import { useRouter } from 'vue-router'
 
 const { login } = useAuth()
+const router = useRouter()
 
 const username = ref('')
 const password = ref('')

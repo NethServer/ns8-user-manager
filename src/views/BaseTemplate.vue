@@ -3,12 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons/faCircleUser'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons/faAngleDown'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-
 import { useAuth } from '@/composables/useAuth'
-import router from '@/router'
 import SidebarMenu from '@/components/SidebarMenu.vue'
+import { useRouter } from 'vue-router'
 
 const { logout, uid } = useAuth()
+
+const router = useRouter()
 
 function handleLogout() {
   logout()
