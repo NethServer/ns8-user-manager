@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.2.0](https://github.com/NethServer/ns8-user-manager/compare/v0.1.0...v0.2.0) (2023-10-31)
+
+
+### Features
+
+* added redirect if not found ([c9dbd4c](https://github.com/NethServer/ns8-user-manager/commit/c9dbd4c8273d96bbd687360391febd9973f32c97))
+* added sidebar menu ([74e986c](https://github.com/NethServer/ns8-user-manager/commit/74e986c9d86db73fc170c17dc0ea6c1c5d678daf))
+* saving uid from login request ([c3b37f5](https://github.com/NethServer/ns8-user-manager/commit/c3b37f5d052a5098bdac05af3304428abfb6b07f))
+
+
+### Bug Fixes
+
+* added correct rerouting to login page ([f428245](https://github.com/NethServer/ns8-user-manager/commit/f4282450c478c2382aa362110b2d464595af8f3e))
+* fixed issues with nested routing ([73763f1](https://github.com/NethServer/ns8-user-manager/commit/73763f1ca0318ef778488c00a8e96bcbfeaff2c7))
+
 ## 0.1.0 (2023-10-26)
 
 
