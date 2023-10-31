@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.1](https://github.com/NethServer/ns8-user-manager/compare/v0.2.0...v0.2.1) (2023-10-31)
+
+
+### Bug Fixes
+
+* extended axios timeout ([b635759](https://github.com/NethServer/ns8-user-manager/commit/b635759d2e86525b1e584d6653a5a2d6af9b9cf9))
+
+
+### Performance Improvements
+
+* added router composition to pages ([ae94d7d](https://github.com/NethServer/ns8-user-manager/commit/ae94d7dd7b802c70f773e0f1201cc7a35e3a63ad))
+
 ## [0.2.0](https://github.com/NethServer/ns8-user-manager/compare/v0.1.0...v0.2.0) (2023-10-31)
 
 
