@@ -7,6 +7,7 @@ import axios from 'axios'
 import { MessageBag } from '@/lib/validation'
 import { useI18n } from 'vue-i18n'
 import { useAuth } from '@/composables/useAuth'
+import { useNotificationEngine } from '@/stores/useNotificationEngine'
 
 interface ChangePasswordResponse {
   status: 'success' | 'failure'
@@ -20,6 +21,8 @@ const confirmPassword = ref('')
 const loading = ref(false)
 const errorMessage = ref<string>()
 const validationMessages = ref(new MessageBag())
+
+const notificationEngine = useNotificationEngine()
 
 const { t } = useI18n()
 
@@ -46,6 +49,11 @@ async function changePassword() {
         oldPassword.value = ''
         newPassword.value = ''
         confirmPassword.value = ''
+        notificationEngine.add(
+          'success',
+          'account_settings.password_changed',
+          'account_settings.password_changed_description'
+        )
       } else {
         switch (response.data.message) {
           case 'error_invalid_credentials':

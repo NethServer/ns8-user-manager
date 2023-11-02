@@ -9,6 +9,7 @@ import { useRouter } from 'vue-router'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { ref } from 'vue'
 import { NeButton } from '@nethserver/vue-tailwind-lib'
+import NotificationHandler from '@/components/NotificationHandler.vue'
 
 const { logout, uid } = useAuth()
 
@@ -65,7 +66,7 @@ function handleLogout() {
               <FontAwesomeIcon :icon="faAngleDown" />
             </MenuButton>
             <MenuItems
-              class="absolute right-0 top-10 w-32 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-700"
+              class="absolute right-0 top-10 z-10 w-32 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-700"
             >
               <MenuItem>
                 <button
@@ -79,7 +80,11 @@ function handleLogout() {
           </Menu>
         </div>
       </div>
-      <main class="grow bg-gray-50 p-6 dark:bg-gray-900">
+      <main class="relative grow bg-gray-50 p-6 dark:bg-gray-900">
+        <!-- Notification handler -->
+        <div class="absolute right-0 top-0 z-20 max-w-lg">
+          <NotificationHandler />
+        </div>
         <RouterView />
       </main>
     </div>
@@ -88,7 +93,7 @@ function handleLogout() {
 
 <style scoped>
 .side-bar {
-  @apply hidden w-full flex-col gap-y-8 border-r border-gray-300 bg-white px-2 py-8 dark:border-gray-800 dark:bg-gray-950 sm:w-80 md:flex;
+  @apply hidden w-full shrink-0 flex-col gap-y-8 border-r border-gray-300 bg-white px-2 py-8 dark:border-gray-800 dark:bg-gray-950 sm:w-80 md:flex;
 }
 
 .side-bar.active {
@@ -96,7 +101,7 @@ function handleLogout() {
 }
 
 .side-bar-overlay {
-  @apply absolute bottom-0 left-0 right-0 top-0 z-10 hidden bg-gray-800 opacity-70;
+  @apply absolute bottom-0 left-0 right-0 top-0 z-30 hidden bg-gray-800 opacity-70;
 }
 
 .side-bar.active + .side-bar-overlay {

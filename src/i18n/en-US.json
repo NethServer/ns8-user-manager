@@ -31,6 +31,8 @@
     "password_complexity": "Password is too simple",
     "password_length": "Password too short",
     "password_history": "Password already used",
-    "generic_error": "Can't change password right now, please try again later"
+    "generic_error": "Can't change password right now, please try again later",
+    "password_changed": "Password changed",
+    "password_changed_description": "The password has been changed successfully"
   }
 }
