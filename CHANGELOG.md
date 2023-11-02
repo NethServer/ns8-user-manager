@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.0](https://github.com/NethServer/ns8-user-manager/compare/v0.2.1...v0.3.0) (2023-11-02)
+
+
+### Features
+
+* added change password form ([f7fceb4](https://github.com/NethServer/ns8-user-manager/commit/f7fceb43746244170ce40fae7e2e8de20fda1709))
+* added working sidebar for mobile devices ([dee343a](https://github.com/NethServer/ns8-user-manager/commit/dee343a55ca175199616ba164b38fe442a130d26))
+
 ## [0.2.1](https://github.com/NethServer/ns8-user-manager/compare/v0.2.0...v0.2.1) (2023-10-31)
 
 
