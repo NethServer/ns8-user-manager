@@ -6,6 +6,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { MessageBag } from '@/lib/validation'
 import { useI18n } from 'vue-i18n'
+import { useAuth } from '@/composables/useAuth'
 
 interface ChangePasswordResponse {
   status: 'success' | 'failure'
@@ -21,6 +22,8 @@ const errorMessage = ref<string>()
 const validationMessages = ref(new MessageBag())
 
 const { t } = useI18n()
+
+const { uid } = useAuth()
 
 function validate(): boolean {
   validationMessages.value.clear()
@@ -103,12 +106,14 @@ async function changePassword() {
           <li>{{ $t('account_settings.nethservice') }}</li>
         </ul>
       </div>
-      <form class="flex flex-col space-y-8" @submit.prevent="changePassword()">
+      <form class="flex flex-col gap-y-8" @submit.prevent="changePassword()">
         <NeInlineNotification
           v-if="errorMessage"
           :title="$t(`errors.${errorMessage}`)"
           kind="error"
         />
+        <!-- This helps autocompletion -->
+        <NeTextInput :value="uid" autocomplete="username" class="hidden" />
         <NeTextInput
           v-model="oldPassword"
           :disabled="loading"
