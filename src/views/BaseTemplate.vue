@@ -43,7 +43,7 @@ function handleLogout() {
             <p class="font-medium">{{ uid }}</p>
           </div>
         </div>
-        <SidebarMenu />
+        <SidebarMenu @navigate="toggleSidebar()" />
       </div>
     </div>
     <div class="side-bar-overlay" @click="toggleSidebar()"></div>

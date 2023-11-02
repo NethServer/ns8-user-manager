@@ -16,11 +16,14 @@ const entries: Array<MenuEntry> = [
     icon: faGear
   }
 ]
+
+defineEmits(['navigate'])
 </script>
 
 <template>
   <div class="flex flex-col space-y-2">
     <RouterLink
+      @click="$emit('navigate')"
       v-for="entry in entries"
       :key="entry.label"
       :to="{ name: entry.route_name }"
