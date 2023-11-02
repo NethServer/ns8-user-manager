@@ -6,10 +6,19 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { useAuth } from '@/composables/useAuth'
 import SidebarMenu from '@/components/SidebarMenu.vue'
 import { useRouter } from 'vue-router'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { ref } from 'vue'
+import { NeButton } from '@nethserver/vue-tailwind-lib'
 
 const { logout, uid } = useAuth()
 
 const router = useRouter()
+
+const sidebarRef = ref<HTMLElement | null>(null)
+
+function toggleSidebar() {
+  sidebarRef.value?.classList.toggle('active')
+}
 
 function handleLogout() {
   logout()
@@ -18,11 +27,13 @@ function handleLogout() {
 </script>
 
 <template>
-  <div class="min-w-screen flex min-h-screen bg-white dark:bg-gray-950">
-    <div
-      class="hidden w-80 flex-col gap-y-8 border-r border-gray-300 px-2 py-8 dark:border-gray-800 sm:flex"
-    >
+  <div class="min-w-screen flex min-h-screen">
+    <!-- Side bar -->
+    <div class="side-bar" ref="sidebarRef">
       <div>
+        <NeButton class="absolute right-4 top-4 h-8 w-8 md:hidden" @click="toggleSidebar">
+          <FontAwesomeIcon :icon="faXmark" class="h-full w-full text-gray-900 dark:text-gray-50" />
+        </NeButton>
         <div class="mb-8 flex flex-col items-center justify-center gap-y-2">
           <FontAwesomeIcon
             :icon="faCircleUser"
@@ -35,10 +46,16 @@ function handleLogout() {
         <SidebarMenu />
       </div>
     </div>
+    <div class="side-bar-overlay" @click="toggleSidebar()"></div>
+    <!-- Main content -->
     <div class="flex grow flex-col">
+      <!-- Header -->
       <div
-        class="flex h-16 min-w-full items-center gap-x-2 border-b border-gray-300 px-4 dark:border-gray-800"
+        class="flex h-16 min-w-full items-center gap-x-2 border-b border-gray-300 bg-white pr-4 dark:border-gray-800 dark:bg-gray-950"
       >
+        <button class="aspect-square self-stretch px-4 py-4 md:hidden" @click="toggleSidebar()">
+          <FontAwesomeIcon :icon="faBars" class="h-full w-full" />
+        </button>
         <div class="ml-auto flex items-center text-gray-700 dark:text-gray-200">
           <div class="mr-2 h-8 w-8">
             <FontAwesomeIcon :icon="faCircleUser" class="h-full w-full" />
@@ -68,3 +85,21 @@ function handleLogout() {
     </div>
   </div>
 </template>
+
+<style scoped>
+.side-bar {
+  @apply hidden w-full flex-col gap-y-8 border-r border-gray-300 bg-white px-2 py-8 dark:border-gray-800 dark:bg-gray-950 sm:w-80 md:flex;
+}
+
+.side-bar.active {
+  @apply absolute bottom-0 left-0 top-0 z-20 flex md:relative md:z-auto;
+}
+
+.side-bar-overlay {
+  @apply absolute bottom-0 left-0 right-0 top-0 z-10 hidden bg-gray-800 opacity-70;
+}
+
+.side-bar.active + .side-bar-overlay {
+  @apply sm:block md:hidden;
+}
+</style>
