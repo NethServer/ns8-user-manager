@@ -11,7 +11,7 @@ interface MenuEntry {
 
 const entries: Array<MenuEntry> = [
   {
-    label: 'base_template.account_settings',
+    label: 'account_settings.title',
     route_name: 'user_account',
     icon: faGear
   }

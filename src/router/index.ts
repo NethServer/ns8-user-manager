@@ -18,7 +18,7 @@ const router = createRouter({
         {
           path: 'user/account',
           name: 'user_account',
-          component: () => import('../views/HomeView.vue'),
+          component: () => import('../views/UserAccount.vue'),
           beforeEnter: () => {
             const { previouslyLogged } = useAuth()
             if (!previouslyLogged.value) {

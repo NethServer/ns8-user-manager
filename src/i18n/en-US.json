@@ -4,8 +4,7 @@
     "network": "Network error"
   },
   "base_template": {
-    "logout": "Logout",
-    "account_settings": "Account settings"
+    "logout": "Logout"
   },
   "login_form": {
     "welcome": "Welcome",
@@ -15,5 +14,23 @@
     "remember_me": "Remember me",
     "sign_in": "Sign in",
     "invalid_credentials": "Invalid credentials"
+  },
+  "account_settings": {
+    "title": "Account settings",
+    "change_password": "Change password",
+    "change_password_description": "Setting a new password for your account will affect all connected services:",
+    "nethvoice": "Nethvoice CTI",
+    "nethservice": "Nethservice COLLABORATION",
+    "current_password": "Current password",
+    "new_password": "New password",
+    "confirm_password": "Confirm new password",
+    "save_password": "Save password",
+    "passwords_mismatch": "Passwords mismatch",
+    "invalid_credentials": "Wrong password",
+    "password_minimum_age": "Too little time has passed since the last password change",
+    "password_complexity": "Password is too simple",
+    "password_length": "Password too short",
+    "password_history": "Password already used",
+    "generic_error": "Can't change password right now, please try again later"
   }
 }

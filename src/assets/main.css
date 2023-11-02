@@ -5,3 +5,19 @@
 html {
   @apply text-gray-900 dark:text-gray-50;
 }
+
+h2 {
+  @apply text-2xl font-medium;
+}
+
+h3 {
+  @apply text-lg font-medium;
+}
+
+hr {
+  @apply border-gray-200 dark:border-gray-700;
+}
+
+.description-text {
+  @apply text-sm font-normal text-gray-500 dark:text-gray-400;
+}

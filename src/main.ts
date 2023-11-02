@@ -19,6 +19,7 @@ app.use(router)
 
 app.use(
   createI18n({
+    legacy: false,
     locale: navigator.language,
     fallbackLocale: 'en-US',
     messages: {
