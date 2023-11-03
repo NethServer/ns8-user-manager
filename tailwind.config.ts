@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
   content: [
@@ -17,6 +18,10 @@ export default {
       },
       animation: {
         'spin-fast': 'spin 0.5s linear infinite'
+      },
+      screens: {
+        ...defaultTheme.screens,
+        sidebar: defaultTheme.screens.md
       }
     }
   },

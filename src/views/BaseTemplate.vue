@@ -32,7 +32,7 @@ function handleLogout() {
     <!-- Side bar -->
     <div class="side-bar" ref="sidebarRef">
       <div>
-        <NeButton class="absolute right-4 top-4 h-8 w-8 md:hidden" @click="toggleSidebar">
+        <NeButton class="sidebar:hidden absolute right-4 top-4 h-8 w-8" @click="toggleSidebar">
           <FontAwesomeIcon :icon="faXmark" class="h-full w-full text-gray-900 dark:text-gray-50" />
         </NeButton>
         <div class="mb-8 flex flex-col items-center justify-center gap-y-2">
@@ -54,7 +54,10 @@ function handleLogout() {
       <div
         class="flex h-16 min-w-full items-center gap-x-2 border-b border-gray-300 bg-white pr-4 dark:border-gray-800 dark:bg-gray-950"
       >
-        <button class="aspect-square self-stretch px-4 py-4 md:hidden" @click="toggleSidebar()">
+        <button
+          class="sidebar:hidden aspect-square self-stretch px-4 py-4"
+          @click="toggleSidebar()"
+        >
           <FontAwesomeIcon :icon="faBars" class="h-full w-full" />
         </button>
         <div class="ml-auto flex items-center text-gray-700 dark:text-gray-200">
@@ -93,11 +96,11 @@ function handleLogout() {
 
 <style scoped>
 .side-bar {
-  @apply hidden w-full shrink-0 flex-col gap-y-8 border-r border-gray-300 bg-white px-2 py-8 dark:border-gray-800 dark:bg-gray-950 sm:w-80 md:flex;
+  @apply sidebar:flex hidden w-full shrink-0 flex-col gap-y-8 border-r border-gray-300 bg-white px-2 py-8 dark:border-gray-800 dark:bg-gray-950 sm:w-80;
 }
 
 .side-bar.active {
-  @apply absolute bottom-0 left-0 top-0 z-20 flex md:relative md:z-auto;
+  @apply sidebar:relative sidebar:z-auto absolute bottom-0 left-0 top-0 z-20 flex;
 }
 
 .side-bar-overlay {
@@ -105,6 +108,6 @@ function handleLogout() {
 }
 
 .side-bar.active + .side-bar-overlay {
-  @apply sm:block md:hidden;
+  @apply sidebar:hidden sm:block;
 }
 </style>
