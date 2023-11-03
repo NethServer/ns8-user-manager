@@ -25,6 +25,10 @@ export const useNotificationEngine = defineStore('notifications', () => {
     return id.value
   }
 
+  /**
+   * Remove a notification by id
+   * @param id
+   */
   function remove(id: number) {
     notifications.value.delete(id)
   }

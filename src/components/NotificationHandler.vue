@@ -17,9 +17,13 @@ notificationEngine.$onAction(({ name, after }) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-end space-y-4 p-4">
-    <div v-for="[id, notification] in notificationEngine.notifications" :key="id">
-      <div class="flex items-start gap-x-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
+  <div class="flex flex-col items-end space-y-4 overflow-hidden p-4">
+    <TransitionGroup>
+      <div
+        v-for="[id, notification] in notificationEngine.notifications"
+        :key="id"
+        class="flex items-start gap-x-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800"
+      >
         <div
           class="h-10 w-10 shrink-0 rounded-full bg-green-100 py-2.5 text-green-700 dark:bg-green-800 dark:text-green-100"
         >
@@ -33,6 +37,17 @@ notificationEngine.$onAction(({ name, after }) => {
           <FontAwesomeIcon :icon="faX" class="h-full w-full" />
         </button>
       </div>
-    </div>
+    </TransitionGroup>
   </div>
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  @apply transition duration-700;
+}
+.v-enter-from,
+.v-leave-to {
+  @apply translate-x-full opacity-0;
+}
+</style>
