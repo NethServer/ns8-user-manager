@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/NethServer/ns8-user-manager/compare/v0.3.0...v0.4.0) (2023-11-06)
+
+
+### Features
+
+* added password change notification ([39b8066](https://github.com/NethServer/ns8-user-manager/commit/39b80668320cb1ac2f06deedfd9c32e7a42f83c7))
+* enhanced autocomplete on password change ([033093d](https://github.com/NethServer/ns8-user-manager/commit/033093dece8362cca3e0649652823c96c5f9ec98))
+
+
+### Bug Fixes
+
+* fixed stuck menu when navigating ([fb28812](https://github.com/NethServer/ns8-user-manager/commit/fb2881262ea986f615b79e14b8f8fda74e260ddb))
+
 ## [0.3.0](https://github.com/NethServer/ns8-user-manager/compare/v0.2.1...v0.3.0) (2023-11-02)
 
 
