@@ -18,6 +18,15 @@ const oldPassword = ref('')
 const newPassword = ref('')
 const confirmPassword = ref('')
 
+// TODO: replace with product list from server
+const products = ref(['nethvoice', 'nethservice'])
+// TODO: replace with password policy from server
+const minimumPasswordLength = ref(8)
+const minimumUppercaseCharacters = ref(1)
+const minimumLowercaseCharacters = ref(1)
+const minimumNumberCharacters = ref(1)
+const minimumSpecialCharacters = ref(1)
+
 const loading = ref(false)
 const errorMessage = ref<string>()
 const validationMessages = ref(new MessageBag())
@@ -32,6 +41,30 @@ function validate(): boolean {
   validationMessages.value.clear()
   if (newPassword.value != confirmPassword.value) {
     validationMessages.value.append('confirm_password', t('account_settings.passwords_mismatch'))
+  }
+  if (!newPassword.value.match(`(?=(?:.*[A-Z]){${minimumUppercaseCharacters.value},})`)) {
+    validationMessages.value.append(
+      'new_password',
+      t('account_settings.password_uppercase', minimumUppercaseCharacters.value)
+    )
+  }
+  if (!newPassword.value.match(`(?=(?:.*[a-z]){${minimumLowercaseCharacters.value},})`)) {
+    validationMessages.value.append(
+      'new_password',
+      t('account_settings.password_lowercase', minimumLowercaseCharacters.value)
+    )
+  }
+  if (!newPassword.value.match(`(?=(?:.*[0-9]){${minimumNumberCharacters.value},})`)) {
+    validationMessages.value.append(
+      'new_password',
+      t('account_settings.password_number', minimumNumberCharacters.value)
+    )
+  }
+  if (!newPassword.value.match(`(?=(?:.*[^A-Za-z0-9]){${minimumSpecialCharacters.value},})`)) {
+    validationMessages.value.append(
+      'new_password',
+      t('account_settings.password_special', minimumSpecialCharacters.value)
+    )
   }
   return validationMessages.value.size < 1
 }
@@ -69,7 +102,10 @@ async function changePassword() {
             )
             break
           case 'error_password_length':
-            validationMessages.value.append('new_password', t('account_settings.password_length'))
+            validationMessages.value.append(
+              'new_password',
+              t('account_settings.password_length', minimumPasswordLength.value)
+            )
             break
           case 'error_password_history':
             validationMessages.value.append('new_password', t('account_settings.password_history'))
@@ -81,7 +117,7 @@ async function changePassword() {
             )
             break
           default:
-            errorMessage.value = 'account_settings.generic_error'
+            errorMessage.value = t('account_settings.generic_error')
         }
       }
     }
@@ -110,16 +146,13 @@ async function changePassword() {
         </h3>
         <p class="description-text">{{ $t('account_settings.change_password_description') }}</p>
         <ul class="description-text list-disc pl-6">
-          <li>{{ $t('account_settings.nethvoice') }}</li>
-          <li>{{ $t('account_settings.nethservice') }}</li>
+          <li v-for="(product, key) in products" :key="key">
+            {{ $t(product) }}
+          </li>
         </ul>
       </div>
       <form class="flex flex-col gap-y-8" @submit.prevent="changePassword()">
-        <NeInlineNotification
-          v-if="errorMessage"
-          :title="$t(`errors.${errorMessage}`)"
-          kind="error"
-        />
+        <NeInlineNotification v-if="errorMessage" :title="errorMessage" kind="error" />
         <!-- This helps autocompletion -->
         <NeTextInput :value="uid" autocomplete="username" class="hidden" />
         <NeTextInput
@@ -133,16 +166,25 @@ async function changePassword() {
           name="old_password"
           required
         />
-        <NeTextInput
-          v-model="newPassword"
-          :disabled="loading"
-          :invalid-message="validationMessages.getFirstMessage('new_password')"
-          :label="$t('account_settings.new_password')"
-          autocomplete="new-password"
-          is-password
-          name="new_password"
-          required
-        />
+        <div class="space-y-4">
+          <NeTextInput
+            v-model="newPassword"
+            :disabled="loading"
+            :invalid-message="validationMessages.getFirstMessage('new_password')"
+            :label="$t('account_settings.new_password')"
+            autocomplete="new-password"
+            is-password
+            name="new_password"
+            required
+          />
+          <ul class="description-text ml-6 list-disc">
+            <li>{{ $t('account_settings.minimum_characters', minimumPasswordLength) }}</li>
+            <li>{{ $t('account_settings.minimum_uppercase', minimumUppercaseCharacters) }}</li>
+            <li>{{ $t('account_settings.minimum_lowercase', minimumLowercaseCharacters) }}</li>
+            <li>{{ $t('account_settings.minimum_number', minimumNumberCharacters) }}</li>
+            <li>{{ $t('account_settings.minimum_special', minimumSpecialCharacters) }}</li>
+          </ul>
+        </div>
         <NeTextInput
           v-model="confirmPassword"
           :disabled="loading"

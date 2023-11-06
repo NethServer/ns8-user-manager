@@ -1,4 +1,6 @@
 {
+  "nethvoice": "Nethvoice CTI",
+  "nethservice": "Nethservice COLLABORATION",
   "errors": {
     "connection_aborted": "Couldn't connect to the server",
     "network": "Network error"
@@ -19,8 +21,6 @@
     "title": "Account settings",
     "change_password": "Change password",
     "change_password_description": "Setting a new password for your account will affect all connected services:",
-    "nethvoice": "Nethvoice CTI",
-    "nethservice": "Nethservice COLLABORATION",
     "current_password": "Current password",
     "new_password": "New password",
     "confirm_password": "Confirm new password",
@@ -29,10 +29,19 @@
     "invalid_credentials": "Wrong password",
     "password_minimum_age": "Too little time has passed since the last password change",
     "password_complexity": "Password is too simple",
-    "password_length": "Password too short",
+    "password_length": "Password must be at least {count} characters long",
+    "password_uppercase": "Password must at least have a uppercase character | Password must at least have {count} uppercase characters",
+    "password_lowercase": "Password must at least have a lowercase character | Password must at least have {count} lowercase characters",
+    "password_number": "Password must at least have a number | Password must at least have {count} numbers",
+    "password_special": "Password must at least have a special character | Password must at least have {count} special characters",
     "password_history": "Password already used",
     "generic_error": "Can't change password right now, please try again later",
     "password_changed": "Password changed",
-    "password_changed_description": "The password has been changed successfully"
+    "password_changed_description": "The password has been changed successfully",
+    "minimum_characters": "Minimum {count} characters",
+    "minimum_uppercase": "At least {count} uppercase (A-Z)",
+    "minimum_lowercase": "At least {count} lowercase (a-z)",
+    "minimum_number": "At least {count} number (0-9) | At least {count} numbers (0-9)",
+    "minimum_special": "At least {count} special character (!{'@'}#^&_?-) | At least {count} special characters (!{'@'}#^&_?-)"
   }
 }
