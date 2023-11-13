@@ -18,6 +18,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: dist-${{ github.sha }}
+          name: ns8-user-manager-${{ github.sha }}
           path: dist
           retention-days: 7
