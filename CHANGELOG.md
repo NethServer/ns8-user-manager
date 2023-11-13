@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/NethServer/ns8-user-manager/compare/v0.4.0...v0.5.0) (2023-11-13)
+
+
+### Features
+
+* added in-page validation for password ([c2b0cf1](https://github.com/NethServer/ns8-user-manager/commit/c2b0cf1d9be6cd752984f57878dde69b8606ed3c))
+* added notification animations ([9b1f378](https://github.com/NethServer/ns8-user-manager/commit/9b1f378c10566665390cccd9bc93e72a0fedad46))
+
+
+### Bug Fixes
+
+* added autocomplete fields for login ([7125623](https://github.com/NethServer/ns8-user-manager/commit/712562388edcd1a6ae459d5df31c266f2a6167fe))
+
 ## [0.4.0](https://github.com/NethServer/ns8-user-manager/compare/v0.3.0...v0.4.0) (2023-11-06)
 
 
