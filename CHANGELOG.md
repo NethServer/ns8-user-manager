@@ -1,5 +1,43 @@
 # Changelog
 
+## [0.1.0](https://github.com/NethServer/ns8-user-manager/compare/v0.5.0...v0.1.0) (2023-11-13)
+
+
+### Features
+
+* added base template for application ([b820af4](https://github.com/NethServer/ns8-user-manager/commit/b820af4192c6f335e4e8a1ad63de39ef08fc2419))
+* added change password form ([f7fceb4](https://github.com/NethServer/ns8-user-manager/commit/f7fceb43746244170ce40fae7e2e8de20fda1709))
+* added in-page validation for password ([c2b0cf1](https://github.com/NethServer/ns8-user-manager/commit/c2b0cf1d9be6cd752984f57878dde69b8606ed3c))
+* added login scaffold ([1c3ec50](https://github.com/NethServer/ns8-user-manager/commit/1c3ec5008468549e84fa8e791bdcbf6083919d0e))
+* added notification animations ([9b1f378](https://github.com/NethServer/ns8-user-manager/commit/9b1f378c10566665390cccd9bc93e72a0fedad46))
+* added password change notification ([39b8066](https://github.com/NethServer/ns8-user-manager/commit/39b80668320cb1ac2f06deedfd9c32e7a42f83c7))
+* added redirect if not found ([c9dbd4c](https://github.com/NethServer/ns8-user-manager/commit/c9dbd4c8273d96bbd687360391febd9973f32c97))
+* added sidebar menu ([74e986c](https://github.com/NethServer/ns8-user-manager/commit/74e986c9d86db73fc170c17dc0ea6c1c5d678daf))
+* added working sidebar for mobile devices ([dee343a](https://github.com/NethServer/ns8-user-manager/commit/dee343a55ca175199616ba164b38fe442a130d26))
+* enhanced autocomplete on password change ([033093d](https://github.com/NethServer/ns8-user-manager/commit/033093dece8362cca3e0649652823c96c5f9ec98))
+* implemented login page ([6ccdb65](https://github.com/NethServer/ns8-user-manager/commit/6ccdb6594ff390e7a5614b85e9cb453f6c6f7850))
+* saving uid from login request ([c3b37f5](https://github.com/NethServer/ns8-user-manager/commit/c3b37f5d052a5098bdac05af3304428abfb6b07f))
+
+
+### Bug Fixes
+
+* added autocomplete fields for login ([7125623](https://github.com/NethServer/ns8-user-manager/commit/712562388edcd1a6ae459d5df31c266f2a6167fe))
+* added correct rerouting to login page ([f428245](https://github.com/NethServer/ns8-user-manager/commit/f4282450c478c2382aa362110b2d464595af8f3e))
+* added some dependencies of component library ([851808e](https://github.com/NethServer/ns8-user-manager/commit/851808ed63bdb359611a04f2d62c03f7c3920b09))
+* extended axios timeout ([b635759](https://github.com/NethServer/ns8-user-manager/commit/b635759d2e86525b1e584d6653a5a2d6af9b9cf9))
+* fixed issues with nested routing ([73763f1](https://github.com/NethServer/ns8-user-manager/commit/73763f1ca0318ef778488c00a8e96bcbfeaff2c7))
+* fixed stuck menu when navigating ([fb28812](https://github.com/NethServer/ns8-user-manager/commit/fb2881262ea986f615b79e14b8f8fda74e260ddb))
+
+
+### Performance Improvements
+
+* added router composition to pages ([ae94d7d](https://github.com/NethServer/ns8-user-manager/commit/ae94d7dd7b802c70f773e0f1201cc7a35e3a63ad))
+
+
+### Miscellaneous Chores
+
+* set initial tag ([ec7b141](https://github.com/NethServer/ns8-user-manager/commit/ec7b14118f9e6abbc909d6825c9ebcf261c0a9d0))
+
 ## [0.5.0](https://github.com/NethServer/ns8-user-manager/compare/v0.4.0...v0.5.0) (2023-11-13)
 
 
