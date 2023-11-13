@@ -65,10 +65,17 @@ async function handleLogin() {
           v-model="username"
           :invalid-message="validationMessage != undefined ? $t(validationMessage) : ''"
           :label="$t('login_form.username')"
+          autocomplete="username"
           autofocus
           required
         />
-        <NeTextInput v-model="password" :label="$t('login_form.password')" is-password required />
+        <NeTextInput
+          v-model="password"
+          :label="$t('login_form.password')"
+          autocomplete="current-password"
+          is-password
+          required
+        />
         <NeCheckbox :label="$t('login_form.remember_me')" />
       </div>
       <NeButton :disabled="loading" :loading="loading" class="w-full" kind="primary" type="submit">
