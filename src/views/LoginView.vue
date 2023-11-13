@@ -63,6 +63,7 @@ async function handleLogin() {
         <NeInlineNotification v-if="errorMessage" :title="$t(errorMessage)" kind="error" />
         <NeTextInput
           v-model="username"
+          :disabled="loading"
           :invalid-message="validationMessage != undefined ? $t(validationMessage) : ''"
           :label="$t('login_form.username')"
           autocomplete="username"
@@ -71,12 +72,13 @@ async function handleLogin() {
         />
         <NeTextInput
           v-model="password"
+          :disabled="loading"
           :label="$t('login_form.password')"
           autocomplete="current-password"
           is-password
           required
         />
-        <NeCheckbox :label="$t('login_form.remember_me')" />
+        <NeCheckbox :disabled="loading" :label="$t('login_form.remember_me')" />
       </div>
       <NeButton :disabled="loading" :loading="loading" class="w-full" kind="primary" type="submit">
         {{ $t('login_form.sign_in') }}
