@@ -2,8 +2,8 @@
 
 set -e
 
-dev_image=${DEV_IMAGE:-"ns-user-manager"}
-container_name=ns-user-manager
+dev_image=${DEV_IMAGE:-"ns-user-manager-dev:20.10.0"}
+container_name=ns-user-manager-dev
 
 build_image() {
     podman build \
