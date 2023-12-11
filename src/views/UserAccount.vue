@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { NeButton, NeInlineNotification, NeTextInput } from '@nethserver/vue-tailwind-lib'
+import { NeButton, NeTextInput } from '@nethserver/vue-tailwind-lib'
+import { NeInlineNotification } from '@nethesis/vue-components'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faSave } from '@fortawesome/free-solid-svg-icons'
 import { ref } from 'vue'

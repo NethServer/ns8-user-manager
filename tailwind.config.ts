@@ -3,21 +3,17 @@ import colors from 'tailwindcss/colors'
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
+  presets: [require('@nethesis/vue-components/tailwind.config.ts')],
   content: [
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
-    './node_modules/@nethserver/vue-tailwind-lib/dist/vue-tailwind-lib.es.js'
+    './node_modules/@nethserver/vue-tailwind-lib/dist/vue-tailwind-lib.es.js',
+    './node_modules/@nethesis/vue-components/dist/**/*.js'
   ],
   theme: {
     extend: {
       colors: {
         primary: colors.blue
-      },
-      fontFamily: {
-        sans: ['Poppins', 'sans-serif']
-      },
-      animation: {
-        'spin-fast': 'spin 0.5s linear infinite'
       },
       screens: {
         ...defaultTheme.screens,
@@ -25,5 +21,5 @@ export default {
       }
     }
   },
-  plugins: [require('@tailwindcss/forms')]
+  darkMode: 'media'
 } satisfies Config
