@@ -6,6 +6,7 @@ import ContentPage from '@/components/ContentPage.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
+import GroupManager from '@/components/GroupManager.vue'
 
 interface User {
   display_name: string
@@ -84,15 +85,7 @@ onMounted(() => {
         </ol>
       </div>
       <div v-if="selectedTab == 'groups'">
-        <div class="flex flex-col gap-y-4 sm:flex-row">
-          <NeButton class="sm:order-2 sm:ml-auto">
-            <template #prefix>
-              <FontAwesomeIcon :icon="faPlusCircle" />
-            </template>
-            {{ $t('user_manager.add_group') }}
-          </NeButton>
-          <NeTextInput :placeholder="$t('user_manager.search_group')" class="sm:order-1" />
-        </div>
+        <GroupManager />
       </div>
     </template>
   </ContentPage>
