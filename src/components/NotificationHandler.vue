@@ -30,7 +30,7 @@ notificationEngine.$onAction(({ name, after }) => {
           <FontAwesomeIcon :icon="faCheckCircle" class="h-full w-full" />
         </div>
         <div class="space-y-1">
-          <h3 class="text-sm">{{ $t(notification.title) }}</h3>
+          <p class="h3 text-sm">{{ $t(notification.title) }}</p>
           <small class="text-gray-500 dark:text-gray-400">{{ $t(notification.description) }}</small>
         </div>
         <button class="h-3.5 w-3.5 shrink-0" @click="notificationEngine.remove(id)">

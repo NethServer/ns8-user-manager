@@ -9,6 +9,7 @@ import { MessageBag } from '@/lib/validation'
 import { useI18n } from 'vue-i18n'
 import { useAuth } from '@/composables/useAuth'
 import { useNotificationEngine } from '@/stores/useNotificationEngine'
+import ContentPage from '@/components/ContentPage.vue'
 
 interface ChangePasswordResponse {
   status: 'success' | 'failure'
@@ -137,14 +138,12 @@ async function changePassword() {
 </script>
 
 <template>
-  <div class="space-y-8">
-    <h2>{{ $t('account_settings.title') }}</h2>
-    <hr />
-    <div class="grid max-w-3xl grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-2">
+  <ContentPage :title="$t('account_settings.title')">
+    <div class="grid grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-2">
       <div class="space-y-1">
-        <h3>
+        <p>
           {{ $t('account_settings.change_password') }}
-        </h3>
+        </p>
         <p class="description-text">{{ $t('account_settings.change_password_description') }}</p>
         <ul class="description-text list-disc pl-6">
           <li v-for="(product, key) in products" :key="key">
@@ -208,5 +207,5 @@ async function changePassword() {
         </NeButton>
       </form>
     </div>
-  </div>
+  </ContentPage>
 </template>
