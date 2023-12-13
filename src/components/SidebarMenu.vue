@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { IconDefinition } from '@fortawesome/free-solid-svg-icons'
-import { faGear } from '@fortawesome/free-solid-svg-icons'
+import { faGear, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 interface MenuEntry {
@@ -14,6 +14,11 @@ const entries: Array<MenuEntry> = [
     label: 'account_settings.title',
     route_name: 'user_account',
     icon: faGear
+  },
+  {
+    label: 'user_manager.title',
+    route_name: 'user_manager',
+    icon: faUserFriends
   }
 ]
 

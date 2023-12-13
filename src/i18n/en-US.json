@@ -2,6 +2,7 @@
   "nethvoice": "Nethvoice CTI",
   "nethservice": "Nethservice COLLABORATION",
   "errors": {
+    "generic": "Error",
     "connection_aborted": "Couldn't connect to the server",
     "network": "Network error"
   },
@@ -44,5 +45,16 @@
     "minimum_lowercase": "At least {count} lowercase (a-z)",
     "minimum_number": "At least {count} number (0-9) | At least {count} numbers (0-9)",
     "minimum_special": "At least {count} special character (!{'@'}#^&_?-) | At least {count} special characters (!{'@'}#^&_?-)"
+  },
+  "user_manager": {
+    "title": "Users & groups",
+    "tabs": {
+      "users": "Users",
+      "groups": "Groups"
+    },
+    "add_user": "Add user",
+    "search_user": "Search user",
+    "add_group": "Add group",
+    "search_group": "Search group"
   }
 }

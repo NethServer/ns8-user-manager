@@ -25,6 +25,11 @@ const router = createRouter({
               return { name: 'login' }
             }
           }
+        },
+        {
+          path: 'users',
+          name: 'user_manager',
+          component: () => import('../views/UserManager.vue')
         }
       ]
     },
