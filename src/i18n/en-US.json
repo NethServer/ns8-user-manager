@@ -4,7 +4,9 @@
   "errors": {
     "generic": "Error",
     "connection_aborted": "Couldn't connect to the server",
-    "network": "Network error"
+    "network": "Network error",
+    "bad_response": "Server error, please try again later",
+    "bad_request": "Bad request, notify the administrator"
   },
   "base_template": {
     "logout": "Logout"

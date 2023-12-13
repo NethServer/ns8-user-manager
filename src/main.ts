@@ -52,6 +52,12 @@ axios.interceptors.response.use(
         case AxiosError.ERR_NETWORK:
           exception.message = 'errors.network'
           break
+        case AxiosError.ERR_BAD_REQUEST:
+          exception.message = 'errors.bad_request'
+          break
+        case AxiosError.ERR_BAD_RESPONSE:
+          exception.message = 'errors.bad_response'
+          break
       }
       return Promise.reject(exception)
     }
