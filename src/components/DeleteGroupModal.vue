@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NeModal } from '@nethserver/vue-tailwind-lib'
+import { NeInlineNotification, NeModal } from '@nethserver/vue-tailwind-lib'
 import type { Group } from '@/composables/useGroups'
 import axios from 'axios'
 import { ref } from 'vue'
@@ -11,9 +11,17 @@ const props = defineProps<{
 const emit = defineEmits(['delete', 'cancel'])
 
 const loading = ref(false)
+const error = ref<Error>()
+
+function handleClose() {
+  if (!loading.value) {
+    emit('cancel')
+  }
+}
 
 function deleteGroup() {
-  loading.value = false
+  loading.value = true
+  error.value = undefined
   axios
     .post('/api/remove-group', {
       group: props.group!.group
@@ -21,11 +29,11 @@ function deleteGroup() {
     .then(() => {
       emit('delete')
     })
-    .catch((reason) => {
-      console.error(reason)
+    .catch((reason: Error) => {
+      error.value = reason
     })
     .finally(() => {
-      loading.value = true
+      loading.value = false
     })
 }
 </script>
@@ -37,11 +45,21 @@ function deleteGroup() {
     :visible="group != undefined"
     kind="warning"
     primary-button-kind="danger"
+    :primary-button-loading="loading"
+    :primary-button-disabled="loading"
     @primary-click="deleteGroup"
-    @close="$emit('cancel')"
+    @close="handleClose"
   >
-    <p>
-      {{ $t('user_manager.group_delete_modal_description', { name: group?.group }) }}
-    </p>
+    <div class="space-y-4">
+      <NeInlineNotification
+        v-if="error"
+        kind="error"
+        :title="$t('errors.generic')"
+        :description="$t(error.message)"
+      />
+      <p>
+        {{ $t('user_manager.group_delete_modal_description', { name: group?.group }) }}
+      </p>
+    </div>
   </NeModal>
 </template>
