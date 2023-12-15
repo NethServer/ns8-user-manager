@@ -1,13 +1,15 @@
 <script lang="ts" setup>
-import { NeCheckbox, NeTextInput, NeButton } from '@nethserver/vue-tailwind-lib'
+import { NeButton, NeCheckbox, NeTextInput } from '@nethserver/vue-tailwind-lib'
 import { NeInlineNotification } from '@nethesis/vue-components'
 import { ref } from 'vue'
 import { useAuth } from '@/composables/useAuth'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+import { useConfig } from '@/composables/useConfig'
 
 const { login } = useAuth()
 const router = useRouter()
+const { domainName } = useConfig()
 
 const username = ref('')
 const password = ref('')
@@ -57,6 +59,12 @@ async function handleLogin() {
           <p class="text-sm font-normal">{{ $t('login_form.sign_in_description') }}</p>
         </div>
         <NeInlineNotification v-if="errorMessage" :title="$t(errorMessage)" kind="error" />
+        <NeTextInput
+          v-if="domainName"
+          v-model="domainName"
+          disabled
+          :label="$t('login_form.domain')"
+        />
         <NeTextInput
           v-model="username"
           :disabled="loading"

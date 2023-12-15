@@ -10,10 +10,12 @@ import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { ref } from 'vue'
 import { NeButton } from '@nethserver/vue-tailwind-lib'
 import NotificationHandler from '@/components/NotificationHandler.vue'
+import { useConfig } from '@/composables/useConfig'
 
 const { logout, uid } = useAuth()
 
 const router = useRouter()
+const { domainName } = useConfig()
 
 const sidebarRef = ref<HTMLElement | null>(null)
 
@@ -60,7 +62,9 @@ function handleLogout() {
         >
           <FontAwesomeIcon :icon="faBars" class="h-full w-full" />
         </button>
+
         <div class="ml-auto flex items-center text-gray-700 dark:text-gray-200">
+          <p class="pr-6 text-sm">{{ domainName }}</p>
           <div class="mr-2 h-8 w-8">
             <FontAwesomeIcon :icon="faCircleUser" class="h-full w-full" />
           </div>
