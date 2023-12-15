@@ -62,6 +62,14 @@
     "group_name": "Group name",
     "group_description": "Description",
     "users": "Users",
-    "choose_users": "Choose users"
+    "choose_users": "Choose users",
+    "group_edit": "Edit",
+    "group_delete": "Delete group",
+    "group_delete_modal_title": "Delete group",
+    "group_delete_modal_description": "Are you sure you want to delete group \"{name}\"? The action is irreversible.",
+    "group_created": "Group created",
+    "group_created_description": "The group has been created successfully",
+    "group_updated": "Group deleted",
+    "group_updated_description": "The group has been deleted successfully"
   }
 }

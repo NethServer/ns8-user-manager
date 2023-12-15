@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { ref } from 'vue'
 
-interface Group {
+export interface Group {
   description: string
   group: string
 }
