@@ -6,7 +6,7 @@ import ContentPage from '@/components/ContentPage.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import axios from 'axios'
-import GroupManager from '@/components/GroupManager.vue'
+import GroupsList from '@/components/GroupsList.vue'
 
 interface User {
   display_name: string
@@ -85,7 +85,7 @@ onMounted(() => {
         </ol>
       </div>
       <div v-if="selectedTab == 'groups'">
-        <GroupManager />
+        <GroupsList />
       </div>
     </template>
   </ContentPage>

@@ -57,6 +57,11 @@
     "add_user": "Add user",
     "search_user": "Search user",
     "add_group": "Add group",
-    "search_group": "Search group"
+    "search_group": "Search group",
+    "cancel": "Cancel",
+    "group_name": "Group name",
+    "group_description": "Description",
+    "users": "Users",
+    "choose_users": "Choose users"
   }
 }

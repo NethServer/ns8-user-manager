@@ -15,16 +15,21 @@ export function useGroups() {
   const loading = ref(true)
   const data = ref<ListGroupsResponse>()
 
-  async function fetch() {
-    try {
-      data.value = (await axios.post<ListGroupsResponse>('/api/list-groups', {})).data
-    } catch (reason: any) {
-      error.value = reason
-      console.log(reason)
-    } finally {
-      loading.value = false
-    }
+  function fetch() {
+    axios
+      .post<ListGroupsResponse>('/api/list-groups', {})
+      .then((response) => {
+        data.value = response.data
+      })
+      .catch((reason) => {
+        error.value = reason
+      })
+      .finally(() => {
+        loading.value = false
+      })
   }
+
+  fetch()
 
   return { data, error, loading, fetch }
 }

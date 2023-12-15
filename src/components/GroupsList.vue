@@ -8,19 +8,23 @@ import {
   NeTextInput
 } from '@nethserver/vue-tailwind-lib'
 import { useGroups } from '@/composables/useGroups'
-import { onMounted } from 'vue'
+import { ref } from 'vue'
+import CreateGroupDrawer from '@/components/CreateGroupDrawer.vue'
 
-const { fetch, loading, data, error } = useGroups()
+const { loading, data, error, fetch } = useGroups()
 
-onMounted(() => {
+const create = ref(false)
+
+function handleGroupCreated() {
+  create.value = false
   fetch()
-})
+}
 </script>
 
 <template>
   <div class="space-y-6">
     <div class="flex flex-col gap-y-4 sm:flex-row">
-      <NeButton class="sm:order-2 sm:ml-auto">
+      <NeButton class="sm:order-2 sm:ml-auto" @click="create = true">
         <template #prefix>
           <FontAwesomeIcon :icon="faPlusCircle" />
         </template>
@@ -40,7 +44,7 @@ onMounted(() => {
       <thead>
         <tr>
           <th>{{ $t('user_manager.group_name') }}</th>
-          <th>{{ $t('user_manager.description') }}</th>
+          <th>{{ $t('user_manager.group_description') }}</th>
         </tr>
       </thead>
       <tbody>
@@ -53,4 +57,5 @@ onMounted(() => {
       </tbody>
     </table>
   </div>
+  <CreateGroupDrawer :show="create" @cancel="create = false" @success="handleGroupCreated" />
 </template>
