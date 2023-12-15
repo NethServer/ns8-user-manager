@@ -55,13 +55,16 @@ async function handleLogin() {
       </div>
       <div class="space-y-4">
         <div>
-          <p class="text-xl">
-            {{ $t('login_form.welcome') }}
-            <span v-if="domainName"> - {{ domainName }}</span>
-          </p>
+          <p class="text-xl">{{ $t('login_form.welcome') }}</p>
           <p class="text-sm font-normal">{{ $t('login_form.sign_in_description') }}</p>
         </div>
         <NeInlineNotification v-if="errorMessage" :title="$t(errorMessage)" kind="error" />
+        <NeTextInput
+          v-if="domainName"
+          v-model="domainName"
+          disabled
+          :label="$t('login_form.domain')"
+        />
         <NeTextInput
           v-model="username"
           :disabled="loading"

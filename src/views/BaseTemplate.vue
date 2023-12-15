@@ -62,8 +62,9 @@ function handleLogout() {
         >
           <FontAwesomeIcon :icon="faBars" class="h-full w-full" />
         </button>
-        <p class="sidebar:pl-4">{{ domainName }}</p>
+
         <div class="ml-auto flex items-center text-gray-700 dark:text-gray-200">
+          <p class="pr-6 text-sm">{{ domainName }}</p>
           <div class="mr-2 h-8 w-8">
             <FontAwesomeIcon :icon="faCircleUser" class="h-full w-full" />
           </div>

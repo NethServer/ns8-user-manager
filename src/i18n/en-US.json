@@ -15,7 +15,8 @@
     "password": "Password",
     "remember_me": "Remember me",
     "sign_in": "Sign in",
-    "invalid_credentials": "Invalid credentials"
+    "invalid_credentials": "Invalid credentials",
+    "domain": "Domain"
   },
   "account_settings": {
     "title": "Account settings",
