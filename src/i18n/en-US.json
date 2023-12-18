@@ -1,6 +1,7 @@
 {
   "nethvoice": "Nethvoice CTI",
   "nethservice": "Nethservice COLLABORATION",
+  "edit": "Edit",
   "errors": {
     "generic": "Error",
     "connection_aborted": "Couldn't connect to the server",
@@ -63,13 +64,16 @@
     "group_description": "Description",
     "users": "Users",
     "choose_users": "Choose users",
-    "group_edit": "Edit",
+    "group_edit": "Edit group",
     "group_delete": "Delete group",
     "group_delete_modal_title": "Delete group",
     "group_delete_modal_description": "Are you sure you want to delete group \"{name}\"? The action is irreversible.",
+    "group_deleted": "Group deleted",
+    "group_deleted_description": "The group has been deleted successfully",
     "group_created": "Group created",
     "group_created_description": "The group has been created successfully",
-    "group_updated": "Group deleted",
-    "group_updated_description": "The group has been deleted successfully"
+    "group_edited": "Group edited",
+    "group_edited_description": "The group has been edited successfully",
+    "edit_group": "Edit group"
   }
 }

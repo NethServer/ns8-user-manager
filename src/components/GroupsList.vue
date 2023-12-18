@@ -14,12 +14,14 @@ import CreateGroupDrawer from '@/components/CreateGroupDrawer.vue'
 import DeleteGroupModal from '@/components/DeleteGroupModal.vue'
 import { useNotificationEngine } from '@/stores/useNotificationEngine'
 import { useI18n } from 'vue-i18n'
+import EditGroupDrawer from '@/components/EditGroupDrawer.vue'
 
 const { loading, data, error, fetch } = useGroups()
 const notifications = useNotificationEngine()
 
 const create = ref(false)
 const groupToDelete = ref<Group>()
+const groupToEdit = ref<Group>()
 
 const { t } = useI18n()
 
@@ -40,6 +42,16 @@ function handleGroupDeleted() {
     'success',
     t('user_manager.group_deleted'),
     t('user_manager.group_deleted_description')
+  )
+}
+
+function handleGroupEdited() {
+  groupToEdit.value = undefined
+  fetch()
+  notifications.add(
+    'success',
+    t('user_manager.group_edited'),
+    t('user_manager.group_edited_description')
   )
 }
 </script>
@@ -77,9 +89,9 @@ function handleGroupDeleted() {
             <td>{{ group.group }}</td>
             <td>{{ group.description }}</td>
             <td class="flex items-center justify-end gap-x-4">
-              <NeButton kind="tertiary" size="sm">
+              <NeButton kind="tertiary" size="sm" @click="groupToEdit = group">
                 <FontAwesomeIcon :icon="faEdit" class="pr-2" />
-                {{ $t('user_manager.group_edit') }}
+                {{ $t('edit') }}
               </NeButton>
               <NeDropdown
                 :items="[
@@ -103,5 +115,10 @@ function handleGroupDeleted() {
     :group="groupToDelete"
     @cancel="groupToDelete = undefined"
     @delete="handleGroupDeleted"
+  />
+  <EditGroupDrawer
+    :group="groupToEdit"
+    @cancel="groupToEdit = undefined"
+    @success="handleGroupEdited"
   />
 </template>

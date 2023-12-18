@@ -4,6 +4,7 @@ import { ref } from 'vue'
 export interface Group {
   description: string
   group: string
+  users: Array<string>
 }
 
 interface ListGroupsResponse {
