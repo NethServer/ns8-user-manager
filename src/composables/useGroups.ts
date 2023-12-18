@@ -14,13 +14,13 @@ interface ListGroupsResponse {
 export function useGroups() {
   const error = ref<Error>()
   const loading = ref(true)
-  const data = ref<ListGroupsResponse>()
+  const data = ref<Array<Group>>([])
 
   function fetch() {
     axios
       .post<ListGroupsResponse>('/api/list-groups', {})
       .then((response) => {
-        data.value = response.data
+        data.value = response.data.groups
       })
       .catch((reason) => {
         error.value = reason

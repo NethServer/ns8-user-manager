@@ -65,7 +65,6 @@ function handleGroupEdited() {
         </template>
         {{ $t('user_manager.add_group') }}
       </NeButton>
-      <NeTextInput :placeholder="$t('user_manager.search_group')" class="sm:order-1" />
     </div>
     <NeInlineNotification
       v-if="error"
@@ -84,8 +83,8 @@ function handleGroupEdited() {
         </tr>
       </thead>
       <tbody>
-        <template v-if="data?.groups != undefined && data.groups.length > 0">
-          <tr v-for="(group, index) in data?.groups" :key="index">
+        <template v-if="data.length > 0">
+          <tr v-for="(group, index) in data" :key="index">
             <td>{{ group.group }}</td>
             <td>{{ group.description }}</td>
             <td class="flex items-center justify-end gap-x-4">
