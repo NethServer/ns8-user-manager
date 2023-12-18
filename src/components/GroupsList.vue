@@ -5,8 +5,7 @@ import {
   NeButton,
   NeDropdown,
   NeInlineNotification,
-  NeSkeleton,
-  NeTextInput
+  NeSkeleton
 } from '@nethserver/vue-tailwind-lib'
 import { type Group, useGroups } from '@/composables/useGroups'
 import { ref } from 'vue'
