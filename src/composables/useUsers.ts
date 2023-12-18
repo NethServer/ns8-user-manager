@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
-interface User {
+export interface User {
   display_name: string
   locked: boolean
   user: string
@@ -14,7 +14,7 @@ interface UserListResponse {
 export function useUsers() {
   const loading = ref(true)
   const error = ref<Error>()
-  const data = ref<Array<User>>()
+  const data = ref<Array<User>>([])
 
   function fetch() {
     axios

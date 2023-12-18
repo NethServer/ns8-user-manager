@@ -74,6 +74,14 @@
     "group_created_description": "The group has been created successfully",
     "group_edited": "Group edited",
     "group_edited_description": "The group has been edited successfully",
-    "edit_group": "Edit group"
+    "edit_group": "Edit group",
+    "user_delete": "Delete user",
+    "user_name": "Username",
+    "user_display_name": "Display name",
+    "user_group": "Groups",
+    "user_status": "Status",
+    "user_change_password": "Change password",
+    "user_lock": "Lock",
+    "user_unlock": "Unlock"
   }
 }
