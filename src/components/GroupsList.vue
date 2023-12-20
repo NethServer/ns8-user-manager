@@ -1,12 +1,17 @@
 <script lang="ts" setup>
 import { faEdit, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { NeButton, NeDropdown } from '@nethserver/vue-tailwind-lib'
 import {
-  NeButton,
-  NeDropdown,
+  NeSkeleton,
   NeInlineNotification,
-  NeSkeleton
-} from '@nethserver/vue-tailwind-lib'
+  NeTable,
+  NeTableHead,
+  NeTableHeadCell,
+  NeTableRow,
+  NeTableBody,
+  NeTableCell
+} from '@nethesis/vue-components'
 import { type Group, useGroups } from '@/composables/useGroups'
 import { ref } from 'vue'
 import CreateGroupDrawer from '@/components/CreateGroupDrawer.vue'
@@ -72,41 +77,36 @@ function handleGroupEdited() {
       kind="error"
     />
     <NeSkeleton v-if="loading" :lines="10" />
-    <!-- TODO: replace with proper table -->
-    <table v-else class="w-full">
-      <thead>
-        <tr>
-          <th>{{ $t('user_manager.group_name') }}</th>
-          <th>{{ $t('user_manager.group_description') }}</th>
-          <th><!-- Actions --></th>
-        </tr>
-      </thead>
-      <tbody>
-        <template v-if="data.length > 0">
-          <tr v-for="(group, index) in data" :key="index">
-            <td>{{ group.group }}</td>
-            <td>{{ group.description }}</td>
-            <td class="flex items-center justify-end gap-x-4">
-              <NeButton kind="tertiary" size="sm" @click="groupToEdit = group">
-                <FontAwesomeIcon :icon="faEdit" class="pr-2" />
-                {{ $t('edit') }}
-              </NeButton>
-              <NeDropdown
-                :items="[
-                  {
-                    id: 'delete',
-                    danger: true,
-                    label: $t('user_manager.group_delete'),
-                    action: () => (groupToDelete = group)
-                  }
-                ]"
-                align-to-right
-              />
-            </td>
-          </tr>
-        </template>
-      </tbody>
-    </table>
+    <NeTable v-else>
+      <NeTableHead>
+        <NeTableHeadCell>{{ $t('user_manager.group_name') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ $t('user_manager.group_description') }}</NeTableHeadCell>
+        <NeTableHeadCell><!-- Actions --></NeTableHeadCell>
+      </NeTableHead>
+      <NeTableBody>
+        <NeTableRow v-for="(group, index) in data" :key="index">
+          <NeTableCell>{{ group.group }}</NeTableCell>
+          <NeTableCell>{{ group.description }}</NeTableCell>
+          <NeTableCell class="flex items-center justify-end gap-x-4">
+            <NeButton kind="tertiary" size="sm" @click="groupToEdit = group">
+              <FontAwesomeIcon :icon="faEdit" class="pr-2" />
+              {{ $t('edit') }}
+            </NeButton>
+            <NeDropdown
+              :items="[
+                {
+                  id: 'delete',
+                  danger: true,
+                  label: $t('user_manager.group_delete'),
+                  action: () => (groupToDelete = group)
+                }
+              ]"
+              align-to-right
+            />
+          </NeTableCell>
+        </NeTableRow>
+      </NeTableBody>
+    </NeTable>
   </div>
   <CreateGroupDrawer :show="create" @cancel="create = false" @success="handleGroupCreated" />
   <DeleteGroupModal

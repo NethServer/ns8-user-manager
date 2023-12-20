@@ -10,6 +10,14 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { type User, useUsers } from '@/composables/useUsers'
 import { useGroups } from '@/composables/useGroups'
 import { computed } from 'vue'
+import {
+  NeTable,
+  NeTableBody,
+  NeTableCell,
+  NeTableHead,
+  NeTableHeadCell,
+  NeTableRow
+} from '@nethesis/vue-components'
 
 interface UserList extends User {
   groups: string[]
@@ -59,25 +67,22 @@ const data = computed((): UserList[] => {
       kind="error"
     />
     <NeSkeleton v-if="loading" :lines="10" />
-    <!-- TODO: replace with table -->
-    <table v-else class="w-full">
-      <thead>
-        <tr>
-          <th>{{ $t('user_manager.user_name') }}</th>
-          <th>{{ $t('user_manager.user_display_name') }}</th>
-          <th>{{ $t('user_manager.user_group') }}</th>
-          <th>{{ $t('user_manager.user_status') }}</th>
-          <th><!-- Actions --></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(user, index) in data" :key="index">
-          <td>{{ user.user }}</td>
-          <td>{{ user.display_name }}</td>
-          <td v-if="user.groups.length > 0">{{ user.groups.join(', ') }}</td>
-          <td v-else>-</td>
-          <td>{{ user.locked }}</td>
-          <td class="flex items-center justify-end gap-x-4">
+    <NeTable v-else>
+      <NeTableHead>
+        <NeTableHeadCell>{{ $t('user_manager.user_name') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ $t('user_manager.user_display_name') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ $t('user_manager.user_group') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ $t('user_manager.user_status') }}</NeTableHeadCell>
+        <NeTableHeadCell></NeTableHeadCell>
+      </NeTableHead>
+      <NeTableBody>
+        <NeTableRow v-for="(user, index) in data" :key="index">
+          <NeTableCell>{{ user.user }}</NeTableCell>
+          <NeTableCell>{{ user.display_name }}</NeTableCell>
+          <NeTableCell v-if="user.groups.length > 0">{{ user.groups.join(', ') }}</NeTableCell>
+          <NeTableCell v-else>-</NeTableCell>
+          <NeTableCell>{{ user.locked }}</NeTableCell>
+          <NeTableCell class="flex items-center justify-end">
             <NeButton disabled kind="tertiary" size="sm">
               <FontAwesomeIcon :icon="faEdit" class="pr-2" />
               {{ $t('edit') }}
@@ -103,9 +108,9 @@ const data = computed((): UserList[] => {
               ]"
               align-to-right
             />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </NeTableCell>
+        </NeTableRow>
+      </NeTableBody>
+    </NeTable>
   </div>
 </template>
