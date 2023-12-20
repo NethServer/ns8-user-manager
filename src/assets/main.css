@@ -1,4 +1,4 @@
-@import '@nethesis/vue-components/vue-components.css';
+@import '@nethesis/vue-components/main.css';
 
 @tailwind base;
 @tailwind components;
