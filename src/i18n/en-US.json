@@ -96,6 +96,9 @@
     "user_confirm_password": "Confirm password",
     "user_already_exists": "User already exists",
     "groups": "Groups",
-    "choose_groups": "Choose groups"
+    "choose_groups": "Choose groups",
+    "edit_user": "Edit user \"{name}\"",
+    "user_edited": "User edited",
+    "user_edited_description": "The user has been edited successfully"
   }
 }

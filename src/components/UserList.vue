@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import {
   NeButton,
+  type NeComboboxOption,
   NeDropdown,
   NeInlineNotification,
   NeSkeleton
@@ -27,9 +28,10 @@ import DeleteUserModal from '@/components/DeleteUserModal.vue'
 import { useI18n } from 'vue-i18n'
 import { useNotificationEngine } from '@/stores/useNotificationEngine'
 import CreateUserDrawer from '@/components/CreateUserDrawer.vue'
+import EditUserDrawer from '@/components/EditUserDrawer.vue'
 
-interface UserList extends User {
-  groups: string[]
+export interface UserList extends User {
+  groups: NeComboboxOption[]
 }
 
 const { t } = useI18n()
@@ -46,6 +48,7 @@ const {
 
 const createUser = ref(false)
 const userToDelete = ref<User>()
+const userToEdit = ref<UserList>()
 
 const loading = computed((): boolean => {
   return userLoading.value || groupLoading.value
@@ -64,7 +67,10 @@ const data = computed((): UserList[] => {
           return group.users.includes(user.user)
         })
         .map((group) => {
-          return group.group
+          return {
+            label: group.group,
+            id: group.description
+          }
         })
     }
   })
@@ -89,6 +95,13 @@ function handleUserDeleted() {
     t('user_manager.user_deleted'),
     t('user_manager.user_deleted_description')
   )
+}
+
+function handleEditedUser() {
+  userToEdit.value = undefined
+  fetchUsers()
+  fetchGroups()
+  notifications.add('success', 'user_manager.user_edited', 'user_manager.user_edited_description')
 }
 </script>
 
@@ -121,7 +134,9 @@ function handleUserDeleted() {
         <NeTableRow v-for="(user, index) in data" :key="index">
           <NeTableCell>{{ user.user }}</NeTableCell>
           <NeTableCell>{{ user.display_name }}</NeTableCell>
-          <NeTableCell v-if="user.groups.length > 0">{{ user.groups.join(', ') }}</NeTableCell>
+          <NeTableCell v-if="user.groups.length > 0">
+            {{ user.groups.map((group) => group.label).join(', ') }}
+          </NeTableCell>
           <NeTableCell v-else>-</NeTableCell>
           <NeTableCell>
             <div v-if="user.locked" class="flex items-center gap-2">
@@ -133,8 +148,8 @@ function handleUserDeleted() {
               <p>{{ $t('user_manager.user_enabled') }}</p>
             </div>
           </NeTableCell>
-          <NeTableCell class="flex items-center justify-end">
-            <NeButton disabled kind="tertiary" size="sm">
+          <NeTableCell class="flex items-center justify-end gap-4">
+            <NeButton kind="tertiary" size="sm" @click="userToEdit = user">
               <FontAwesomeIcon :icon="faEdit" class="pr-2" />
               {{ $t('edit') }}
             </NeButton>
@@ -142,7 +157,9 @@ function handleUserDeleted() {
               :items="[
                 {
                   id: 'lock',
-                  label: $t('user_manager.user_lock'),
+                  label: user.locked
+                    ? $t('user_manager.user_unlock')
+                    : $t('user_manager.user_lock'),
                   disabled: true
                 },
                 {
@@ -170,4 +187,5 @@ function handleUserDeleted() {
     @cancel="userToDelete = undefined"
     @delete="handleUserDeleted"
   />
+  <EditUserDrawer :user="userToEdit" @cancel="userToEdit = undefined" @success="handleEditedUser" />
 </template>

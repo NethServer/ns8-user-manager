@@ -7,9 +7,9 @@ import {
   NeCombobox,
   type NeComboboxOption,
   NeInlineNotification,
-  NeSkeleton,
   NeTextInput
 } from '@nethserver/vue-tailwind-lib'
+import { NeSkeleton } from '@nethesis/vue-components'
 import { useUsers } from '@/composables/useUsers'
 import axios from 'axios'
 
@@ -93,9 +93,9 @@ function handleCancel() {
         <NeTextInput v-model="name" :label="$t('user_manager.group_name')" disabled />
         <NeTextInput
           v-model="description"
+          :disabled="loading"
           :label="$t('user_manager.group_description')"
           required
-          :disabled="loading"
         />
         <NeInlineNotification
           v-if="errorUsers"
@@ -108,8 +108,8 @@ function handleCancel() {
           v-else
           v-model="users"
           :disabled="loading"
-          :options="comboboxChoices"
           :label="$t('user_manager.users')"
+          :options="comboboxChoices"
           :placeholder="$t('user_manager.choose_users')"
           multiple
         />
@@ -117,15 +117,15 @@ function handleCancel() {
     </template>
     <template #footer>
       <div class="flex flex-col justify-end gap-4 sm:flex-row">
-        <NeButton kind="secondary" :disabled="loading" @click="handleCancel">
+        <NeButton :disabled="loading" kind="secondary" @click="handleCancel">
           {{ $t('user_manager.cancel') }}
         </NeButton>
         <NeButton
+          :disabled="loading"
+          :loading="loading"
           form="edit-group"
           kind="primary"
           type="submit"
-          :loading="loading"
-          :disabled="loading"
         >
           {{ $t('user_manager.edit_group') }}
         </NeButton>
