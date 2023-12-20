@@ -123,7 +123,7 @@ function submit() {
         user: username.value,
         display_name: name.value,
         password: password.value,
-        enabled: enabled.value,
+        locked: !enabled.value,
         groups: groups.value.map((group) => group.id)
       })
       .then((response) => {

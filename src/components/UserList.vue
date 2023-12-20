@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-import { faEdit, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import {
+  faCircleCheck,
+  faCircleXmark,
+  faEdit,
+  faPlusCircle
+} from '@fortawesome/free-solid-svg-icons'
 import {
   NeButton,
   NeDropdown,
@@ -118,7 +123,16 @@ function handleUserDeleted() {
           <NeTableCell>{{ user.display_name }}</NeTableCell>
           <NeTableCell v-if="user.groups.length > 0">{{ user.groups.join(', ') }}</NeTableCell>
           <NeTableCell v-else>-</NeTableCell>
-          <NeTableCell>{{ user.locked }}</NeTableCell>
+          <NeTableCell>
+            <div v-if="user.locked" class="flex items-center gap-2">
+              <FontAwesomeIcon :icon="faCircleXmark" />
+              <p>{{ $t('user_manager.user_disabled') }}</p>
+            </div>
+            <div v-else class="flex items-center gap-2">
+              <FontAwesomeIcon :icon="faCircleCheck" />
+              <p>{{ $t('user_manager.user_enabled') }}</p>
+            </div>
+          </NeTableCell>
           <NeTableCell class="flex items-center justify-end">
             <NeButton disabled kind="tertiary" size="sm">
               <FontAwesomeIcon :icon="faEdit" class="pr-2" />
