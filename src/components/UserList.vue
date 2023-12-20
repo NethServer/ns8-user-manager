@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { type User, useUsers } from '@/composables/useUsers'
 import { useGroups } from '@/composables/useGroups'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import {
   NeTable,
   NeTableBody,
@@ -18,13 +18,22 @@ import {
   NeTableHeadCell,
   NeTableRow
 } from '@nethesis/vue-components'
+import DeleteUserModal from '@/components/DeleteUserModal.vue'
+import { useI18n } from 'vue-i18n'
+import { useNotificationEngine } from '@/stores/useNotificationEngine'
 
 interface UserList extends User {
   groups: string[]
 }
 
-const { loading: userLoading, data: userData, error: userError } = useUsers()
+const { t } = useI18n()
+
+const notifications = useNotificationEngine()
+
+const { loading: userLoading, data: userData, error: userError, fetch } = useUsers()
 const { loading: groupLoading, data: groupData, error: groupError } = useGroups()
+
+const userToDelete = ref<User>()
 
 const loading = computed((): boolean => {
   return userLoading.value || groupLoading.value
@@ -48,6 +57,16 @@ const data = computed((): UserList[] => {
     }
   })
 })
+
+function handleUserDeleted() {
+  userToDelete.value = undefined
+  fetch()
+  notifications.add(
+    'success',
+    t('user_manager.user_deleted'),
+    t('user_manager.user_deleted_description')
+  )
+}
 </script>
 
 <template>
@@ -69,7 +88,7 @@ const data = computed((): UserList[] => {
     <NeSkeleton v-if="loading" :lines="10" />
     <NeTable v-else>
       <NeTableHead>
-        <NeTableHeadCell>{{ $t('user_manager.user_name') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ $t('user_manager.user_username') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ $t('user_manager.user_display_name') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ $t('user_manager.user_group') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ $t('user_manager.user_status') }}</NeTableHeadCell>
@@ -102,8 +121,8 @@ const data = computed((): UserList[] => {
                 {
                   id: 'delete',
                   danger: true,
-                  disabled: true,
-                  label: $t('user_manager.user_delete')
+                  label: $t('user_manager.user_delete'),
+                  action: () => (userToDelete = user)
                 }
               ]"
               align-to-right
@@ -113,4 +132,9 @@ const data = computed((): UserList[] => {
       </NeTableBody>
     </NeTable>
   </div>
+  <DeleteUserModal
+    :user="userToDelete"
+    @cancel="userToDelete = undefined"
+    @delete="handleUserDeleted"
+  />
 </template>
