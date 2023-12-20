@@ -44,6 +44,12 @@ function validate(): boolean {
   if (newPassword.value != confirmPassword.value) {
     validationMessages.value.append('confirm_password', t('account_settings.passwords_mismatch'))
   }
+  if (newPassword.value.length < minimumPasswordLength.value) {
+    validationMessages.value.append(
+      'password',
+      t('account_settings.password_length', minimumPasswordLength.value)
+    )
+  }
   if (!newPassword.value.match(`(?=(?:.*[A-Z]){${minimumUppercaseCharacters.value},})`)) {
     validationMessages.value.append(
       'new_password',
