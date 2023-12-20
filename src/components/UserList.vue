@@ -31,8 +31,13 @@ const { t } = useI18n()
 
 const notifications = useNotificationEngine()
 
-const { loading: userLoading, data: userData, error: userError, fetch } = useUsers()
-const { loading: groupLoading, data: groupData, error: groupError } = useGroups()
+const { loading: userLoading, data: userData, error: userError, fetch: fetchUsers } = useUsers()
+const {
+  loading: groupLoading,
+  data: groupData,
+  error: groupError,
+  fetch: fetchGroups
+} = useGroups()
 
 const createUser = ref(false)
 const userToDelete = ref<User>()
@@ -62,7 +67,8 @@ const data = computed((): UserList[] => {
 
 function handleCreatedUser() {
   createUser.value = false
-  fetch()
+  fetchUsers()
+  fetchGroups()
   notifications.add(
     'success',
     t('user_manager.user_created'),
@@ -72,7 +78,7 @@ function handleCreatedUser() {
 
 function handleUserDeleted() {
   userToDelete.value = undefined
-  fetch()
+  fetchUsers()
   notifications.add(
     'success',
     t('user_manager.user_deleted'),

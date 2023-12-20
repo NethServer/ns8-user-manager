@@ -94,6 +94,8 @@
     "user_created_description": "The user has been created successfully",
     "user_password": "Password",
     "user_confirm_password": "Confirm password",
-    "user_already_exists": "User already exists"
+    "user_already_exists": "User already exists",
+    "groups": "Groups",
+    "choose_groups": "Choose groups"
   }
 }

@@ -1,18 +1,28 @@
 <script lang="ts" setup>
 import SideDrawer from '@/components/SideDrawer.vue'
-import { NeButton, NeFormItemLabel, NeTextInput, NeToggle } from '@nethserver/vue-tailwind-lib'
-import { NeInlineNotification } from '@nethesis/vue-components'
-import { ref, watch } from 'vue'
+import {
+  NeButton,
+  NeCombobox,
+  type NeComboboxOption,
+  NeFormItemLabel,
+  NeTextInput,
+  NeToggle
+} from '@nethserver/vue-tailwind-lib'
+import { NeInlineNotification, NeSkeleton } from '@nethesis/vue-components'
+import { computed, ref, watch } from 'vue'
 import axios from 'axios'
 import type { BaseResponse } from '@/lib/axiosHelpers'
 import { MessageBag } from '@/lib/validation'
 import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
+import { useGroups } from '@/composables/useGroups'
 
 interface ErrorResponse extends BaseResponse {
   error: Array<{ error: string; field: string; parameter: string; value: string }>
 }
+
+const { t } = useI18n()
+
+const { data: remoteGroups, loading: groupsLoading, error: groupsError } = useGroups()
 
 const props = defineProps<{
   show: boolean
@@ -25,6 +35,7 @@ const username = ref('')
 const name = ref('')
 const password = ref('')
 const confirmPassword = ref('')
+const groups = ref<Array<NeComboboxOption>>([])
 
 const minimumPasswordLength = 8
 const minimumUppercaseCharacters = 1
@@ -51,6 +62,13 @@ watch(
     }
   }
 )
+
+const groupsOptions = computed((): Array<NeComboboxOption> => {
+  return remoteGroups.value.map((group) => ({
+    label: group.description,
+    id: group.group
+  }))
+})
 
 function handleCancel() {
   if (!loading.value) {
@@ -105,7 +123,8 @@ function submit() {
         user: username.value,
         display_name: name.value,
         password: password.value,
-        enabled: enabled.value
+        enabled: enabled.value,
+        groups: groups.value.map((group) => group.id)
       })
       .then((response) => {
         if (response.data.status == 'success') {
@@ -161,6 +180,23 @@ function submit() {
           :label="$t('user_manager.user_name')"
           required
         />
+        <NeSkeleton v-if="groupsLoading" :lines="2" />
+        <NeInlineNotification
+          v-else-if="groupsError"
+          :title="$t('errors.generic')"
+          kind="error"
+          :description="$t(groupsError.message)"
+        />
+        <NeCombobox
+          v-else
+          v-model="groups"
+          :disabled="loading"
+          :label="$t('user_manager.groups')"
+          :options="groupsOptions"
+          :placeholder="$t('user_manager.choose_groups')"
+          multiple
+          name="users"
+        />
         <NeTextInput
           v-model="password"
           :disabled="loading"
@@ -170,6 +206,13 @@ function submit() {
           is-password
           required
         />
+        <ul class="description-text ml-6 list-disc">
+          <li>{{ $t('account_settings.minimum_characters', minimumPasswordLength) }}</li>
+          <li>{{ $t('account_settings.minimum_uppercase', minimumUppercaseCharacters) }}</li>
+          <li>{{ $t('account_settings.minimum_lowercase', minimumLowercaseCharacters) }}</li>
+          <li>{{ $t('account_settings.minimum_number', minimumNumberCharacters) }}</li>
+          <li>{{ $t('account_settings.minimum_special', minimumSpecialCharacters) }}</li>
+        </ul>
         <NeTextInput
           v-model="confirmPassword"
           :disabled="loading"
