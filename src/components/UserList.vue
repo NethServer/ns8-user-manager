@@ -21,6 +21,7 @@ import {
 import DeleteUserModal from '@/components/DeleteUserModal.vue'
 import { useI18n } from 'vue-i18n'
 import { useNotificationEngine } from '@/stores/useNotificationEngine'
+import CreateUserDrawer from '@/components/CreateUserDrawer.vue'
 
 interface UserList extends User {
   groups: string[]
@@ -33,6 +34,7 @@ const notifications = useNotificationEngine()
 const { loading: userLoading, data: userData, error: userError, fetch } = useUsers()
 const { loading: groupLoading, data: groupData, error: groupError } = useGroups()
 
+const createUser = ref(false)
 const userToDelete = ref<User>()
 
 const loading = computed((): boolean => {
@@ -58,6 +60,16 @@ const data = computed((): UserList[] => {
   })
 })
 
+function handleCreatedUser() {
+  createUser.value = false
+  fetch()
+  notifications.add(
+    'success',
+    t('user_manager.user_created'),
+    t('user_manager.user_created_description')
+  )
+}
+
 function handleUserDeleted() {
   userToDelete.value = undefined
   fetch()
@@ -72,7 +84,7 @@ function handleUserDeleted() {
 <template>
   <div class="space-y-6">
     <div class="flex flex-col gap-y-4 sm:flex-row">
-      <NeButton class="sm:order-2 sm:ml-auto">
+      <NeButton class="sm:order-2 sm:ml-auto" @click="createUser = true">
         <template #prefix>
           <FontAwesomeIcon :icon="faPlusCircle" />
         </template>
@@ -132,6 +144,7 @@ function handleUserDeleted() {
       </NeTableBody>
     </NeTable>
   </div>
+  <CreateUserDrawer :show="createUser" @cancel="createUser = false" @success="handleCreatedUser" />
   <DeleteUserModal
     :user="userToDelete"
     @cancel="userToDelete = undefined"

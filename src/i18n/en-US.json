@@ -89,6 +89,11 @@
     "user_disabled": "Disabled",
     "user_username": "Username",
     "user_deleted": "User deleted",
-    "user_deleted_description": "The user has been deleted successfully"
+    "user_deleted_description": "The user has been deleted successfully",
+    "user_created": "User created",
+    "user_created_description": "The user has been created successfully",
+    "user_password": "Password",
+    "user_confirm_password": "Confirm password",
+    "user_already_exists": "User already exists"
   }
 }
