@@ -70,8 +70,8 @@ const data = computed((): UserList[] => {
         })
         .map((group) => {
           return {
-            label: group.group,
-            id: group.description
+            label: group.description,
+            id: group.group
           }
         })
     }
@@ -108,6 +108,11 @@ function handleEditedUser() {
 
 function handleUserChangedPassword() {
   userToChangePassword.value = undefined
+  notifications.add(
+    'success',
+    'user_manager.user_changed_password',
+    'user_manager.user_changed_password_description'
+  )
 }
 </script>
 

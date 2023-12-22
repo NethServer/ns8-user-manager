@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { UserList } from '@/components/UserList.vue'
-import SideDrawer from '@/components/SideDrawer.vue'
 import { computed, ref, watch } from 'vue'
 import {
   NeButton,
@@ -14,6 +13,7 @@ import { useGroups } from '@/composables/useGroups'
 import { NeInlineNotification, NeSkeleton } from '@nethesis/vue-components'
 import type { BaseResponse } from '@/lib/axiosHelpers'
 import axios from 'axios'
+import SideDrawer from '@/components/SideDrawer.vue'
 
 const { data: remoteGroups, loading: groupsLoading, error: groupsError } = useGroups()
 
@@ -47,8 +47,8 @@ watch(
 const groupsOptions = computed(() => {
   return remoteGroups.value?.map((group): NeComboboxOption => {
     return {
-      label: group.group,
-      id: group.description
+      label: group.description,
+      id: group.group
     }
   })
 })
