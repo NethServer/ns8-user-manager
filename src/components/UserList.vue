@@ -29,6 +29,7 @@ import { useI18n } from 'vue-i18n'
 import { useNotificationEngine } from '@/stores/useNotificationEngine'
 import CreateUserDrawer from '@/components/CreateUserDrawer.vue'
 import EditUserDrawer from '@/components/EditUserDrawer.vue'
+import EditUserPasswordDrawer from '@/components/EditUserPasswordDrawer.vue'
 
 export interface UserList extends User {
   groups: NeComboboxOption[]
@@ -49,6 +50,7 @@ const {
 const createUser = ref(false)
 const userToDelete = ref<User>()
 const userToEdit = ref<UserList>()
+const userToChangePassword = ref<User>()
 
 const loading = computed((): boolean => {
   return userLoading.value || groupLoading.value
@@ -102,6 +104,10 @@ function handleEditedUser() {
   fetchUsers()
   fetchGroups()
   notifications.add('success', 'user_manager.user_edited', 'user_manager.user_edited_description')
+}
+
+function handleUserChangedPassword() {
+  userToChangePassword.value = undefined
 }
 </script>
 
@@ -165,7 +171,7 @@ function handleEditedUser() {
                 {
                   id: 'change-password',
                   label: $t('user_manager.user_change_password'),
-                  disabled: true
+                  action: () => (userToChangePassword = user)
                 },
                 {
                   id: 'delete',
@@ -188,4 +194,9 @@ function handleEditedUser() {
     @delete="handleUserDeleted"
   />
   <EditUserDrawer :user="userToEdit" @cancel="userToEdit = undefined" @success="handleEditedUser" />
+  <EditUserPasswordDrawer
+    :user="userToChangePassword"
+    @cancel="userToChangePassword = undefined"
+    @success="handleUserChangedPassword"
+  />
 </template>

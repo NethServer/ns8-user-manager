@@ -2,6 +2,7 @@
   "nethvoice": "Nethvoice CTI",
   "nethservice": "Nethservice COLLABORATION",
   "edit": "Edit",
+  "save": "Save",
   "errors": {
     "generic": "Error",
     "connection_aborted": "Couldn't connect to the server",
@@ -99,6 +100,7 @@
     "choose_groups": "Choose groups",
     "edit_user": "Edit user \"{name}\"",
     "user_edited": "User edited",
-    "user_edited_description": "The user has been edited successfully"
+    "user_edited_description": "The user has been edited successfully",
+    "change_user_password": "Change password to user \"{name}\""
   }
 }
