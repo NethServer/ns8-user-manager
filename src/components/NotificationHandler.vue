@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useNotificationEngine } from '@/stores/useNotificationEngine'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCheckCircle, faX } from '@fortawesome/free-solid-svg-icons'
+import { faCheckCircle, faCircleXmark, faX } from '@fortawesome/free-solid-svg-icons'
 
 const notificationEngine = useNotificationEngine()
 
@@ -25,9 +25,16 @@ notificationEngine.$onAction(({ name, after }) => {
         class="flex items-start gap-x-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800"
       >
         <div
+          v-if="notification.type == 'success'"
           class="h-10 w-10 shrink-0 rounded-full bg-green-100 py-2.5 text-green-700 dark:bg-green-800 dark:text-green-100"
         >
           <FontAwesomeIcon :icon="faCheckCircle" class="h-full w-full" />
+        </div>
+        <div
+          v-else-if="notification.type == 'error'"
+          class="h-10 w-10 shrink-0 rounded-full bg-rose-100 py-2.5 text-rose-700 dark:bg-rose-800 dark:text-rose-100"
+        >
+          <FontAwesomeIcon :icon="faCircleXmark" class="h-full w-full" />
         </div>
         <div class="space-y-1">
           <p class="h3 text-sm">{{ $t(notification.title) }}</p>

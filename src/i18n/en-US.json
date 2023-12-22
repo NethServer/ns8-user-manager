@@ -8,7 +8,8 @@
     "connection_aborted": "Couldn't connect to the server",
     "network": "Network error",
     "bad_response": "Server error, please try again later",
-    "bad_request": "Bad request, please notify the administrator"
+    "bad_request": "Bad request, please notify the administrator",
+    "unable_to_perform_action": "Unable to perform this action at the moment, please try again later."
   },
   "base_template": {
     "logout": "Logout"
@@ -103,6 +104,10 @@
     "user_edited_description": "The user has been edited successfully",
     "change_user_password": "Change password to user \"{name}\"",
     "user_changed_password": "Password changed",
-    "user_changed_password_description": "Password changed successfully"
+    "user_changed_password_description": "Password changed successfully",
+    "user_locked": "User locked",
+    "user_locked_description": "The user has been locked successfully",
+    "user_unlocked": "User unlocked",
+    "user_unlocked_description": "The user has been unlocked successfully"
   }
 }

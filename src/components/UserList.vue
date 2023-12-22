@@ -30,6 +30,7 @@ import { useNotificationEngine } from '@/stores/useNotificationEngine'
 import CreateUserDrawer from '@/components/CreateUserDrawer.vue'
 import EditUserDrawer from '@/components/EditUserDrawer.vue'
 import EditUserPasswordDrawer from '@/components/EditUserPasswordDrawer.vue'
+import axios from 'axios'
 
 export interface UserList extends User {
   groups: NeComboboxOption[]
@@ -114,6 +115,27 @@ function handleUserChangedPassword() {
     'user_manager.user_changed_password_description'
   )
 }
+
+function toggleUserLock(user: User) {
+  axios
+    .post('/api/alter-user', {
+      user: user.user,
+      locked: !user.locked
+    })
+    .then(() => {
+      fetchUsers()
+      notifications.add(
+        'success',
+        user.locked ? 'user_manager.user_unlocked' : 'user_manager.user_locked',
+        user.locked
+          ? 'user_manager.user_unlocked_description'
+          : 'user_manager.user_locked_description'
+      )
+    })
+    .catch(() => {
+      notifications.add('error', 'errors.generic', 'errors.unable_to_perform_action')
+    })
+}
 </script>
 
 <template>
@@ -171,7 +193,7 @@ function handleUserChangedPassword() {
                   label: user.locked
                     ? $t('user_manager.user_unlock')
                     : $t('user_manager.user_lock'),
-                  disabled: true
+                  action: () => toggleUserLock(user)
                 },
                 {
                   id: 'change-password',
