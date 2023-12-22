@@ -108,6 +108,9 @@ function submit() {
             case 'error_password_history':
               validationErrors.value.append('password', t('account_settings.password_history'))
               break
+            case 'error_password_same':
+              validationErrors.value.append('password', t('account_settings.password_same'))
+              break
             default:
               error.value = new Error('account_settings.generic_error')
           }

@@ -42,6 +42,7 @@
     "password_number": "Password must at least have a number | Password must at least have {count} numbers",
     "password_special": "Password must at least have a special character | Password must at least have {count} special characters",
     "password_history": "Password already used",
+    "password_same": "New password must be different from the old one",
     "generic_error": "Can't change password right now, please try again later",
     "password_changed": "Password changed",
     "password_changed_description": "The password has been changed successfully",
