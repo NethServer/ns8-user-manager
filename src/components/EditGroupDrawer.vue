@@ -89,7 +89,7 @@ function handleCancel() {
     @cancel="handleCancel"
   >
     <template #default>
-      <form id="edit-group" class="space-y-4" @submit="edit">
+      <form id="edit-group" class="space-y-4" @submit.prevent="edit">
         <NeTextInput v-model="name" :label="$t('user_manager.group_name')" disabled />
         <NeTextInput
           v-model="description"
