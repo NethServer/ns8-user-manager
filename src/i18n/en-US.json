@@ -101,6 +101,8 @@
     "edit_user": "Edit user \"{name}\"",
     "user_edited": "User edited",
     "user_edited_description": "The user has been edited successfully",
-    "change_user_password": "Change password to user \"{name}\""
+    "change_user_password": "Change password to user \"{name}\"",
+    "user_changed_password": "Password changed",
+    "user_changed_password_description": "Password changed successfully"
   }
 }

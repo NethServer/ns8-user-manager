@@ -36,6 +36,8 @@ watch(
   () => {
     if (props.user) {
       username.value = props.user.user
+      password.value = ''
+      confirmPassword.value = ''
     }
   },
   { immediate: true }
@@ -88,13 +90,28 @@ function validate(): boolean {
 
 function submit() {
   if (validate()) {
+    loading.value = true
+    error.value = undefined
     axios
       .post<BaseResponse>('/api/alter-user', {
         user: props.user!.user,
         password: password.value
       })
-      .then(() => {
-        emit('success')
+      .then((response) => {
+        if (response.data.status == 'success') {
+          emit('success')
+        } else {
+          switch (response.data.message) {
+            case 'error_password_complexity':
+              validationErrors.value.append('password', t('account_settings.password_complexity'))
+              break
+            case 'error_password_history':
+              validationErrors.value.append('password', t('account_settings.password_history'))
+              break
+            default:
+              error.value = new Error('account_settings.generic_error')
+          }
+        }
       })
       .catch((reason: Error) => {
         error.value = reason
@@ -120,7 +137,12 @@ function submit() {
           :title="$t('errors.generic')"
           kind="error"
         />
-        <NeTextInput v-model="username" :label="$t('user_manager.user_username')" disabled />
+        <NeTextInput
+          v-model="username"
+          autocomplete="username"
+          :label="$t('user_manager.user_username')"
+          disabled
+        />
         <NeTextInput
           v-model="password"
           :disabled="loading"
