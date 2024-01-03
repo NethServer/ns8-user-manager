@@ -8,7 +8,7 @@ import axios from 'axios'
 import { MessageBag } from '@/lib/validation'
 import { useI18n } from 'vue-i18n'
 import { useAuth } from '@/composables/useAuth'
-import { useNotificationEngine } from '@/stores/useNotificationEngine'
+import { useNotificationEngine } from '@/stores/notifications'
 import ContentPage from '@/components/ContentPage.vue'
 
 interface ChangePasswordResponse {
@@ -43,6 +43,12 @@ function validate(): boolean {
   validationMessages.value.clear()
   if (newPassword.value != confirmPassword.value) {
     validationMessages.value.append('confirm_password', t('account_settings.passwords_mismatch'))
+  }
+  if (newPassword.value.length < minimumPasswordLength.value) {
+    validationMessages.value.append(
+      'password',
+      t('account_settings.password_length', minimumPasswordLength.value)
+    )
   }
   if (!newPassword.value.match(`(?=(?:.*[A-Z]){${minimumUppercaseCharacters.value},})`)) {
     validationMessages.value.append(

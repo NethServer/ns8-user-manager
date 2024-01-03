@@ -45,13 +45,39 @@ axios.interceptors.response.use(
   (error) => {
     if (axios.isAxiosError(error)) {
       const exception = error as AxiosError
-      switch (exception.code) {
-        case AxiosError.ECONNABORTED:
-          exception.message = 'errors.connection_aborted'
-          break
-        case AxiosError.ERR_NETWORK:
-          exception.message = 'errors.network'
-          break
+      if (exception.response) {
+        switch (exception.response.status) {
+          case 401:
+            exception.message = 'errors.unauthorized'
+            break
+          case 403:
+            exception.message = 'errors.forbidden'
+            break
+          case 404:
+            exception.message = 'errors.not_found'
+            break
+          case 500:
+            exception.message = 'errors.internal_server_error'
+            break
+          case 503:
+            exception.message = 'errors.service_unavailable'
+            break
+        }
+      } else {
+        switch (exception.code) {
+          case AxiosError.ECONNABORTED:
+            exception.message = 'errors.connection_aborted'
+            break
+          case AxiosError.ERR_NETWORK:
+            exception.message = 'errors.network'
+            break
+          case AxiosError.ERR_BAD_REQUEST:
+            exception.message = 'errors.bad_request'
+            break
+          case AxiosError.ERR_BAD_RESPONSE:
+            exception.message = 'errors.bad_response'
+            break
+        }
       }
       return Promise.reject(exception)
     }

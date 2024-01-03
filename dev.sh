@@ -40,18 +40,33 @@ fi
 commands_given="$*"
 shift "$#"
 
+# setup podman command
+set -- "$@" podman
+
 if podman container exists $container_name; then
-  set -- "$@" podman exec --interactive --tty $container_name
+  # base command to execute in container
+  set -- "$@" exec
+  # if terminal is interactive, add interactive and tty flags
+  if [ -t 0 ]; then
+    set -- "$@" --interactive --tty
+  fi
+  # add container name
+  set -- "$@" $container_name
 else
-  set -- "$@" podman run \
-    --name $container_name \
-    --replace \
-    --rm \
-    --interactive \
-    --tty \
-    --publish 5173:5173 \
-    --volume "$(pwd)":/app:Z \
-    "${dev_image}"
+  # base command to create container
+  set -- "$@" run --name $container_name --replace --rm --volume "$(pwd)":/app:Z
+  # if terminal is interactive, add interactive and tty flags
+  if [ -t 0 ]; then
+    set -- "$@" --interactive --tty
+  fi
+  # check if port 5173 is already in use, if not, add publish flag
+  if lsof -Pi :5173 -sTCP:LISTEN -t >/dev/null; then
+      echo "Something is listening on port 5173, you won't be able to reach dev build."
+  else
+      set -- "$@" --publish 5173:5173
+  fi
+  # add image name
+  set -- "$@" "$dev_image"
 fi
 
 # if commands_given are not zero, append them

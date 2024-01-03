@@ -1,11 +1,13 @@
-@import '@nethesis/vue-components/vue-components.css';
+@import '@nethesis/vue-components/main.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply text-gray-900 dark:text-gray-50;
+@layer base {
+  html {
+    @apply overflow-x-hidden text-gray-900 dark:text-gray-50;
+  }
 }
 
 .h1 {

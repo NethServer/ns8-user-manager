@@ -13,16 +13,27 @@ const router = createRouter({
       path: '/',
       name: 'home',
       redirect: { name: 'user_account' },
-      component: () => import('../views/BaseTemplate.vue'),
+      component: () => import('@/views/BaseTemplate.vue'),
+      beforeEnter: () => {
+        const { previouslyLogged } = useAuth()
+        if (!previouslyLogged.value) {
+          return { name: 'login' }
+        }
+      },
       children: [
         {
           path: 'user/account',
           name: 'user_account',
-          component: () => import('../views/UserAccount.vue'),
+          component: () => import('@/views/UserAccount.vue')
+        },
+        {
+          path: 'users',
+          name: 'user_manager',
+          component: () => import('@/views/UserManager.vue'),
           beforeEnter: () => {
-            const { previouslyLogged } = useAuth()
-            if (!previouslyLogged.value) {
-              return { name: 'login' }
+            const { scopes } = useAuth()
+            if (scopes.value.length != 0) {
+              return { name: 'user_account' }
             }
           }
         }
@@ -31,7 +42,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: () => import('../views/LoginView.vue'),
+      component: () => import('@/views/LoginView.vue'),
       beforeEnter: () => {
         const { previouslyLogged } = useAuth()
         if (previouslyLogged.value) {

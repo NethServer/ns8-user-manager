@@ -51,7 +51,7 @@ function handleLogout() {
     </div>
     <div class="side-bar-overlay" @click="toggleSidebar()"></div>
     <!-- Main content -->
-    <div class="flex grow flex-col">
+    <div class="flex min-w-0 grow flex-col">
       <!-- Header -->
       <div
         class="flex h-16 min-w-full items-center gap-x-2 border-b border-gray-300 bg-white pr-4 dark:border-gray-800 dark:bg-gray-950"
@@ -108,7 +108,7 @@ function handleLogout() {
 }
 
 .side-bar-overlay {
-  @apply absolute bottom-0 left-0 right-0 top-0 z-30 hidden bg-gray-800 opacity-70;
+  @apply absolute bottom-0 left-0 right-0 top-0 z-10 hidden bg-gray-800 opacity-70;
 }
 
 .side-bar.active + .side-bar-overlay {
