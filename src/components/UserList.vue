@@ -166,7 +166,7 @@ function toggleUserLock(user: User) {
       <NeTableBody>
         <NeTableRow v-for="(user, index) in data" :key="index">
           <NeTableCell>{{ user.user }}</NeTableCell>
-          <NeTableCell>{{ user.display_name }}</NeTableCell>
+          <NeTableCell>{{ user.display_name.length != 0 ? user.display_name : '-' }}</NeTableCell>
           <NeTableCell v-if="user.groups.length > 0">
             {{ user.groups.map((group) => group.label).join(', ') }}
           </NeTableCell>
