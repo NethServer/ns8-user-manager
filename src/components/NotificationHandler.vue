@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useNotificationEngine } from '@/stores/useNotificationEngine'
+import { useNotificationEngine } from '@/stores/notifications'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCheckCircle, faCircleXmark, faX } from '@fortawesome/free-solid-svg-icons'
 

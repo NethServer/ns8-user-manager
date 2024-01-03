@@ -8,7 +8,7 @@ import axios from 'axios'
 import { MessageBag } from '@/lib/validation'
 import { useI18n } from 'vue-i18n'
 import { useAuth } from '@/composables/useAuth'
-import { useNotificationEngine } from '@/stores/useNotificationEngine'
+import { useNotificationEngine } from '@/stores/notifications'
 import ContentPage from '@/components/ContentPage.vue'
 
 interface ChangePasswordResponse {

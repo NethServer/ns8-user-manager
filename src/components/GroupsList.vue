@@ -16,7 +16,7 @@ import { type Group, useGroups } from '@/composables/useGroups'
 import { ref } from 'vue'
 import CreateGroupDrawer from '@/components/CreateGroupDrawer.vue'
 import DeleteGroupModal from '@/components/DeleteGroupModal.vue'
-import { useNotificationEngine } from '@/stores/useNotificationEngine'
+import { useNotificationEngine } from '@/stores/notifications'
 import { useI18n } from 'vue-i18n'
 import EditGroupDrawer from '@/components/EditGroupDrawer.vue'
 

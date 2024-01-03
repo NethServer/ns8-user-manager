@@ -26,7 +26,7 @@ import {
 } from '@nethesis/vue-components'
 import DeleteUserModal from '@/components/DeleteUserModal.vue'
 import { useI18n } from 'vue-i18n'
-import { useNotificationEngine } from '@/stores/useNotificationEngine'
+import { useNotificationEngine } from '@/stores/notifications'
 import CreateUserDrawer from '@/components/CreateUserDrawer.vue'
 import EditUserDrawer from '@/components/EditUserDrawer.vue'
 import EditUserPasswordDrawer from '@/components/EditUserPasswordDrawer.vue'
