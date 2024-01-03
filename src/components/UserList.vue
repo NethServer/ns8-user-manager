@@ -191,8 +191,8 @@ function toggleUserLock(user: User) {
                 {
                   id: 'lock',
                   label: user.locked
-                    ? $t('user_manager.user_unlock')
-                    : $t('user_manager.user_lock'),
+                    ? $t('user_manager.user_enable')
+                    : $t('user_manager.user_disable'),
                   action: () => toggleUserLock(user)
                 },
                 {
