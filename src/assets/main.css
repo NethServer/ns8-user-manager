@@ -4,8 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  @apply overflow-x-hidden text-gray-900 dark:text-gray-50;
+@layer base {
+  html {
+    @apply overflow-x-hidden text-gray-900 dark:text-gray-50;
+  }
 }
 
 .h1 {
