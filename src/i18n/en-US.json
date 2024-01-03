@@ -9,7 +9,10 @@
     "network": "Network error",
     "bad_response": "Server error, please try again later",
     "bad_request": "Bad request, please notify the administrator",
-    "unable_to_perform_action": "Unable to perform this action at the moment, please try again later."
+    "unable_to_perform_action": "Unable to perform this action at the moment, please try again later.",
+    "unauthorized": "Unauthorized",
+    "forbidden": "Forbidden",
+    "not_found": "Not found"
   },
   "base_template": {
     "logout": "Logout"

@@ -150,7 +150,7 @@ function toggleUserLock(user: User) {
     </div>
     <NeInlineNotification
       v-if="error"
-      :description="error.message"
+      :description="$t(error.message)"
       :title="$t('errors.generic')"
       kind="error"
     />
