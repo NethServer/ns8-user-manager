@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.0](https://github.com/NethServer/ns8-user-manager/compare/v0.5.0...v0.6.0) (2024-01-03)
+
+
+### Features
+
+* added domain name in interface ([#13](https://github.com/NethServer/ns8-user-manager/issues/13)) ([7bcaaa2](https://github.com/NethServer/ns8-user-manager/commit/7bcaaa216324a82e3103d4d46721b9be9aaf6c04))
+* added user/group management ([#14](https://github.com/NethServer/ns8-user-manager/issues/14)) ([5d16a12](https://github.com/NethServer/ns8-user-manager/commit/5d16a123752bf323fcfd49872dbf0b35ed53c918))
+
+
+### Bug Fixes
+
+* disabling fields when sending login request ([c9783f0](https://github.com/NethServer/ns8-user-manager/commit/c9783f00cb4e89b10e4fe8f95eebbaeab85557ae))
+
 ## [0.5.0](https://github.com/NethServer/ns8-user-manager/compare/v0.4.0...v0.5.0) (2023-11-13)
 
 
