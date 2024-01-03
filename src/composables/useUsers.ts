@@ -35,8 +35,12 @@ export function useUsers() {
 
   const comboboxChoices = computed((): Array<NeComboboxOption> => {
     return data.value.map((user): NeComboboxOption => {
+      let label = user.user
+      if (user.display_name != '') {
+        label += ' (' + user.display_name + ')'
+      }
       return {
-        label: user.user + ' (' + user.display_name + ')',
+        label: label,
         id: user.user
       }
     })
