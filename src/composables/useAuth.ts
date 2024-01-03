@@ -6,12 +6,14 @@ interface LoginResponse {
   expire: string
   claims: {
     uid: string
+    scope?: Array<string>
   }
 }
 
 const TOKEN_KEY = 'token'
 const EXPIRE_KEY = 'expire'
 const UID_KEY = 'uid'
+const SCOPES_KEY = 'scopes'
 
 export function useAuth() {
   /**
@@ -30,10 +32,15 @@ export function useAuth() {
   const uid = computed((): string | null => localStorage.getItem(UID_KEY))
 
   /**
-   * Whether the user has previously logged in or not
+   * Fetch scopes from the localstorage
+   */
+  const scopes = computed((): Array<string> => JSON.parse(localStorage.getItem(SCOPES_KEY) ?? '[]'))
+
+  /**
+   * Whether the user has previously logged in or not or the token expired
    */
   const previouslyLogged = computed((): boolean => {
-    return token.value != null && expire.value != null
+    return token.value != null && expire.value != null && Date.parse(expire.value) - Date.now() > 0
   })
 
   /**
@@ -49,6 +56,8 @@ export function useAuth() {
     localStorage.setItem(TOKEN_KEY, response.data.token)
     localStorage.setItem(EXPIRE_KEY, response.data.expire)
     localStorage.setItem(UID_KEY, response.data.claims.uid)
+    // if scope is everything, it will miss in the response
+    localStorage.setItem(SCOPES_KEY, JSON.stringify(response.data.claims.scope ?? []))
   }
 
   /**
@@ -58,7 +67,8 @@ export function useAuth() {
     localStorage.removeItem(TOKEN_KEY)
     localStorage.removeItem(EXPIRE_KEY)
     localStorage.removeItem(UID_KEY)
+    localStorage.removeItem(SCOPES_KEY)
   }
 
-  return { token, expire, uid, previouslyLogged, login, logout }
+  return { token, expire, uid, scopes, previouslyLogged, login, logout }
 }
