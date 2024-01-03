@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import SideDrawer from '@/components/SideDrawer.vue'
-import { computed, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import {
   NeButton,
   NeCombobox,
@@ -11,7 +11,7 @@ import {
 import { useUsers } from '@/composables/useUsers'
 import axios from 'axios'
 
-const { data: remoteUsers, loading: userLoading } = useUsers()
+const { comboboxChoices: userComboboxChoices, loading: userLoading } = useUsers()
 
 const props = defineProps<{
   show: boolean
@@ -25,13 +25,6 @@ const users = ref<Array<NeComboboxOption>>([])
 
 const loading = ref(false)
 const error = ref<Error>()
-
-const userOptions = computed((): Array<NeComboboxOption> => {
-  return (remoteUsers.value ?? []).map((user) => ({
-    label: user.display_name,
-    id: user.user
-  }))
-})
 
 watch(
   () => props.show,
@@ -83,7 +76,7 @@ async function submit() {
           v-model="users"
           :disabled="loading"
           :label="$t('user_manager.users')"
-          :options="userOptions"
+          :options="userComboboxChoices"
           :placeholder="$t('user_manager.choose_users')"
           multiple
           name="users"

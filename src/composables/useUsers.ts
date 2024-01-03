@@ -1,5 +1,6 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import axios from 'axios'
+import type { NeComboboxOption } from '@nethserver/vue-tailwind-lib'
 
 export interface User {
   display_name: string
@@ -32,5 +33,14 @@ export function useUsers() {
 
   fetch()
 
-  return { data, error, loading, fetch }
+  const comboboxChoices = computed((): Array<NeComboboxOption> => {
+    return data.value.map((user): NeComboboxOption => {
+      return {
+        label: user.user + ' (' + user.display_name + ')',
+        id: user.user
+      }
+    })
+  })
+
+  return { data, error, loading, fetch, comboboxChoices }
 }

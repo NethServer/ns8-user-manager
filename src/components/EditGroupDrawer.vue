@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import SideDrawer from '@/components/SideDrawer.vue'
 import type { Group } from '@/composables/useGroups'
-import { computed, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import {
   NeButton,
   NeCombobox,
@@ -13,7 +13,11 @@ import { NeSkeleton } from '@nethesis/vue-components'
 import { useUsers } from '@/composables/useUsers'
 import axios from 'axios'
 
-const { data: remoteUsers, loading: loadingUsers, error: errorUsers } = useUsers()
+const {
+  comboboxChoices: userComboboxChoices,
+  loading: loadingUsers,
+  error: errorUsers
+} = useUsers()
 
 const emit = defineEmits(['cancel', 'success'])
 
@@ -44,15 +48,6 @@ watch(
   },
   { immediate: true }
 )
-
-const comboboxChoices = computed(() => {
-  return remoteUsers.value?.map((user): NeComboboxOption => {
-    return {
-      label: user.display_name,
-      id: user.user
-    }
-  })
-})
 
 function edit() {
   error.value = undefined
@@ -109,7 +104,7 @@ function handleCancel() {
           v-model="users"
           :disabled="loading"
           :label="$t('user_manager.users')"
-          :options="comboboxChoices"
+          :options="userComboboxChoices"
           :placeholder="$t('user_manager.choose_users')"
           multiple
         />
