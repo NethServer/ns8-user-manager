@@ -23,7 +23,7 @@ defineEmits(['cancel'])
     <Transition name="slide">
       <div
         v-if="show"
-        class="absolute right-0 top-0 flex h-full w-screen flex-col gap-y-6 bg-gray-900 p-6 sm:w-[30rem]"
+        class="absolute right-0 top-0 flex h-full w-screen flex-col gap-y-6 bg-gray-100 p-6 dark:bg-gray-900 sm:w-[30rem]"
       >
         <div class="flex gap-x-2 break-all align-baseline">
           <p class="text-xl font-medium">{{ title }}</p>
