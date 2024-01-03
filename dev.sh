@@ -61,7 +61,7 @@ else
   fi
   # check if port 5173 is already in use, if not, add publish flag
   if lsof -Pi :5173 -sTCP:LISTEN -t >/dev/null; then
-      echo "Something is listening on port 5173, you wont be able to reach dev build."
+      echo "Something is listening on port 5173, you won't be able to reach dev build."
   else
       set -- "$@" --publish 5173:5173
   fi

@@ -126,10 +126,12 @@ function toggleUserLock(user: User) {
       fetchUsers()
       notifications.add(
         'success',
-        user.locked ? 'user_manager.user_unlocked' : 'user_manager.user_locked',
         user.locked
-          ? 'user_manager.user_unlocked_description'
-          : 'user_manager.user_locked_description'
+          ? 'user_manager.user_enabled_notification_title'
+          : 'user_manager.user_disabled_notification_title',
+        user.locked
+          ? 'user_manager.user_enabled_notification_description'
+          : 'user_manager.user_disabled_notification_description'
       )
     })
     .catch(() => {
