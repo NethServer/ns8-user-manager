@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.7.0](https://github.com/NethServer/ns8-user-manager/compare/v0.6.0...v0.7.0) (2024-01-12)
+
+
+### Features
+
+* added services listing to config store ([a4e0761](https://github.com/NethServer/ns8-user-manager/commit/a4e076176cf11519e0118171dcda8b8b43e4a0bf))
+
+
+### Bug Fixes
+
+* **deps:** updated axios to 1.6.5 ([ab10cce](https://github.com/NethServer/ns8-user-manager/commit/ab10cced0f9829a191729e2885bea4e3b7c6ca0d))
+
 ## [0.6.0](https://github.com/NethServer/ns8-user-manager/compare/v0.5.0...v0.6.0) (2024-01-03)
 
 
