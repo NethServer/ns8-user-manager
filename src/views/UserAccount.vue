@@ -10,6 +10,7 @@ import { useI18n } from 'vue-i18n'
 import { useAuth } from '@/composables/useAuth'
 import { useNotificationEngine } from '@/stores/notifications'
 import ContentPage from '@/components/ContentPage.vue'
+import { useConfig } from '@/stores/config'
 
 interface ChangePasswordResponse {
   status: 'success' | 'failure'
@@ -20,8 +21,6 @@ const oldPassword = ref('')
 const newPassword = ref('')
 const confirmPassword = ref('')
 
-// TODO: replace with product list from server
-const products = ref(['nethvoice', 'nethservice'])
 // TODO: replace with password policy from server
 const minimumPasswordLength = ref(8)
 const minimumUppercaseCharacters = ref(1)
@@ -34,6 +33,7 @@ const errorMessage = ref<string>()
 const validationMessages = ref(new MessageBag())
 
 const notificationEngine = useNotificationEngine()
+const config = useConfig()
 
 const { t } = useI18n()
 
@@ -152,7 +152,7 @@ async function changePassword() {
         </p>
         <p class="description-text">{{ $t('account_settings.change_password_description') }}</p>
         <ul class="description-text list-disc pl-6">
-          <li v-for="(product, key) in products" :key="key">
+          <li v-for="(product, key) in config.services" :key="key">
             {{ $t(product) }}
           </li>
         </ul>
