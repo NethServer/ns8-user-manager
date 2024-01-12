@@ -5,11 +5,11 @@ import { ref } from 'vue'
 import { useAuth } from '@/composables/useAuth'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
-import { useConfig } from '@/composables/useConfig'
+import { useConfig } from '@/stores/config'
 
 const { login } = useAuth()
 const router = useRouter()
-const { domainName } = useConfig()
+const config = useConfig()
 
 const username = ref('')
 const password = ref('')
@@ -60,8 +60,8 @@ async function handleLogin() {
         </div>
         <NeInlineNotification v-if="errorMessage" :title="$t(errorMessage)" kind="error" />
         <NeTextInput
-          v-if="domainName"
-          v-model="domainName"
+          v-if="config.domainName"
+          v-model="config.domainName"
           disabled
           :label="$t('login_form.domain')"
         />
