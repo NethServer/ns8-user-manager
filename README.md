@@ -9,6 +9,26 @@ inside a container, to keep at minimum dependency discrepancies between develope
 
 The script `dev.sh` is provided to ease the development.
 
+### Setup
+
+#### Server side
+
+Before starting, you'll need to edit the `api-moduled.service` in your nethserver installation and change
+from `Environment=GIN_MODE=release` to `Environment=GIN_MODE=debug`. This will take care of every CORS policy issues.
+
+The file can be found under `/etc/systemd/user/api-moduled.service`. If you edited the file after installing any domain
+related module, remember to access the module you want to develop on and run `systemctl --user daemon-reload` and
+then `systemctl --user restart api-moduled`.
+
+#### Client side
+
+Client side, copy the [`.env.development.example`](.env.development.example) and rename it `.env.development`.
+
+In there you'll find the `VITE_ENDPOINT` variable, it needs to be filled with the domain URL
+(I.E. `https://<ip/fqdn of NS8>/users-admin/<domain inserted during domain setup>`).
+
+You can then leave the file there or edit it if needed, it won't be included in the final build. 
+
 ### Booting up the UI
 
 To boot the UI, simply run
@@ -41,6 +61,30 @@ The command `build` is a special one, rebuilds the development container even if
 
 To build the UI, simply run `./build.sh`, this will build the UI in isolated environment, the result will be put in
 the `dist` folder.
+
+## Runtime Configuration
+
+You can configure the following sections of the application by placing a `config.json` file in the same directory as
+the `index.html` once the build is completed:
+
+- `domain`: Domain to be shown in the login page and on the top right of the interface;
+- `services`: An array of strings that lists the services that this domain is attached to. They will be displayed (after
+  they're passed through the translator) as bullet point list in the `Account Page` under `Change Password`.
+
+Example:
+
+```json
+{
+  "domain": "samba.com",
+  "services": [
+    "nethvoice",
+    "nethservice"
+  ]
+}
+```
+
+Note: if you're using the development environment and you've set the .env.development file, the file must be put inside
+the `public` folder of the module that you're using. (I.E. `/home/samba1/.config/api-moduled/public/config.json`)
 
 ## License
 
