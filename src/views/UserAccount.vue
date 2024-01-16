@@ -153,7 +153,7 @@ async function changePassword() {
         <p class="description-text">{{ $t('account_settings.change_password_description') }}</p>
         <ul class="description-text list-disc pl-6">
           <li v-for="(product, key) in config.services" :key="key">
-            {{ $t(product) }}
+            {{ product }}
           </li>
         </ul>
       </div>
