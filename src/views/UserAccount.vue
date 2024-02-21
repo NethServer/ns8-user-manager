@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { NeButton, NeTextInput } from '@nethserver/vue-tailwind-lib'
-import { NeInlineNotification } from '@nethesis/vue-components'
+import { NeInlineNotification, NeSkeleton } from '@nethesis/vue-components'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faSave } from '@fortawesome/free-solid-svg-icons'
 import { ref } from 'vue'
@@ -11,6 +11,8 @@ import { useAuth } from '@/composables/useAuth'
 import { useNotificationEngine } from '@/stores/notifications'
 import ContentPage from '@/components/ContentPage.vue'
 import { useConfig } from '@/stores/config'
+import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
+import PasswordRequirementList from '@/components/PasswordRequirementList.vue'
 
 interface ChangePasswordResponse {
   status: 'success' | 'failure'
@@ -20,13 +22,6 @@ interface ChangePasswordResponse {
 const oldPassword = ref('')
 const newPassword = ref('')
 const confirmPassword = ref('')
-
-// TODO: replace with password policy from server
-const minimumPasswordLength = ref(8)
-const minimumUppercaseCharacters = ref(1)
-const minimumLowercaseCharacters = ref(1)
-const minimumNumberCharacters = ref(1)
-const minimumSpecialCharacters = ref(1)
 
 const loading = ref(false)
 const errorMessage = ref<string>()
@@ -38,42 +33,26 @@ const config = useConfig()
 const { t } = useI18n()
 
 const { uid } = useAuth()
+const {
+  validatePassword,
+  passwordPolicyLoading,
+  passwordPolicyError,
+  minimumLength,
+  minimumLowercaseCharacters,
+  minimumNumberCharacters,
+  minimumSpecialCharacters,
+  minimumUppercaseCharacters,
+  complexityCheck,
+  strengthEnforced
+} = usePasswordPolicy()
 
 function validate(): boolean {
   validationMessages.value.clear()
-  if (newPassword.value != confirmPassword.value) {
-    validationMessages.value.append('confirm_password', t('account_settings.passwords_mismatch'))
-  }
-  if (newPassword.value.length < minimumPasswordLength.value) {
-    validationMessages.value.append(
-      'password',
-      t('account_settings.password_length', minimumPasswordLength.value)
-    )
-  }
-  if (!newPassword.value.match(`(?=(?:.*[A-Z]){${minimumUppercaseCharacters.value},})`)) {
-    validationMessages.value.append(
-      'new_password',
-      t('account_settings.password_uppercase', minimumUppercaseCharacters.value)
-    )
-  }
-  if (!newPassword.value.match(`(?=(?:.*[a-z]){${minimumLowercaseCharacters.value},})`)) {
-    validationMessages.value.append(
-      'new_password',
-      t('account_settings.password_lowercase', minimumLowercaseCharacters.value)
-    )
-  }
-  if (!newPassword.value.match(`(?=(?:.*[0-9]){${minimumNumberCharacters.value},})`)) {
-    validationMessages.value.append(
-      'new_password',
-      t('account_settings.password_number', minimumNumberCharacters.value)
-    )
-  }
-  if (!newPassword.value.match(`(?=(?:.*[^A-Za-z0-9]){${minimumSpecialCharacters.value},})`)) {
-    validationMessages.value.append(
-      'new_password',
-      t('account_settings.password_special', minimumSpecialCharacters.value)
-    )
-  }
+  validatePassword(newPassword.value, confirmPassword.value, 'new_password').forEach(
+    (item, key) => {
+      validationMessages.value.set(key, item)
+    }
+  )
   return validationMessages.value.size < 1
 }
 
@@ -112,7 +91,7 @@ async function changePassword() {
           case 'error_password_length':
             validationMessages.value.append(
               'new_password',
-              t('account_settings.password_length', minimumPasswordLength.value)
+              t('account_settings.password_length', minimumLength.value)
             )
             break
           case 'error_password_history':
@@ -157,7 +136,13 @@ async function changePassword() {
           </li>
         </ul>
       </div>
-      <form class="flex flex-col gap-y-8" @submit.prevent="changePassword()">
+      <NeSkeleton v-if="passwordPolicyLoading" :lines="15" />
+      <NeInlineNotification
+        v-else-if="passwordPolicyError"
+        :title="t('account_settings.password_policy_error')"
+        kind="error"
+      />
+      <form v-else class="flex flex-col gap-y-8" @submit.prevent="changePassword()">
         <NeInlineNotification v-if="errorMessage" :title="errorMessage" kind="error" />
         <!-- This helps autocompletion -->
         <NeTextInput :value="uid" autocomplete="username" class="hidden" />
@@ -183,14 +168,16 @@ async function changePassword() {
             name="new_password"
             required
           />
-          <ul class="description-text ml-6 list-disc">
-            <li>{{ $t('account_settings.minimum_characters', minimumPasswordLength) }}</li>
-            <li>{{ $t('account_settings.minimum_uppercase', minimumUppercaseCharacters) }}</li>
-            <li>{{ $t('account_settings.minimum_lowercase', minimumLowercaseCharacters) }}</li>
-            <li>{{ $t('account_settings.minimum_number', minimumNumberCharacters) }}</li>
-            <li>{{ $t('account_settings.minimum_special', minimumSpecialCharacters) }}</li>
-          </ul>
         </div>
+        <PasswordRequirementList
+          :strength-enforced="strengthEnforced"
+          :complexity-check="complexityCheck"
+          :minimum-password-length="minimumLength"
+          :minimum-uppercase-characters="minimumUppercaseCharacters"
+          :minimum-lowercase-characters="minimumLowercaseCharacters"
+          :minimum-number-characters="minimumNumberCharacters"
+          :minimum-special-characters="minimumSpecialCharacters"
+        />
         <NeTextInput
           v-model="confirmPassword"
           :disabled="loading"

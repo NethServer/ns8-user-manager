@@ -51,7 +51,8 @@
     "minimum_uppercase": "At least {count} uppercase (A-Z)",
     "minimum_lowercase": "At least {count} lowercase (a-z)",
     "minimum_number": "At least {count} number (0-9) | At least {count} numbers (0-9)",
-    "minimum_special": "At least {count} special character (!{'@'}#^&_?-) | At least {count} special characters (!{'@'}#^&_?-)"
+    "minimum_special": "At least {count} special character (!{'@'}#^&_?-) | At least {count} special characters (!{'@'}#^&_?-)",
+    "password_policy_error": "Can't fetch the password policies at the moment, please try again later."
   },
   "user_manager": {
     "title": "Users & groups",

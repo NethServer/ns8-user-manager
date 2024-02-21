@@ -7,15 +7,24 @@ import { MessageBag } from '@/lib/validation'
 import { useI18n } from 'vue-i18n'
 import axios from 'axios'
 import type { BaseResponse } from '@/lib/axiosHelpers'
-import { NeInlineNotification } from '@nethesis/vue-components'
-
-const minimumPasswordLength = 8
-const minimumUppercaseCharacters = 1
-const minimumLowercaseCharacters = 1
-const minimumNumberCharacters = 1
-const minimumSpecialCharacters = 1
+import { NeInlineNotification, NeSkeleton } from '@nethesis/vue-components'
+import PasswordRequirementList from '@/components/PasswordRequirementList.vue'
+import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
 
 const { t } = useI18n()
+
+const {
+  validatePassword,
+  passwordPolicyLoading,
+  passwordPolicyError,
+  minimumLength,
+  minimumLowercaseCharacters,
+  minimumNumberCharacters,
+  minimumSpecialCharacters,
+  minimumUppercaseCharacters,
+  complexityCheck,
+  strengthEnforced
+} = usePasswordPolicy()
 
 const props = defineProps<{
   user?: User
@@ -50,41 +59,10 @@ function handleCancel() {
 }
 
 function validate(): boolean {
-  // TODO: merge password logic between components
   validationErrors.value.clear()
-  if (password.value != confirmPassword.value) {
-    validationErrors.value.append('confirm_password', t('account_settings.passwords_mismatch'))
-  }
-  if (password.value.length < minimumPasswordLength) {
-    validationErrors.value.append(
-      'password',
-      t('account_settings.password_length', minimumPasswordLength)
-    )
-  }
-  if (!password.value.match(`(?=(?:.*[A-Z]){${minimumUppercaseCharacters},})`)) {
-    validationErrors.value.append(
-      'password',
-      t('account_settings.password_uppercase', minimumUppercaseCharacters)
-    )
-  }
-  if (!password.value.match(`(?=(?:.*[a-z]){${minimumLowercaseCharacters},})`)) {
-    validationErrors.value.append(
-      'password',
-      t('account_settings.password_lowercase', minimumLowercaseCharacters)
-    )
-  }
-  if (!password.value.match(`(?=(?:.*[0-9]){${minimumNumberCharacters},})`)) {
-    validationErrors.value.append(
-      'password',
-      t('account_settings.password_number', minimumNumberCharacters)
-    )
-  }
-  if (!password.value.match(`(?=(?:.*[^A-Za-z0-9]){${minimumSpecialCharacters},})`)) {
-    validationErrors.value.append(
-      'password',
-      t('account_settings.password_special', minimumSpecialCharacters)
-    )
-  }
+  validatePassword(password.value, confirmPassword.value, 'password').forEach((item, key) => {
+    validationErrors.value.set(key, item)
+  })
   return validationErrors.value.size < 1
 }
 
@@ -146,31 +124,41 @@ function submit() {
           :label="$t('user_manager.user_username')"
           disabled
         />
-        <NeTextInput
-          v-model="password"
-          :disabled="loading"
-          :invalid-message="validationErrors.getFirstMessage('password')"
-          :label="$t('user_manager.user_password')"
-          autocomplete="new-password"
-          is-password
-          required
+        <NeSkeleton v-if="passwordPolicyLoading" :lines="2" />
+        <NeInlineNotification
+          v-else-if="passwordPolicyError"
+          :title="t('account_settings.password_policy_error')"
+          kind="error"
         />
-        <ul class="description-text ml-6 list-disc">
-          <li>{{ t('account_settings.minimum_characters', minimumPasswordLength) }}</li>
-          <li>{{ t('account_settings.minimum_uppercase', minimumUppercaseCharacters) }}</li>
-          <li>{{ t('account_settings.minimum_lowercase', minimumLowercaseCharacters) }}</li>
-          <li>{{ t('account_settings.minimum_number', minimumNumberCharacters) }}</li>
-          <li>{{ t('account_settings.minimum_special', minimumSpecialCharacters) }}</li>
-        </ul>
-        <NeTextInput
-          v-model="confirmPassword"
-          :disabled="loading"
-          :invalid-message="validationErrors.getFirstMessage('confirm_password')"
-          :label="t('user_manager.user_confirm_password')"
-          autocomplete="new-password"
-          is-password
-          required
-        />
+        <template v-else>
+          <NeTextInput
+            v-model="password"
+            :disabled="loading"
+            :invalid-message="validationErrors.getFirstMessage('password')"
+            :label="$t('user_manager.user_password')"
+            autocomplete="new-password"
+            is-password
+            required
+          />
+          <PasswordRequirementList
+            :strength-enforced="strengthEnforced"
+            :complexity-check="complexityCheck"
+            :minimum-password-length="minimumLength"
+            :minimum-uppercase-characters="minimumUppercaseCharacters"
+            :minimum-lowercase-characters="minimumLowercaseCharacters"
+            :minimum-number-characters="minimumNumberCharacters"
+            :minimum-special-characters="minimumSpecialCharacters"
+          />
+          <NeTextInput
+            v-model="confirmPassword"
+            :disabled="loading"
+            :invalid-message="validationErrors.getFirstMessage('confirm_password')"
+            :label="t('user_manager.user_confirm_password')"
+            autocomplete="new-password"
+            is-password
+            required
+          />
+        </template>
       </form>
     </template>
     <template #footer>
