@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://github.com/NethServer/ns8-user-manager/compare/v0.7.0...v0.8.0) (2024-02-21)
+
+
+### Features
+
+* added remote password policy for password forms ([ecbd751](https://github.com/NethServer/ns8-user-manager/commit/ecbd751bf2774e156296790ebeb20b3001958458))
+
+
+### Performance Improvements
+
+* removed product localization ([e87cc3f](https://github.com/NethServer/ns8-user-manager/commit/e87cc3f96889f3f5a93f7c8e3511e615c52c4055))
+
 ## [0.7.0](https://github.com/NethServer/ns8-user-manager/compare/v0.6.0...v0.7.0) (2024-01-12)
 
 
