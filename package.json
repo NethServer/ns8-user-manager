@@ -1,6 +1,6 @@
 {
   "name": "ns8-user-manager",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "scripts": {
     "dev": "vite --host",
