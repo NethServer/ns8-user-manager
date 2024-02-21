@@ -100,7 +100,7 @@ function handleLogout() {
 
 <style scoped>
 .side-bar {
-  @apply hidden w-full shrink-0 flex-col gap-y-8 border-r border-gray-300 bg-white px-2 py-8 dark:border-gray-800 dark:bg-gray-950 sm:w-80 sidebar:flex;
+  @apply hidden w-full shrink-0 flex-col gap-y-8 border-r border-gray-300 bg-white px-2 py-8 sm:w-80 sidebar:flex dark:border-gray-800 dark:bg-gray-950;
 }
 
 .side-bar.active {
