@@ -17,12 +17,12 @@ notificationEngine.$onAction(({ name, after }) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-end space-y-4 overflow-hidden p-4">
+  <div class="flex flex-col items-end space-y-4 overflow-hidden">
     <TransitionGroup>
       <div
         v-for="[id, notification] in notificationEngine.notifications"
         :key="id"
-        class="flex items-start gap-x-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800"
+        class="mt-4 flex items-start gap-x-4 rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800"
       >
         <div
           v-if="notification.type == 'success'"

@@ -89,8 +89,10 @@ function handleLogout() {
       </div>
       <main class="relative grow bg-gray-50 p-6 dark:bg-gray-900">
         <!-- Notification handler -->
-        <div class="absolute right-0 top-0 z-20 max-w-lg">
-          <NotificationHandler />
+        <div class="sticky top-0 z-20">
+          <div class="absolute right-0 top-0 max-w-lg">
+            <NotificationHandler />
+          </div>
         </div>
         <RouterView />
       </main>
