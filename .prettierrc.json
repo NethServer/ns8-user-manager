@@ -5,5 +5,13 @@
   "singleQuote": true,
   "printWidth": 100,
   "trailingComma": "none",
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "overrides": [
+    {
+      "files": "src/i18n/*.json",
+      "options": {
+        "tabWidth": 4
+      }
+    }
+  ]
 }
