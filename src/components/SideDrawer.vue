@@ -16,14 +16,14 @@ defineEmits(['cancel'])
     <Transition name="fade">
       <div
         v-if="show"
-        class="absolute bottom-0 left-0 right-0 top-0 bg-gray-600 bg-opacity-40"
+        class="fixed bottom-0 left-0 right-0 top-0 bg-gray-600 bg-opacity-40"
         @click="$emit('cancel')"
       ></div>
     </Transition>
     <Transition name="slide">
       <div
         v-if="show"
-        class="absolute right-0 top-0 flex h-full w-screen flex-col gap-y-6 bg-gray-100 p-6 sm:w-[30rem] dark:bg-gray-900"
+        class="fixed right-0 top-0 flex h-full w-screen flex-col gap-y-6 overflow-y-auto bg-gray-100 p-6 sm:w-[30rem] dark:bg-gray-900"
       >
         <div class="flex gap-x-2 break-all align-baseline">
           <p class="text-xl font-medium">{{ title }}</p>
