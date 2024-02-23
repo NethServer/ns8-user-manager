@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.1](https://github.com/NethServer/ns8-user-manager/compare/v0.8.0...v0.8.1) (2024-02-23)
+
+
+### Bug Fixes
+
+* fixed sidebar disappearence when scrolling ([99d0c59](https://github.com/NethServer/ns8-user-manager/commit/99d0c590e3b7fd2f2f374f0f2a014ff5623da534))
+* putting notification sticky in viewport ([#20](https://github.com/NethServer/ns8-user-manager/issues/20)) ([5faf41d](https://github.com/NethServer/ns8-user-manager/commit/5faf41de96a3f6ac87834858ea2ac5b976f2963d))
+
 ## [0.8.0](https://github.com/NethServer/ns8-user-manager/compare/v0.7.0...v0.8.0) (2024-02-21)
 
 
