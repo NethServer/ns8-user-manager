@@ -1,1 +1,59 @@
-{}
+{
+    "user_manager": {
+        "user_already_exists": "L'utente esiste già",
+        "groups": "Gruppi",
+        "user_enable": "Abilita",
+        "tabs": {
+            "users": "Utenti",
+            "groups": "Gruppi"
+        },
+        "add_user": "Aggiungi utente",
+        "search_user": "Cerca utente",
+        "add_group": "Aggiungi gruppo",
+        "search_group": "Cerca gruppo",
+        "cancel": "Annulla",
+        "group_description": "Descrizione",
+        "users": "Utenti",
+        "group_edit": "Modifica gruppo",
+        "group_delete": "Elimina gruppo",
+        "group_delete_modal_title": "Elimina gruppo",
+        "edit_group": "Modifica gruppo",
+        "user_delete": "Elimina utente",
+        "user_name": "Nome",
+        "user_display_name": "Nome visualizzato",
+        "user_group": "Gruppi",
+        "user_status": "Stato",
+        "user_change_password": "Cambia password",
+        "user_disable": "Disabilita",
+        "user_delete_modal_title": "Elimina utente",
+        "user_enabled": "Abilitato",
+        "user_disabled": "Disabilitato",
+        "user_username": "Nome utente",
+        "user_password": "Password",
+        "user_confirm_password": "Conferma password"
+    },
+    "edit": "Modifica",
+    "save": "Salva",
+    "errors": {
+        "generic": "Errore",
+        "network": "Errore di rete"
+    },
+    "base_template": {
+        "logout": "Disconnetti"
+    },
+    "login_form": {
+        "welcome": "Benvenuti",
+        "username": "Nome utente",
+        "password": "Password",
+        "remember_me": "Ricordami",
+        "sign_in": "Accedi",
+        "invalid_credentials": "Credenziali non valide",
+        "domain": "Dominio"
+    },
+    "account_settings": {
+        "title": "Impostazioni account",
+        "change_password": "Cambia password",
+        "new_password": "Nuova password",
+        "invalid_credentials": "Password errata"
+    }
+}
