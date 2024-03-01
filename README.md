@@ -2,6 +2,10 @@
 
 FrontEnd manager for AD/LDAP installed in NS8.
 
+<a href="https://hosted.weblate.org/engage/ns8/">
+  <img src="https://hosted.weblate.org/widget/ns8/user-manager/svg-badge.svg" alt="Translation status" />
+</a>
+
 ## Development
 
 To develop and build the UI, you'll just need [podman](https://podman.io/) to be installed. Everything will be run
