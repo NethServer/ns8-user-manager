@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.8.2](https://github.com/NethServer/ns8-user-manager/compare/v0.8.1...v0.8.2) (2024-03-04)
+
+
+### Bug Fixes
+
+* fixed padding on side drawer ([336aeaa](https://github.com/NethServer/ns8-user-manager/commit/336aeaa1c93832df6307563cd597d98717d1e6bb))
+* translating products lists ([#24](https://github.com/NethServer/ns8-user-manager/issues/24)) ([c70d0a3](https://github.com/NethServer/ns8-user-manager/commit/c70d0a30d1574d6251d892a6296393d231d32438))
+* **transl:** translated using Weblate (italian) ([#23](https://github.com/NethServer/ns8-user-manager/issues/23)) ([93873a5](https://github.com/NethServer/ns8-user-manager/commit/93873a5cbba0db79c2ce477d74fd00d12c566a6b))
+
 ## [0.8.1](https://github.com/NethServer/ns8-user-manager/compare/v0.8.0...v0.8.1) (2024-02-23)
 
 
