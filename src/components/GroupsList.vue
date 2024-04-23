@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { faEdit, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { NeButton, NeDropdown } from '@nethserver/vue-tailwind-lib'
 import {
   NeSkeleton,
   NeInlineNotification,
@@ -10,7 +9,9 @@ import {
   NeTableHeadCell,
   NeTableRow,
   NeTableBody,
-  NeTableCell
+  NeTableCell,
+  NeButton,
+  NeDropdown
 } from '@nethesis/vue-components'
 import { type Group, useGroups } from '@/composables/useGroups'
 import { ref } from 'vue'

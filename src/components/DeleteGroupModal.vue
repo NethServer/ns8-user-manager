@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NeInlineNotification, NeModal } from '@nethserver/vue-tailwind-lib'
+import { NeInlineNotification, NeModal } from '@nethesis/vue-components'
 import type { Group } from '@/composables/useGroups'
 import axios from 'axios'
 import { ref } from 'vue'

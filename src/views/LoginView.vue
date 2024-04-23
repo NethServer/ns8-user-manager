@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { NeButton, NeCheckbox, NeTextInput } from '@nethserver/vue-tailwind-lib'
-import { NeInlineNotification } from '@nethesis/vue-components'
+import { NeInlineNotification, NeButton, NeCheckbox, NeTextInput } from '@nethesis/vue-components'
 import { ref } from 'vue'
 import { useAuth } from '@/composables/useAuth'
 import axios from 'axios'

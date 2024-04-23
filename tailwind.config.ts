@@ -7,7 +7,6 @@ export default {
   content: [
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
-    './node_modules/@nethserver/vue-tailwind-lib/dist/vue-tailwind-lib.es.js',
     './node_modules/@nethesis/vue-components/dist/**/*.js'
   ],
   theme: {

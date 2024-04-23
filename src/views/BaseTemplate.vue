@@ -8,7 +8,7 @@ import SidebarMenu from '@/components/SidebarMenu.vue'
 import { useRouter } from 'vue-router'
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { ref } from 'vue'
-import { NeButton } from '@nethserver/vue-tailwind-lib'
+import { NeButton } from '@nethesis/vue-components'
 import NotificationHandler from '@/components/NotificationHandler.vue'
 import { useConfig } from '@/stores/config'
 
