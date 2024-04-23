@@ -57,6 +57,7 @@ function deleteUser() {
     primary-button-kind="danger"
     :primary-button-loading="loading"
     :primary-button-disabled="loading"
+    :close-aria-label="$t('close')"
     @primary-click="deleteUser"
     @close="handleClose"
   >

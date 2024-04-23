@@ -47,6 +47,7 @@ function deleteGroup() {
     primary-button-kind="danger"
     :primary-button-loading="loading"
     :primary-button-disabled="loading"
+    :close-aria-label="$t('close')"
     @primary-click="deleteGroup"
     @close="handleClose"
   >
