@@ -3,6 +3,7 @@
     "Network shared folders": "Network shared folders",
     "edit": "Edit",
     "save": "Save",
+    "close": "Close",
     "errors": {
         "generic": "Error",
         "connection_aborted": "Couldn't connect to the server",

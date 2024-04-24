@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import SideDrawer from '@/components/SideDrawer.vue'
 import {
+  NeInlineNotification,
+  NeSkeleton,
   NeButton,
   NeCombobox,
   type NeComboboxOption,
   NeFormItemLabel,
   NeTextInput,
   NeToggle
-} from '@nethserver/vue-tailwind-lib'
-import { NeInlineNotification, NeSkeleton } from '@nethesis/vue-components'
+} from '@nethesis/vue-components'
 import { computed, ref, watch } from 'vue'
 import axios from 'axios'
 import type { BaseResponse } from '@/lib/axiosHelpers'

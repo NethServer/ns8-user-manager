@@ -3,13 +3,13 @@ import SideDrawer from '@/components/SideDrawer.vue'
 import type { Group } from '@/composables/useGroups'
 import { ref, watch } from 'vue'
 import {
+  NeSkeleton,
   NeButton,
   NeCombobox,
   type NeComboboxOption,
   NeInlineNotification,
   NeTextInput
-} from '@nethserver/vue-tailwind-lib'
-import { NeSkeleton } from '@nethesis/vue-components'
+} from '@nethesis/vue-components'
 import { useUsers } from '@/composables/useUsers'
 import axios from 'axios'
 

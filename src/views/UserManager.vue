@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { NeTabs } from '@nethserver/vue-tailwind-lib'
+import { NeTabs } from '@nethesis/vue-components'
 import { ref } from 'vue'
 import ContentPage from '@/components/ContentPage.vue'
 import GroupsList from '@/components/GroupsList.vue'

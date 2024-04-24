@@ -5,13 +5,6 @@ import {
   faEdit,
   faPlusCircle
 } from '@fortawesome/free-solid-svg-icons'
-import {
-  NeButton,
-  type NeComboboxOption,
-  NeDropdown,
-  NeInlineNotification,
-  NeSkeleton
-} from '@nethserver/vue-tailwind-lib'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { type User, useUsers } from '@/composables/useUsers'
 import { useGroups } from '@/composables/useGroups'
@@ -22,7 +15,12 @@ import {
   NeTableCell,
   NeTableHead,
   NeTableHeadCell,
-  NeTableRow
+  NeTableRow,
+  NeButton,
+  type NeComboboxOption,
+  NeDropdown,
+  NeInlineNotification,
+  NeSkeleton
 } from '@nethesis/vue-components'
 import DeleteUserModal from '@/components/DeleteUserModal.vue'
 import { useI18n } from 'vue-i18n'

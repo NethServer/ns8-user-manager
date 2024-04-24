@@ -2,12 +2,11 @@
 import type { User } from '@/composables/useUsers'
 import { ref, watch } from 'vue'
 import SideDrawer from '@/components/SideDrawer.vue'
-import { NeButton, NeTextInput } from '@nethserver/vue-tailwind-lib'
 import { MessageBag } from '@/lib/validation'
 import { useI18n } from 'vue-i18n'
 import axios from 'axios'
 import type { BaseResponse } from '@/lib/axiosHelpers'
-import { NeInlineNotification, NeSkeleton } from '@nethesis/vue-components'
+import { NeInlineNotification, NeSkeleton, NeButton, NeTextInput } from '@nethesis/vue-components'
 import PasswordRequirementList from '@/components/PasswordRequirementList.vue'
 import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
 

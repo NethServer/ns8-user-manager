@@ -7,7 +7,7 @@ import {
   type NeComboboxOption,
   NeSkeleton,
   NeTextInput
-} from '@nethserver/vue-tailwind-lib'
+} from '@nethesis/vue-components'
 import { useUsers } from '@/composables/useUsers'
 import axios from 'axios'
 

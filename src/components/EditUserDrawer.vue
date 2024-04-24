@@ -1,16 +1,17 @@
 <script lang="ts" setup>
 import type { UserList } from '@/components/UserList.vue'
 import { computed, ref, watch } from 'vue'
+import { useGroups } from '@/composables/useGroups'
 import {
+  NeInlineNotification,
+  NeSkeleton,
   NeButton,
   NeCombobox,
   type NeComboboxOption,
   NeFormItemLabel,
   NeTextInput,
   NeToggle
-} from '@nethserver/vue-tailwind-lib'
-import { useGroups } from '@/composables/useGroups'
-import { NeInlineNotification, NeSkeleton } from '@nethesis/vue-components'
+} from '@nethesis/vue-components'
 import type { BaseResponse } from '@/lib/axiosHelpers'
 import axios from 'axios'
 import SideDrawer from '@/components/SideDrawer.vue'
