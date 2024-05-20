@@ -2,5 +2,16 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:recommended"
+  ],
+  "ignorePaths": [
+    "**/deploy/ns8/ui/**"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "node"
+      ],
+      "allowedVersions": "<= 20"
+    }
   ]
 }
