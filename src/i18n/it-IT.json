@@ -112,5 +112,6 @@
         "minimum_number": "Almeno {count} numero (0-9) Almeno {count} numeri (0-9)",
         "minimum_special": "Almeno {count} carattere speciale (!{'@'}#^&_?-) | Almeno {count} caratteri speciali (!{'@'}#^&_?-)",
         "password_policy_error": "Al momento non è possibile recuperare i criteri della password, riprovare più tardi."
-    }
+    },
+    "close": "Chiudi"
 }
