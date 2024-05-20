@@ -2,8 +2,11 @@
 
 FrontEnd manager for AD/LDAP installed in NS8.
 
+![GitHub Release](https://img.shields.io/github/v/release/NethServer/ns8-user-manager)
+
+
 <a href="https://hosted.weblate.org/engage/ns8/">
-  <img src="https://hosted.weblate.org/widget/ns8/user-manager/svg-badge.svg" alt="Translation status" />
+  <img src="https://hosted.weblate.org/widget/ns8/user-manager/287x66-black.png" alt="Translation status" />
 </a>
 
 ## Development
