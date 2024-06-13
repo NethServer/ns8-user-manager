@@ -3,15 +3,21 @@
   "extends": [
     "config:recommended"
   ],
-  "ignorePaths": [
-    "**/deploy/ns8/ui/**"
-  ],
   "packageRules": [
     {
       "matchPackageNames": [
         "node"
       ],
       "allowedVersions": "<= 20"
+    },
+    {
+      "excludePackageNames": [
+        "@nethesis/vue-components"
+      ],
+      "matchManagers": [
+        "npm"
+      ],
+      "enabled": false
     }
   ]
 }
