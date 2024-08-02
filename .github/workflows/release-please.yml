@@ -22,7 +22,6 @@ jobs:
         id: release
         with:
           release-type: node
-          package-name: ns8-user-manager
       - name: Attach Release
         if: ${{ steps.release.outputs.release_created }}
         env:
