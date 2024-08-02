@@ -88,22 +88,24 @@ function handleGroupEdited() {
         <NeTableRow v-for="(group, index) in data" :key="index">
           <NeTableCell>{{ group.group }}</NeTableCell>
           <NeTableCell>{{ group.description }}</NeTableCell>
-          <NeTableCell class="flex items-center justify-end gap-x-4">
-            <NeButton kind="tertiary" size="sm" @click="groupToEdit = group">
-              <FontAwesomeIcon :icon="faEdit" class="pr-2" />
-              {{ $t('edit') }}
-            </NeButton>
-            <NeDropdown
-              :items="[
-                {
-                  id: 'delete',
-                  danger: true,
-                  label: $t('user_manager.group_delete'),
-                  action: () => (groupToDelete = group)
-                }
-              ]"
-              align-to-right
-            />
+          <NeTableCell>
+            <div class="flex items-center justify-end gap-2">
+              <NeButton kind="tertiary" size="sm" @click="groupToEdit = group">
+                <FontAwesomeIcon :icon="faEdit" class="pr-2" />
+                {{ $t('edit') }}
+              </NeButton>
+              <NeDropdown
+                :items="[
+                  {
+                    id: 'delete',
+                    danger: true,
+                    label: $t('user_manager.group_delete'),
+                    action: () => (groupToDelete = group)
+                  }
+                ]"
+                align-to-right
+              />
+            </div>
           </NeTableCell>
         </NeTableRow>
       </NeTableBody>

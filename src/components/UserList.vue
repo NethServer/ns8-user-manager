@@ -181,34 +181,36 @@ function toggleUserLock(user: User) {
               <p>{{ $t('user_manager.user_enabled') }}</p>
             </div>
           </NeTableCell>
-          <NeTableCell class="flex items-center justify-end gap-4">
-            <NeButton kind="tertiary" size="sm" @click="userToEdit = user">
-              <FontAwesomeIcon :icon="faEdit" class="pr-2" />
-              {{ $t('edit') }}
-            </NeButton>
-            <NeDropdown
-              :items="[
-                {
-                  id: 'lock',
-                  label: user.locked
-                    ? $t('user_manager.user_enable')
-                    : $t('user_manager.user_disable'),
-                  action: () => toggleUserLock(user)
-                },
-                {
-                  id: 'change-password',
-                  label: $t('user_manager.user_change_password'),
-                  action: () => (userToChangePassword = user)
-                },
-                {
-                  id: 'delete',
-                  danger: true,
-                  label: $t('user_manager.user_delete'),
-                  action: () => (userToDelete = user)
-                }
-              ]"
-              align-to-right
-            />
+          <NeTableCell>
+            <div class="flex justify-center gap-2">
+              <NeButton kind="tertiary" size="sm" @click="userToEdit = user">
+                <FontAwesomeIcon :icon="faEdit" class="pr-2" />
+                {{ $t('edit') }}
+              </NeButton>
+              <NeDropdown
+                :items="[
+                  {
+                    id: 'lock',
+                    label: user.locked
+                      ? $t('user_manager.user_enable')
+                      : $t('user_manager.user_disable'),
+                    action: () => toggleUserLock(user)
+                  },
+                  {
+                    id: 'change-password',
+                    label: $t('user_manager.user_change_password'),
+                    action: () => (userToChangePassword = user)
+                  },
+                  {
+                    id: 'delete',
+                    danger: true,
+                    label: $t('user_manager.user_delete'),
+                    action: () => (userToDelete = user)
+                  }
+                ]"
+                align-to-right
+              />
+            </div>
           </NeTableCell>
         </NeTableRow>
       </NeTableBody>
