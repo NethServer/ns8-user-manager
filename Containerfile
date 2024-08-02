@@ -1,11 +1,11 @@
-FROM node:20.16.0 as base
+FROM node:20.16.0 AS base
 WORKDIR /app
 RUN npm config set update-notifier false
 
-FROM base as dev
+FROM base AS dev
 CMD exec /bin/bash -c "npm install && npm run dev"
 
-FROM base as build
+FROM base AS build
 COPY package.json .
 COPY package-lock.json .
 RUN npm ci
@@ -21,5 +21,5 @@ COPY tsconfig.node.json .
 COPY vite.config.ts .
 RUN npm run build
 
-FROM scratch as dist
+FROM scratch AS dist
 COPY --from=build /app/dist /
