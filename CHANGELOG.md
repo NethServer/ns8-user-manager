@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.0.0](https://github.com/NethServer/ns8-user-manager/compare/v0.8.2...v1.0.0) (2024-08-02)
+
+
+### Bug Fixes
+
+* body style ([cdff274](https://github.com/NethServer/ns8-user-manager/commit/cdff274c062b31a004a1959db768a7ffff03807d))
+* **deps:** update dependency @nethesis/vue-components to v1 ([#34](https://github.com/NethServer/ns8-user-manager/issues/34)) ([4afcdb3](https://github.com/NethServer/ns8-user-manager/commit/4afcdb30cf5fa13a60e88da7e53f32670b866834))
+* **deps:** update dependency @nethesis/vue-components to v1.3.0 ([#45](https://github.com/NethServer/ns8-user-manager/issues/45)) ([fb1df08](https://github.com/NethServer/ns8-user-manager/commit/fb1df08986b12b9fb989a395e4e67c19adc3460c))
+* **deps:** update dependency @nethesis/vue-components to v1.3.1 ([#48](https://github.com/NethServer/ns8-user-manager/issues/48)) ([e7f6be0](https://github.com/NethServer/ns8-user-manager/commit/e7f6be0b4d1a7f083c024153a8f50dee595d1172))
+* layout issues in tables ([28daf60](https://github.com/NethServer/ns8-user-manager/commit/28daf60b6662e166660723646aa375b0b4aec447))
+* missing group name if description is empty ([7a2a4c1](https://github.com/NethServer/ns8-user-manager/commit/7a2a4c1c137369a9e068e46379dc5f85550c6981))
+* set required prop closeAriaLabel for NeModals ([f782c28](https://github.com/NethServer/ns8-user-manager/commit/f782c285dd96efcc2cbb20f8be5f3fc15547a8a1))
+
+
+### Miscellaneous Chores
+
+* **deps:** lockfile maintainance ([f1a9dce](https://github.com/NethServer/ns8-user-manager/commit/f1a9dce00b68e48897dc3832399f875233cc53fa))
+
 ## [0.8.2](https://github.com/NethServer/ns8-user-manager/compare/v0.8.1...v0.8.2) (2024-03-04)
 
 
