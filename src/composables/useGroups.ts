@@ -20,7 +20,12 @@ export function useGroups() {
     axios
       .post<ListGroupsResponse>('/api/list-groups', {})
       .then((response) => {
-        data.value = response.data.groups
+        data.value = response.data.groups.map((group) => {
+          return {
+            ...group,
+            description: group.description != '' ? group.description : group.group
+          }
+        })
       })
       .catch((reason) => {
         error.value = reason
