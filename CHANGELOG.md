@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/NethServer/ns8-user-manager/compare/v1.0.0...v1.0.1) (2024-09-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nethesis/vue-components to v1.4.0 ([#51](https://github.com/NethServer/ns8-user-manager/issues/51)) ([a73f0c0](https://github.com/NethServer/ns8-user-manager/commit/a73f0c04d431a158676a360900db28308c4c5b7a))
+* **deps:** update dependency axios to v1.7.4 [security] ([#52](https://github.com/NethServer/ns8-user-manager/issues/52)) ([7dc0986](https://github.com/NethServer/ns8-user-manager/commit/7dc09862f3b2f92638d9d94e02ec2a041497e70e))
+
 ## [1.0.0](https://github.com/NethServer/ns8-user-manager/compare/v0.8.2...v1.0.0) (2024-08-02)
 
 
