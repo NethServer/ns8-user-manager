@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/NethServer/ns8-user-manager/compare/v1.0.1...v1.0.2) (2024-12-20)
+
+
+### Miscellaneous Chores
+
+* **deps:** updated to node 22 ([0cf00a9](https://github.com/NethServer/ns8-user-manager/commit/0cf00a9f514fc4223565f2c792d1b68343545e24))
+
 ## [1.0.1](https://github.com/NethServer/ns8-user-manager/compare/v1.0.0...v1.0.1) (2024-09-04)
 
 
