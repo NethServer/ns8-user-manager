@@ -1,9 +1,10 @@
 import type { Config } from 'tailwindcss'
 import colors from 'tailwindcss/colors'
 import defaultTheme from 'tailwindcss/defaultTheme'
+import tailwindConfig from '@nethesis/vue-components/tailwind.config'
 
 export default {
-  presets: [require('@nethesis/vue-components/tailwind.config.ts')],
+  presets: [tailwindConfig],
   content: [
     './index.html',
     './src/**/*.{vue,js,ts,jsx,tsx}',
