@@ -107,13 +107,16 @@ async function changePassword() {
         }
       }
     }
-  } catch (exception: any) {
+  } catch (exception: unknown) {
     if (axios.isAxiosError(exception) && exception.response != undefined) {
       if (exception.response.status >= 500) {
         errorMessage.value = 'login_form.server_error'
       }
-    } else {
+    } else if (exception instanceof Error) {
       errorMessage.value = exception.message
+    } else {
+      errorMessage.value = 'errors.generic'
+      console.log(exception)
     }
   } finally {
     loading.value = false

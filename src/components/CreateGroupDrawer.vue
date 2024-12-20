@@ -46,8 +46,13 @@ async function submit() {
       users: users.value.map((user) => user.id)
     })
     emit('success')
-  } catch (reason: any) {
-    error.value = reason
+  } catch (reason: unknown) {
+    if (reason instanceof Error) {
+      error.value = reason
+    } else {
+      error.value = new Error('An error occurred')
+      console.log(reason)
+    }
   } finally {
     loading.value = false
   }

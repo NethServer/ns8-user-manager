@@ -25,13 +25,16 @@ async function handleLogin() {
     try {
       await login(username.value, password.value)
       await router.replace({ name: 'user_account' })
-    } catch (exception: any) {
+    } catch (exception: unknown) {
       if (axios.isAxiosError(exception) && exception.response != undefined) {
         if (exception.response.status == 401) {
           validationMessage.value = 'login_form.invalid_credentials'
         }
-      } else {
+      } else if (exception instanceof Error) {
         errorMessage.value = exception.message
+      } else {
+        errorMessage.value = 'errors.generic'
+        console.log(exception)
       }
     } finally {
       loading.value = false
