@@ -13,7 +13,9 @@ import {
   NeToggle
 } from '@nethesis/vue-components'
 import type { BaseResponse } from '@/lib/axiosHelpers'
+import { MessageBag } from '@/lib/validation'
 import axios from 'axios'
+import { useI18n } from 'vue-i18n'
 import SideDrawer from '@/components/SideDrawer.vue'
 
 const { data: remoteGroups, loading: groupsLoading, error: groupsError } = useGroups()
@@ -28,9 +30,13 @@ const enabled = ref(true)
 const username = ref('')
 const name = ref('')
 const groups = ref<Array<NeComboboxOption>>([])
+const email = ref('')
 
+const validationErrors = ref(new MessageBag())
 const loading = ref(false)
 const error = ref<Error>()
+
+const { t } = useI18n()
 
 watch(
   () => props.user,
@@ -40,6 +46,7 @@ watch(
       username.value = props.user.user
       name.value = props.user.display_name
       groups.value = props.user.groups
+      email.value = props.user.mail
     }
   },
   { immediate: true }
@@ -60,23 +67,34 @@ function handleCancel() {
   }
 }
 
+function validate(): boolean {
+  validationErrors.value.clear()
+  if (email.value && !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    validationErrors.value.append('email', t('user_manager.invalid_email'))
+  }
+  return validationErrors.value.size < 1
+}
+
 function submit() {
-  axios
-    .post<BaseResponse>('/api/alter-user', {
-      user: props.user!.user,
-      display_name: name.value,
-      locked: !enabled.value,
-      groups: groups.value.map((group) => group.id)
-    })
-    .then(() => {
-      emit('success')
-    })
-    .catch((reason: Error) => {
-      error.value = reason
-    })
-    .finally(() => {
-      loading.value = false
-    })
+  if (validate()) {
+    axios
+      .post<BaseResponse>('/api/alter-user', {
+        user: props.user!.user,
+        display_name: name.value,
+        locked: !enabled.value,
+        groups: groups.value.map((group) => group.id),
+        mail: email.value
+      })
+      .then(() => {
+        emit('success')
+      })
+      .catch((reason: Error) => {
+        error.value = reason
+      })
+      .finally(() => {
+        loading.value = false
+      })
+  }
 }
 </script>
 
@@ -125,6 +143,13 @@ function submit() {
           :placeholder="$t('user_manager.choose_groups')"
           multiple
           name="users"
+        />
+        <NeTextInput
+          v-model="email"
+          :disabled="loading"
+          :invalid-message="validationErrors.getFirstMessage('email')"
+          :label="$t('user_manager.email')"
+          autocomplete="email"
         />
       </form>
     </template>

@@ -51,6 +51,7 @@ const name = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const groups = ref<Array<NeComboboxOption>>([])
+const email = ref('')
 
 const validationErrors = ref(new MessageBag())
 const loading = ref(false)
@@ -68,6 +69,7 @@ watch(
       username.value = ''
       password.value = ''
       confirmPassword.value = ''
+      email.value = ''
     }
   }
 )
@@ -90,6 +92,9 @@ function validate(): boolean {
   validatePassword(password.value, confirmPassword.value).forEach((item, key) => {
     validationErrors.value.set(key, item)
   })
+  if (email.value && !email.value.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+    validationErrors.value.append('email', t('user_manager.invalid_email'))
+  }
   return validationErrors.value.size < 1
 }
 
@@ -103,7 +108,8 @@ function submit() {
         display_name: name.value,
         password: password.value,
         locked: !enabled.value,
-        groups: groups.value.map((group) => group.id)
+        groups: groups.value.map((group) => group.id),
+        mail: email.value
       })
       .then((response) => {
         if (response.data.status == 'success') {
@@ -209,6 +215,13 @@ function submit() {
             autocomplete="new-password"
             is-password
             required
+          />
+          <NeTextInput
+            v-model="email"
+            :disabled="loading"
+            :invalid-message="validationErrors.getFirstMessage('email')"
+            :label="$t('user_manager.email')"
+            autocomplete="email"
           />
         </template>
       </form>
