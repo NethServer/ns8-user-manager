@@ -51,6 +51,7 @@ const name = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const groups = ref<Array<NeComboboxOption>>([])
+const email = ref('')
 
 const validationErrors = ref(new MessageBag())
 const loading = ref(false)
@@ -68,6 +69,7 @@ watch(
       username.value = ''
       password.value = ''
       confirmPassword.value = ''
+      email.value = ''
     }
   }
 )
@@ -103,7 +105,8 @@ function submit() {
         display_name: name.value,
         password: password.value,
         locked: !enabled.value,
-        groups: groups.value.map((group) => group.id)
+        groups: groups.value.map((group) => group.id),
+        ...(email.value ? { mail: email.value } : {})
       })
       .then((response) => {
         if (response.data.status == 'success') {
@@ -209,6 +212,13 @@ function submit() {
             autocomplete="new-password"
             is-password
             required
+          />
+          <NeTextInput
+            v-model="email"
+            :disabled="loading"
+            :label="$t('user_manager.email')"
+            autocomplete="email"
+            type="email"
           />
         </template>
       </form>
