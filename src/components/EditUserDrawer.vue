@@ -28,6 +28,7 @@ const enabled = ref(true)
 const username = ref('')
 const name = ref('')
 const groups = ref<Array<NeComboboxOption>>([])
+const email = ref('')
 
 const loading = ref(false)
 const error = ref<Error>()
@@ -40,6 +41,7 @@ watch(
       username.value = props.user.user
       name.value = props.user.display_name
       groups.value = props.user.groups
+      email.value = props.user.mail
     }
   },
   { immediate: true }
@@ -66,7 +68,8 @@ function submit() {
       user: props.user!.user,
       display_name: name.value,
       locked: !enabled.value,
-      groups: groups.value.map((group) => group.id)
+      groups: groups.value.map((group) => group.id),
+      ...(email.value ? { mail: email.value } : {})
     })
     .then(() => {
       emit('success')
@@ -125,6 +128,13 @@ function submit() {
           :placeholder="$t('user_manager.choose_groups')"
           multiple
           name="users"
+        />
+        <NeTextInput
+          v-model="email"
+          :disabled="loading"
+          :label="$t('user_manager.email')"
+          autocomplete="email"
+          type="email"
         />
       </form>
     </template>

@@ -160,6 +160,7 @@ function toggleUserLock(user: User) {
         <NeTableHeadCell>{{ $t('user_manager.user_username') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ $t('user_manager.user_display_name') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ $t('user_manager.user_group') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ $t('user_manager.user_mail') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ $t('user_manager.user_status') }}</NeTableHeadCell>
         <NeTableHeadCell></NeTableHeadCell>
       </NeTableHead>
@@ -171,6 +172,8 @@ function toggleUserLock(user: User) {
             {{ user.groups.map((group) => group.label).join(', ') }}
           </NeTableCell>
           <NeTableCell v-else>-</NeTableCell>
+          <NeTableCell v-if="user.mail">{{ user.mail }}</NeTableCell>
+          <NeTableCell v-else>-</NeTableCell>
           <NeTableCell>
             <div v-if="user.locked" class="flex items-center gap-2">
               <FontAwesomeIcon :icon="faCircleXmark" />
@@ -179,6 +182,20 @@ function toggleUserLock(user: User) {
             <div v-else class="flex items-center gap-2">
               <FontAwesomeIcon :icon="faCircleCheck" />
               <p>{{ $t('user_manager.user_enabled') }}</p>
+            </div>
+            <div
+              v-if="user.password_expiration > 0 && !user.expired"
+              class="flex items-center gap-2"
+            >
+              <FontAwesomeIcon :icon="faCircleCheck" />
+              <p>{{ $t('user_manager.user_password_not_expired') }}</p>
+            </div>
+            <div
+              v-if="user.password_expiration > 0 && user.expired"
+              class="flex items-center gap-2"
+            >
+              <FontAwesomeIcon :icon="faCircleXmark" />
+              <p>{{ $t('user_manager.user_password_expired') }}</p>
             </div>
           </NeTableCell>
           <NeTableCell>
