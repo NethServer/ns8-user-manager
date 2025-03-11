@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/NethServer/ns8-user-manager/compare/v1.0.2...v1.1.0) (2025-03-11)
+
+
+### Features
+
+* user mail and password expiration ([#68](https://github.com/NethServer/ns8-user-manager/issues/68)) ([e3a6ef5](https://github.com/NethServer/ns8-user-manager/commit/e3a6ef55131f5f44c0b6d51fd5e8523f44e4197c))
+
 ## [1.0.2](https://github.com/NethServer/ns8-user-manager/compare/v1.0.1...v1.0.2) (2024-12-20)
 
 
