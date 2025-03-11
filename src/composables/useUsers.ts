@@ -6,6 +6,9 @@ export interface User {
   display_name: string
   locked: boolean
   user: string
+  mail: string
+  password_expiration: number
+  expired: boolean
 }
 
 interface UserListResponse {
