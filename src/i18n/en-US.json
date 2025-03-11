@@ -114,7 +114,6 @@
         "user_enabled_notification_title": "User enabled",
         "user_enabled_notification_description": "User enabled successfully",
         "email": "Mail address",
-        "invalid_email": "Invalid email address",
         "user_mail": "Mail address"
     }
 }
