@@ -19,7 +19,7 @@
         "group_delete_modal_title": "Elimina gruppo",
         "edit_group": "Modifica gruppo",
         "user_delete": "Cancella utente",
-        "user_name": "Nome",
+        "user_name": "Nome visualizzato",
         "user_display_name": "Nome visualizzato",
         "user_group": "Gruppi",
         "user_status": "Stato",
@@ -111,7 +111,10 @@
         "minimum_lowercase": "Almeno {count} minuscolo (a-z)",
         "minimum_number": "Almeno {count} numero (0-9) Almeno {count} numeri (0-9)",
         "minimum_special": "Almeno {count} carattere speciale (!{'@'}#^&_?-) | Almeno {count} caratteri speciali (!{'@'}#^&_?-)",
-        "password_policy_error": "Al momento non è possibile recuperare i criteri della password, riprovare più tardi."
+        "password_policy_error": "Al momento non è possibile recuperare i criteri della password, riprovare più tardi.",
+        "email": "Indirizzo email",
+        "user_mail_address": "Indirizzo email",
+        "password_expired_tooltip": "Password scaduta"
     },
     "close": "Chiudi"
 }
