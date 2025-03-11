@@ -56,7 +56,10 @@
         "group_deleted": "Gruppo cancellato",
         "group_deleted_description": "Gruppo cancellato con successo",
         "group_created": "Gruppo creato",
-        "group_created_description": "Gruppo creato con successo"
+        "group_created_description": "Gruppo creato con successo",
+        "email": "Indirizzo mail",
+        "user_mail": "Indirizzo mail",
+        "password_expired_tooltip": "Password scaduta"
     },
     "edit": "Modifica",
     "save": "Salva",
@@ -111,10 +114,7 @@
         "minimum_lowercase": "Almeno {count} minuscolo (a-z)",
         "minimum_number": "Almeno {count} numero (0-9) Almeno {count} numeri (0-9)",
         "minimum_special": "Almeno {count} carattere speciale (!{'@'}#^&_?-) | Almeno {count} caratteri speciali (!{'@'}#^&_?-)",
-        "password_policy_error": "Al momento non è possibile recuperare i criteri della password, riprovare più tardi.",
-        "email": "Indirizzo email",
-        "user_mail_address": "Indirizzo email",
-        "password_expired_tooltip": "Password scaduta"
+        "password_policy_error": "Al momento non è possibile recuperare i criteri della password, riprovare più tardi."
     },
     "close": "Chiudi"
 }
