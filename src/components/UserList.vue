@@ -3,7 +3,8 @@ import {
   faCircleCheck,
   faCircleXmark,
   faEdit,
-  faPlusCircle
+  faPlusCircle,
+  faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { type User, useUsers } from '@/composables/useUsers'
@@ -166,7 +167,18 @@ function toggleUserLock(user: User) {
       </NeTableHead>
       <NeTableBody>
         <NeTableRow v-for="(user, index) in data" :key="index">
-          <NeTableCell>{{ user.user }}</NeTableCell>
+          <NeTableCell
+            >{{ user.user }}
+            <span
+              v-if="user.password_expiration > 0 && user.expired"
+              :title="$t('user_manager.password_expired_tooltip')"
+            >
+              <FontAwesomeIcon
+                :icon="faExclamationTriangle"
+                class="text-amber-700 dark:text-amber-500"
+              />
+            </span>
+          </NeTableCell>
           <NeTableCell>{{ user.display_name.length != 0 ? user.display_name : '-' }}</NeTableCell>
           <NeTableCell v-if="user.groups.length > 0">
             {{ user.groups.map((group) => group.label).join(', ') }}
@@ -182,13 +194,6 @@ function toggleUserLock(user: User) {
             <div v-else class="flex items-center gap-2">
               <FontAwesomeIcon :icon="faCircleCheck" class="text-green-700 dark:text-green-500" />
               <p>{{ $t('user_manager.user_enabled') }}</p>
-            </div>
-            <div
-              v-if="user.password_expiration > 0 && user.expired"
-              class="flex items-center gap-2"
-            >
-              <FontAwesomeIcon :icon="faCircleXmark" class="dark:gray-400 gray-700" />
-              <p>{{ $t('user_manager.user_password_expired') }}</p>
             </div>
           </NeTableCell>
           <NeTableCell>

@@ -114,6 +114,7 @@
         "user_enabled_notification_title": "User enabled",
         "user_enabled_notification_description": "User enabled successfully",
         "email": "Mail address",
-        "user_mail": "Mail address"
+        "user_mail": "Mail address",
+        "password_expired_tooltip": "Password expired"
     }
 }

@@ -113,7 +113,8 @@
         "minimum_special": "Almeno {count} carattere speciale (!{'@'}#^&_?-) | Almeno {count} caratteri speciali (!{'@'}#^&_?-)",
         "password_policy_error": "Al momento non è possibile recuperare i criteri della password, riprovare più tardi.",
         "email": "Indirizzo email",
-        "user_mail_address": "Indirizzo email"
+        "user_mail_address": "Indirizzo email",
+        "password_expired_tooltip": "Password scaduta"
     },
     "close": "Chiudi"
 }
