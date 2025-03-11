@@ -113,7 +113,7 @@
         "user_disabled_notification_description": "User disabled successfully",
         "user_enabled_notification_title": "User enabled",
         "user_enabled_notification_description": "User enabled successfully",
-        "email": "Mail address (optional)",
+        "email": "Mail address",
         "invalid_email": "Invalid email address",
         "user_mail": "Mail address",
         "user_password_not_expired": "Password is valid"
