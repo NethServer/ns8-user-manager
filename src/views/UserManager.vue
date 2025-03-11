@@ -9,7 +9,7 @@ const selectedTab = ref('users')
 </script>
 
 <template>
-  <ContentPage :title="$t('user_manager.title')" class="max-w-7xl">
+  <ContentPage :title="$t('user_manager.title')" class="max-w-full">
     <template #divider>
       <NeTabs
         :tabs="[
