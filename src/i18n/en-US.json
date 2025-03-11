@@ -82,7 +82,7 @@
         "group_edited_description": "Group successfully edited",
         "edit_group": "Edit group",
         "user_delete": "Delete user",
-        "user_name": "Name",
+        "user_name": "Display name",
         "user_display_name": "Display name",
         "user_group": "Groups",
         "user_status": "Status",
