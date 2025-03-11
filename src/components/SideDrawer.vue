@@ -39,7 +39,7 @@ defineEmits(['cancel'])
             <div class="flex gap-x-2 break-all align-baseline">
               <p class="text-xl font-medium">{{ title }}</p>
               <NeButton class="ml-auto self-center" kind="tertiary" @click="$emit('cancel')">
-                <FontAwesomeIcon :icon="faX" class="text-white" />
+                <FontAwesomeIcon :icon="faX" class="text-gray-600 dark:text-white" />
               </NeButton>
             </div>
             <hr />
