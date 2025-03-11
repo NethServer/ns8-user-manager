@@ -184,13 +184,6 @@ function toggleUserLock(user: User) {
               <p>{{ $t('user_manager.user_enabled') }}</p>
             </div>
             <div
-              v-if="user.password_expiration > 0 && !user.expired"
-              class="flex items-center gap-2"
-            >
-              <FontAwesomeIcon :icon="faCircleCheck" />
-              <p>{{ $t('user_manager.user_password_not_expired') }}</p>
-            </div>
-            <div
               v-if="user.password_expiration > 0 && user.expired"
               class="flex items-center gap-2"
             >

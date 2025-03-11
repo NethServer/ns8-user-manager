@@ -114,8 +114,7 @@
         "password_policy_error": "Al momento non è possibile recuperare i criteri della password, riprovare più tardi.",
         "email": "Indirizzo email",
         "invalid_email": "Indirizzo email non valido",
-        "user_mail_address": "Indirizzo email",
-        "user_password_not_expired": "Password valida"
+        "user_mail_address": "Indirizzo email"
     },
     "close": "Chiudi"
 }
