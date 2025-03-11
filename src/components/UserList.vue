@@ -180,14 +180,14 @@ function toggleUserLock(user: User) {
               <p>{{ $t('user_manager.user_disabled') }}</p>
             </div>
             <div v-else class="flex items-center gap-2">
-              <FontAwesomeIcon :icon="faCircleCheck" />
+              <FontAwesomeIcon :icon="faCircleCheck" class="text-green-700 dark:text-green-500" />
               <p>{{ $t('user_manager.user_enabled') }}</p>
             </div>
             <div
               v-if="user.password_expiration > 0 && user.expired"
               class="flex items-center gap-2"
             >
-              <FontAwesomeIcon :icon="faCircleXmark" />
+              <FontAwesomeIcon :icon="faCircleXmark" class="dark:gray-400 gray-700" />
               <p>{{ $t('user_manager.user_password_expired') }}</p>
             </div>
           </NeTableCell>
