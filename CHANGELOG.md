@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/NethServer/ns8-user-manager/compare/v1.1.0...v1.1.1) (2025-03-11)
+
+
+### Bug Fixes
+
+* UX improvements ([#72](https://github.com/NethServer/ns8-user-manager/issues/72)) ([c2394b0](https://github.com/NethServer/ns8-user-manager/commit/c2394b0ff39b62f94c25ef1a34f54ecab5b2b2ec))
+
 ## [1.1.0](https://github.com/NethServer/ns8-user-manager/compare/v1.0.2...v1.1.0) (2025-03-11)
 
 
