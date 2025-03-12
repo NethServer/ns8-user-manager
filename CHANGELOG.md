@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/NethServer/ns8-user-manager/compare/v1.1.1...v1.1.2) (2025-03-12)
+
+
+### Bug Fixes
+
+* always send mail field ([6fcd2d5](https://github.com/NethServer/ns8-user-manager/commit/6fcd2d5199fdf30b9ac0f78050ba8a89767cc2a8))
+
 ## [1.1.1](https://github.com/NethServer/ns8-user-manager/compare/v1.1.0...v1.1.1) (2025-03-11)
 
 
