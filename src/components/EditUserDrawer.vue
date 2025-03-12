@@ -69,7 +69,7 @@ function submit() {
       display_name: name.value,
       locked: !enabled.value,
       groups: groups.value.map((group) => group.id),
-      ...(email.value ? { mail: email.value } : {})
+      mail: email.value ? email.value : ''
     })
     .then(() => {
       emit('success')

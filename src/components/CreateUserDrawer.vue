@@ -106,7 +106,7 @@ function submit() {
         password: password.value,
         locked: !enabled.value,
         groups: groups.value.map((group) => group.id),
-        ...(email.value ? { mail: email.value } : {})
+        mail: email.value ? email.value : ''
       })
       .then((response) => {
         if (response.data.status == 'success') {
@@ -219,6 +219,7 @@ function submit() {
             :label="$t('user_manager.email')"
             autocomplete="email"
             type="email"
+            optional="true"
           />
         </template>
       </form>
