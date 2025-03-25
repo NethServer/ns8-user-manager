@@ -12,8 +12,7 @@
     "lint": "eslint .",
     "lint-fix": "npm run lint -- --fix",
     "format": "prettier --list-different src/",
-    "format-fix": "prettier --write src/",
-    "prepare": "husky"
+    "format-fix": "prettier --write src/"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
