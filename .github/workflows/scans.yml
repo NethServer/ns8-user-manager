@@ -50,9 +50,9 @@ jobs:
           scan-type: fs
           scan-ref: .
           format: cyclonedx
-          output: ns8-user-manager.sbom.json
+          output: ns8-user-manager.cdx.json
       - name: Attach SBOM Release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release upload ${{ github.event.release.tag_name }} ns8-user-manager.sbom.json
+          gh release upload ${{ github.event.release.tag_name }} ns8-user-manager.cdx.json

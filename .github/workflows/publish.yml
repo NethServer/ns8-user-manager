@@ -18,5 +18,5 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          tar czf ns8-user-manager-${{ steps.release.outputs.tag_name }}.tar.gz -C dist .
-          gh release upload ${{ steps.release.outputs.tag_name }} ns8-user-manager-${{ steps.release.outputs.tag_name }}.tar.gz
+          tar czf ns8-user-manager-${{ github.event.release.tag_name }}.tar.gz -C dist .
+          gh release upload ${{ github.event.release.tag_name }} ns8-user-manager-${{ github.event.release.tag_name }}.tar.gz
