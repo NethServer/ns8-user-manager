@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/NethServer/ns8-user-manager/compare/v1.1.2...v1.1.3) (2025-03-25)
+
+
+### Bug Fixes
+
+* **deps:** lockfile maintainance ([12c5649](https://github.com/NethServer/ns8-user-manager/commit/12c5649cda3bf4269fbcd79abb546f49b4ade3a1))
+
 ## [1.1.2](https://github.com/NethServer/ns8-user-manager/compare/v1.1.1...v1.1.2) (2025-03-12)
 
 
