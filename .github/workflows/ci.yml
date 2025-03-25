@@ -26,6 +26,7 @@ jobs:
       - run: npm ci
       - run: npm run format
   conventional_commits:
+    name: Conventional Commits
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
