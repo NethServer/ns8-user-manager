@@ -1,0 +1,22 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  tag:
+    name: Tag
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          ./build.sh
+      - name: Attach Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tar czf ns8-user-manager-${{ steps.release.outputs.tag_name }}.tar.gz -C dist .
+          gh release upload ${{ steps.release.outputs.tag_name }} ns8-user-manager-${{ steps.release.outputs.tag_name }}.tar.gz

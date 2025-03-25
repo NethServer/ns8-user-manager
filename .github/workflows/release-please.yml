@@ -1,32 +1,16 @@
+name: Release Please
+
 on:
   push:
     branches:
       - main
-
-name: Release Please
-
-permissions:
-  contents: write
-  pull-requests: write
+  workflow_dispatch:
 
 jobs:
-  release-please:
+  run:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - uses: googleapis/release-please-action@v4
-        id: release
         with:
           token: '${{ secrets.RELEASE_PLEASE_TOKEN }}'
           release-type: node
-      - name: Build artifact
-        if: ${{ steps.release.outputs.release_created }}
-        run: |
-          ./build.sh
-      - name: Attach Release
-        if: ${{ steps.release.outputs.release_created }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          tar czf ns8-user-manager-${{ steps.release.outputs.tag_name }}.tar.gz -C dist .
-          gh release upload ${{ steps.release.outputs.tag_name }} ns8-user-manager-${{ steps.release.outputs.tag_name }}.tar.gz
