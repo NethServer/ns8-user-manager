@@ -219,7 +219,7 @@ function submit() {
             :label="$t('user_manager.email')"
             autocomplete="email"
             type="email"
-            optional="true"
+            optional
           />
         </template>
       </form>

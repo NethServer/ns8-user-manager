@@ -134,7 +134,7 @@ function submit() {
           :disabled="loading"
           :label="$t('user_manager.email')"
           autocomplete="email"
-          optional="true"
+          optional
           type="email"
         />
       </form>
