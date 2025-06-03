@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.4](https://github.com/NethServer/ns8-user-manager/compare/v1.1.3...v1.1.4) (2025-06-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nethesis/vue-components to v2 ([#84](https://github.com/NethServer/ns8-user-manager/issues/84)) ([5129d36](https://github.com/NethServer/ns8-user-manager/commit/5129d3610096ae14bc6dcf519cd56b1fedfe2b58))
+* some type fixes ([7f98184](https://github.com/NethServer/ns8-user-manager/commit/7f9818495abc8b5817148973028e281ba6a1a57b))
+
 ## [1.1.3](https://github.com/NethServer/ns8-user-manager/compare/v1.1.2...v1.1.3) (2025-03-25)
 
 
