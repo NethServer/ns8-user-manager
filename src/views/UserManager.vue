@@ -22,7 +22,7 @@ const selectedTab = ref('users')
             label: $t('user_manager.tabs.groups')
           }
         ]"
-        class="!mt-4"
+        class="mt-4!"
         @select-tab="selectedTab = $event"
       />
     </template>

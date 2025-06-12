@@ -1,35 +1,55 @@
-@import '@nethesis/vue-components/main.css';
+/* fontawesome styles */
+@import '@fortawesome/fontawesome-svg-core/styles.css' layer(fontawesome);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/* import theme from @nethesis/vue-components */
+@import '@nethesis/vue-components/theme.css';
+
+@source '../../node_modules/@nethesis/vue-components';
+
+@theme {
+  --color-primary-50: var(--color-blue-50);
+  --color-primary-100: var(--color-blue-100);
+  --color-primary-200: var(--color-blue-200);
+  --color-primary-300: var(--color-blue-300);
+  --color-primary-400: var(--color-blue-400);
+  --color-primary-500: var(--color-blue-500);
+  --color-primary-600: var(--color-blue-600);
+  --color-primary-700: var(--color-blue-700);
+  --color-primary-800: var(--color-blue-800);
+  --color-primary-900: var(--color-blue-900);
+  --color-primary-950: var(--color-blue-950);
+
+  --breakpoint-sidebar: var(--breakpoint-lg);
+}
 
 @layer base {
   html {
     @apply overflow-x-hidden;
   }
-}
 
-body {
-  @apply bg-gray-50 text-sm text-gray-700 dark:bg-gray-900 dark:text-gray-100;
-}
+  body {
+    @apply bg-gray-50 text-sm text-gray-700 dark:bg-gray-900 dark:text-gray-100;
+  }
 
-.h1 {
-  @apply text-2xl font-medium;
-}
+  .h1 {
+    @apply text-2xl font-medium;
+  }
 
-.h2 {
-  @apply text-xl font-medium;
-}
+  .h2 {
+    @apply text-xl font-medium;
+  }
 
-.h3 {
-  @apply text-lg font-medium;
-}
+  .h3 {
+    @apply text-lg font-medium;
+  }
 
-hr {
-  @apply border-gray-200 dark:border-gray-700;
-}
+  hr {
+    @apply border-gray-200 dark:border-gray-700;
+  }
 
-.description-text {
-  @apply text-sm font-normal text-gray-500 dark:text-gray-400;
+  .description-text {
+    @apply text-sm font-normal text-gray-500 dark:text-gray-400;
+  }
 }

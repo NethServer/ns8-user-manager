@@ -49,6 +49,8 @@ notificationEngine.$onAction(({ name, after }) => {
 </template>
 
 <style scoped>
+@reference "@/assets/main.css";
+
 .v-enter-active,
 .v-leave-active {
   @apply transition duration-700;

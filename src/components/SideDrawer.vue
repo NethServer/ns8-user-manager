@@ -23,7 +23,7 @@ defineEmits(['cancel'])
         leave-from="opacity-100"
         leave-to="opacity-0"
       >
-        <div class="fixed inset-0 bg-gray-600 bg-opacity-40" />
+        <div class="fixed inset-0 bg-gray-600/40" />
       </TransitionChild>
       <TransitionChild
         as="template"
@@ -34,9 +34,9 @@ defineEmits(['cancel'])
         leave-from="translate-x-0"
         leave-to="translate-x-full"
       >
-        <DialogPanel class="fixed inset-y-0 right-0 bg-gray-100 sm:w-[30rem] dark:bg-gray-900">
+        <DialogPanel class="fixed inset-y-0 right-0 bg-gray-100 sm:w-120 dark:bg-gray-900">
           <div class="flex flex-col gap-y-6 overflow-y-auto p-6">
-            <div class="flex gap-x-2 break-all align-baseline">
+            <div class="flex gap-x-2 align-baseline break-all">
               <p class="text-xl font-medium">{{ title }}</p>
               <NeButton class="ml-auto self-center" kind="tertiary" @click="$emit('cancel')">
                 <FontAwesomeIcon :icon="faX" class="text-gray-600 dark:text-white" />

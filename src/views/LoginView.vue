@@ -45,7 +45,7 @@ async function handleLogin() {
 
 <template>
   <div
-    class="min-w-screen flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-blue-500 to-blue-950 p-4 lg:items-start lg:pl-[10%] dark:from-blue-900 dark:to-gray-950"
+    class="flex min-h-screen min-w-screen flex-col items-center justify-center bg-linear-to-b from-blue-500 to-blue-950 p-4 lg:items-start lg:pl-[10%] dark:from-blue-900 dark:to-gray-950"
   >
     <form
       class="w-full space-y-6 rounded-xl bg-gray-50 px-8 py-14 shadow-md sm:max-w-lg dark:bg-gray-900"
