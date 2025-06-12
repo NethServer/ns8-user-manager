@@ -1,6 +1,6 @@
-import { computed, ref } from 'vue'
-import axios from 'axios'
 import type { NeComboboxOption } from '@nethesis/vue-components'
+import axios from 'axios'
+import { computed, ref } from 'vue'
 
 export interface User {
   display_name: string

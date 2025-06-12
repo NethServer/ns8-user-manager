@@ -1,14 +1,17 @@
 <script lang="ts" setup>
-import { NeInlineNotification, NeButton, NeCheckbox, NeTextInput } from '@nethesis/vue-components'
-import { ref } from 'vue'
 import { useAuth } from '@/composables/useAuth'
-import axios from 'axios'
-import { useRouter } from 'vue-router'
 import { useConfig } from '@/stores/config'
+import { NeButton, NeCheckbox, NeInlineNotification, NeTextInput } from '@nethesis/vue-components'
+import axios from 'axios'
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 
 const { login } = useAuth()
 const router = useRouter()
 const config = useConfig()
+
+const { t } = useI18n()
 
 const username = ref('')
 const password = ref('')
@@ -57,21 +60,21 @@ async function handleLogin() {
       </div>
       <div class="space-y-4">
         <div>
-          <p class="text-xl">{{ $t('login_form.welcome') }}</p>
-          <p class="text-sm font-normal">{{ $t('login_form.sign_in_description') }}</p>
+          <p class="text-xl">{{ t('login_form.welcome') }}</p>
+          <p class="text-sm font-normal">{{ t('login_form.sign_in_description') }}</p>
         </div>
-        <NeInlineNotification v-if="errorMessage" :title="$t(errorMessage)" kind="error" />
+        <NeInlineNotification v-if="errorMessage" :title="t(errorMessage)" kind="error" />
         <NeTextInput
           v-if="config.domainName"
           v-model="config.domainName"
           disabled
-          :label="$t('login_form.domain')"
+          :label="t('login_form.domain')"
         />
         <NeTextInput
           v-model="username"
           :disabled="loading"
-          :invalid-message="validationMessage != undefined ? $t(validationMessage) : ''"
-          :label="$t('login_form.username')"
+          :invalid-message="validationMessage != undefined ? t(validationMessage) : ''"
+          :label="t('login_form.username')"
           autocomplete="username"
           autofocus
           required
@@ -79,15 +82,15 @@ async function handleLogin() {
         <NeTextInput
           v-model="password"
           :disabled="loading"
-          :label="$t('login_form.password')"
+          :label="t('login_form.password')"
           autocomplete="current-password"
           is-password
           required
         />
-        <NeCheckbox :disabled="loading" :label="$t('login_form.remember_me')" />
+        <NeCheckbox :disabled="loading" :label="t('login_form.remember_me')" />
       </div>
       <NeButton :disabled="loading" :loading="loading" class="w-full" kind="primary" type="submit">
-        {{ $t('login_form.sign_in') }}
+        {{ t('login_form.sign_in') }}
       </NeButton>
     </form>
   </div>

@@ -1,7 +1,7 @@
-import { ref } from 'vue'
 import type { BaseResponse } from '@/lib/axiosHelpers'
-import axios from 'axios'
 import { MessageBag } from '@/lib/validation'
+import axios from 'axios'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 export interface PasswordPolicyResponse extends BaseResponse {

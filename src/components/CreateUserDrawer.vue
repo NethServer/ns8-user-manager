@@ -1,23 +1,23 @@
 <script lang="ts" setup>
+import PasswordRequirementList from '@/components/PasswordRequirementList.vue'
 import SideDrawer from '@/components/SideDrawer.vue'
-import {
-  NeInlineNotification,
-  NeSkeleton,
-  NeButton,
-  NeCombobox,
-  type NeComboboxOption,
-  NeFormItemLabel,
-  NeTextInput,
-  NeToggle
-} from '@nethesis/vue-components'
-import { computed, ref, watch } from 'vue'
-import axios from 'axios'
-import type { BaseResponse } from '@/lib/axiosHelpers'
-import { MessageBag } from '@/lib/validation'
-import { useI18n } from 'vue-i18n'
 import { useGroups } from '@/composables/useGroups'
 import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
-import PasswordRequirementList from '@/components/PasswordRequirementList.vue'
+import type { BaseResponse } from '@/lib/axiosHelpers'
+import { MessageBag } from '@/lib/validation'
+import {
+  NeButton,
+  NeCombobox,
+  NeFormItemLabel,
+  NeInlineNotification,
+  NeSkeleton,
+  NeTextInput,
+  NeToggle,
+  type NeComboboxOption
+} from '@nethesis/vue-components'
+import axios from 'axios'
+import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 interface ErrorResponse extends BaseResponse {
   error: Array<{ error: string; field: string; parameter: string; value: string }>
@@ -131,59 +131,59 @@ function submit() {
 </script>
 
 <template>
-  <SideDrawer :show="show" :title="$t('user_manager.add_user')" @cancel="handleCancel()">
+  <SideDrawer :show="show" :title="t('user_manager.add_user')" @cancel="handleCancel()">
     <template #default>
       <form id="create-user" class="space-y-4" @submit.prevent="submit">
         <NeInlineNotification
           v-if="error"
-          :description="$t(error.message)"
-          :title="$t('errors.generic')"
+          :description="t(error.message)"
+          :title="t('errors.generic')"
           kind="error"
         />
         <div>
-          <NeFormItemLabel>{{ $t('user_manager.user_status') }}</NeFormItemLabel>
+          <NeFormItemLabel>{{ t('user_manager.user_status') }}</NeFormItemLabel>
           <NeToggle
             v-model="enabled"
             :disabled="loading"
-            :label="enabled ? $t('user_manager.user_enabled') : $t('user_manager.user_disabled')"
+            :label="enabled ? t('user_manager.user_enabled') : t('user_manager.user_disabled')"
           />
         </div>
         <NeTextInput
           v-model="username"
           :disabled="loading"
           :invalid-message="validationErrors.getFirstMessage('username')"
-          :label="$t('user_manager.user_username')"
+          :label="t('user_manager.user_username')"
           autocomplete="username"
           required
         />
         <NeTextInput
           v-model="name"
           :disabled="loading"
-          :label="$t('user_manager.user_name')"
+          :label="t('user_manager.user_name')"
           required
         />
         <NeSkeleton v-if="groupsLoading" :lines="2" />
         <NeInlineNotification
           v-else-if="groupsError"
-          :title="$t('errors.generic')"
+          :title="t('errors.generic')"
           kind="error"
-          :description="$t(groupsError.message)"
+          :description="t(groupsError.message)"
         />
         <NeCombobox
           v-else
           v-model="groups"
           :disabled="loading"
-          :label="$t('user_manager.groups')"
+          :label="t('user_manager.groups')"
           :options="groupsOptions"
-          :placeholder="$t('user_manager.choose_groups')"
+          :placeholder="t('user_manager.choose_groups')"
           multiple
           name="users"
-          :no-results-label="$t('ne_combobox.no_results')"
-          :limited-options-label="$t('ne_combobox.limited_options_label')"
-          :no-options-label="$t('ne_combobox.no_options_label')"
-          :selected-label="$t('ne_combobox.selected')"
-          :user-input-label="$t('ne_combobox.user_input_label')"
-          :optional-label="$t('common.optional')"
+          :no-results-label="t('ne_combobox.no_results')"
+          :limited-options-label="t('ne_combobox.limited_options_label')"
+          :no-options-label="t('ne_combobox.no_options_label')"
+          :selected-label="t('ne_combobox.selected')"
+          :user-input-label="t('ne_combobox.user_input_label')"
+          :optional-label="t('common.optional')"
         />
         <NeSkeleton v-if="passwordPolicyLoading" :lines="2" />
         <NeInlineNotification
@@ -196,7 +196,7 @@ function submit() {
             v-model="password"
             :disabled="loading"
             :invalid-message="validationErrors.getFirstMessage('password')"
-            :label="$t('user_manager.user_password')"
+            :label="t('user_manager.user_password')"
             autocomplete="new-password"
             is-password
             required
@@ -214,7 +214,7 @@ function submit() {
             v-model="confirmPassword"
             :disabled="loading"
             :invalid-message="validationErrors.getFirstMessage('confirm_password')"
-            :label="$t('user_manager.user_confirm_password')"
+            :label="t('user_manager.user_confirm_password')"
             autocomplete="new-password"
             is-password
             required
@@ -222,7 +222,7 @@ function submit() {
           <NeTextInput
             v-model="email"
             :disabled="loading"
-            :label="$t('user_manager.email')"
+            :label="t('user_manager.email')"
             autocomplete="email"
             type="email"
             optional
@@ -233,7 +233,7 @@ function submit() {
     <template #footer>
       <div class="flex flex-col justify-end gap-4 sm:flex-row">
         <NeButton :disabled="loading" kind="tertiary" @click="handleCancel()">
-          {{ $t('user_manager.cancel') }}
+          {{ t('user_manager.cancel') }}
         </NeButton>
         <NeButton
           :disabled="loading"
@@ -242,7 +242,7 @@ function submit() {
           kind="primary"
           type="submit"
         >
-          {{ $t('user_manager.add_user') }}
+          {{ t('user_manager.add_user') }}
         </NeButton>
       </div>
     </template>

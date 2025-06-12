@@ -1,25 +1,25 @@
 <script lang="ts" setup>
+import CreateGroupDrawer from '@/components/CreateGroupDrawer.vue'
+import DeleteGroupModal from '@/components/DeleteGroupModal.vue'
+import EditGroupDrawer from '@/components/EditGroupDrawer.vue'
+import { useGroups, type Group } from '@/composables/useGroups'
+import { useNotificationEngine } from '@/stores/notifications'
 import { faEdit, faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
-  NeSkeleton,
+  NeButton,
+  NeDropdown,
   NeInlineNotification,
+  NeSkeleton,
   NeTable,
-  NeTableHead,
-  NeTableHeadCell,
-  NeTableRow,
   NeTableBody,
   NeTableCell,
-  NeButton,
-  NeDropdown
+  NeTableHead,
+  NeTableHeadCell,
+  NeTableRow
 } from '@nethesis/vue-components'
-import { type Group, useGroups } from '@/composables/useGroups'
 import { ref } from 'vue'
-import CreateGroupDrawer from '@/components/CreateGroupDrawer.vue'
-import DeleteGroupModal from '@/components/DeleteGroupModal.vue'
-import { useNotificationEngine } from '@/stores/notifications'
 import { useI18n } from 'vue-i18n'
-import EditGroupDrawer from '@/components/EditGroupDrawer.vue'
 
 const { loading, data, error, fetch } = useGroups()
 const notifications = useNotificationEngine()
@@ -68,20 +68,20 @@ function handleGroupEdited() {
         <template #prefix>
           <FontAwesomeIcon :icon="faPlusCircle" />
         </template>
-        {{ $t('user_manager.add_group') }}
+        {{ t('user_manager.add_group') }}
       </NeButton>
     </div>
     <NeInlineNotification
       v-if="error"
-      :description="$t(error?.message)"
-      :title="$t('errors.generic')"
+      :description="t(error?.message)"
+      :title="t('errors.generic')"
       kind="error"
     />
     <NeSkeleton v-if="loading" :lines="10" />
     <NeTable v-else>
       <NeTableHead>
-        <NeTableHeadCell>{{ $t('user_manager.group_name') }}</NeTableHeadCell>
-        <NeTableHeadCell>{{ $t('user_manager.group_description') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ t('user_manager.group_name') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ t('user_manager.group_description') }}</NeTableHeadCell>
         <NeTableHeadCell><!-- Actions --></NeTableHeadCell>
       </NeTableHead>
       <NeTableBody>
@@ -92,14 +92,14 @@ function handleGroupEdited() {
             <div class="flex items-center justify-end gap-2">
               <NeButton kind="tertiary" size="sm" @click="groupToEdit = group">
                 <FontAwesomeIcon :icon="faEdit" class="pr-2" />
-                {{ $t('edit') }}
+                {{ t('edit') }}
               </NeButton>
               <NeDropdown
                 :items="[
                   {
                     id: 'delete',
                     danger: true,
-                    label: $t('user_manager.group_delete'),
+                    label: t('user_manager.group_delete'),
                     action: () => (groupToDelete = group)
                   }
                 ]"

@@ -1,9 +1,12 @@
 <script lang="ts" setup>
 import { useNotificationEngine } from '@/stores/notifications'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faCheckCircle, faCircleXmark, faX } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { useI18n } from 'vue-i18n'
 
 const notificationEngine = useNotificationEngine()
+
+const { t } = useI18n()
 
 notificationEngine.$onAction(({ name, after }) => {
   if (name == 'add') {
@@ -37,8 +40,8 @@ notificationEngine.$onAction(({ name, after }) => {
           <FontAwesomeIcon :icon="faCircleXmark" class="h-full w-full" />
         </div>
         <div class="space-y-1">
-          <p class="h3 text-sm">{{ $t(notification.title) }}</p>
-          <small class="text-gray-500 dark:text-gray-400">{{ $t(notification.description) }}</small>
+          <p class="h3 text-sm">{{ t(notification.title) }}</p>
+          <small class="text-gray-500 dark:text-gray-400">{{ t(notification.description) }}</small>
         </div>
         <button class="h-3.5 w-3.5 shrink-0" @click="notificationEngine.remove(id)">
           <FontAwesomeIcon :icon="faX" class="h-full w-full" />

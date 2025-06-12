@@ -1,26 +1,29 @@
 <script lang="ts" setup>
+import SideDrawer from '@/components/SideDrawer.vue'
 import type { UserList } from '@/components/UserList.vue'
-import { computed, ref, watch } from 'vue'
 import { useGroups } from '@/composables/useGroups'
+import type { BaseResponse } from '@/lib/axiosHelpers'
 import {
-  NeInlineNotification,
-  NeSkeleton,
   NeButton,
   NeCombobox,
-  type NeComboboxOption,
   NeFormItemLabel,
+  NeInlineNotification,
+  NeSkeleton,
   NeTextInput,
-  NeToggle
+  NeToggle,
+  type NeComboboxOption
 } from '@nethesis/vue-components'
-import type { BaseResponse } from '@/lib/axiosHelpers'
 import axios from 'axios'
-import SideDrawer from '@/components/SideDrawer.vue'
+import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const { data: remoteGroups, loading: groupsLoading, error: groupsError } = useGroups()
 
 const props = defineProps<{
   user?: UserList
 }>()
+
+const { t } = useI18n()
 
 const emit = defineEmits(['success', 'cancel'])
 
@@ -86,59 +89,59 @@ function submit() {
 <template>
   <SideDrawer
     :show="user != undefined"
-    :title="$t('user_manager.edit_user', { name: username })"
+    :title="t('user_manager.edit_user', { name: username })"
     @cancel="$emit('cancel')"
   >
     <template #default>
       <form id="edit-user" class="space-y-4" @submit.prevent="submit">
         <NeInlineNotification
           v-if="error"
-          :description="$t(error.message)"
-          :title="$t('errors.generic')"
+          :description="t(error.message)"
+          :title="t('errors.generic')"
           kind="error"
         />
         <div>
-          <NeFormItemLabel>{{ $t('user_manager.user_status') }}</NeFormItemLabel>
+          <NeFormItemLabel>{{ t('user_manager.user_status') }}</NeFormItemLabel>
           <NeToggle
             v-model="enabled"
             :disabled="loading"
-            :label="enabled ? $t('user_manager.user_enabled') : $t('user_manager.user_disabled')"
+            :label="enabled ? t('user_manager.user_enabled') : t('user_manager.user_disabled')"
           />
         </div>
-        <NeTextInput v-model="username" :label="$t('user_manager.user_username')" disabled />
+        <NeTextInput v-model="username" :label="t('user_manager.user_username')" disabled />
         <NeTextInput
           v-model="name"
           :disabled="loading"
-          :label="$t('user_manager.user_name')"
+          :label="t('user_manager.user_name')"
           required
         />
         <NeSkeleton v-if="groupsLoading" :lines="2" />
         <NeInlineNotification
           v-else-if="groupsError"
-          :description="$t(groupsError.message)"
-          :title="$t('errors.generic')"
+          :description="t(groupsError.message)"
+          :title="t('errors.generic')"
           kind="error"
         />
         <NeCombobox
           v-else
           v-model="groups"
           :disabled="loading"
-          :label="$t('user_manager.groups')"
+          :label="t('user_manager.groups')"
           :options="groupsOptions"
-          :placeholder="$t('user_manager.choose_groups')"
+          :placeholder="t('user_manager.choose_groups')"
           multiple
           name="users"
-          :no-results-label="$t('ne_combobox.no_results')"
-          :limited-options-label="$t('ne_combobox.limited_options_label')"
-          :no-options-label="$t('ne_combobox.no_options_label')"
-          :selected-label="$t('ne_combobox.selected')"
-          :user-input-label="$t('ne_combobox.user_input_label')"
-          :optional-label="$t('common.optional')"
+          :no-results-label="t('ne_combobox.no_results')"
+          :limited-options-label="t('ne_combobox.limited_options_label')"
+          :no-options-label="t('ne_combobox.no_options_label')"
+          :selected-label="t('ne_combobox.selected')"
+          :user-input-label="t('ne_combobox.user_input_label')"
+          :optional-label="t('common.optional')"
         />
         <NeTextInput
           v-model="email"
           :disabled="loading"
-          :label="$t('user_manager.email')"
+          :label="t('user_manager.email')"
           autocomplete="email"
           optional
           type="email"
@@ -148,7 +151,7 @@ function submit() {
     <template #footer>
       <div class="flex flex-col justify-end gap-4 sm:flex-row">
         <NeButton :disabled="loading" kind="tertiary" @click="handleCancel()">
-          {{ $t('user_manager.cancel') }}
+          {{ t('user_manager.cancel') }}
         </NeButton>
         <NeButton
           :disabled="loading"
@@ -157,7 +160,7 @@ function submit() {
           kind="primary"
           type="submit"
         >
-          {{ $t('edit') }}
+          {{ t('edit') }}
         </NeButton>
       </div>
     </template>

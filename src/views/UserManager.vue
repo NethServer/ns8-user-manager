@@ -1,25 +1,28 @@
 <script lang="ts" setup>
-import { NeTabs } from '@nethesis/vue-components'
-import { ref } from 'vue'
 import ContentPage from '@/components/ContentPage.vue'
 import GroupsList from '@/components/GroupsList.vue'
 import UserList from '@/components/UserList.vue'
+import { NeTabs } from '@nethesis/vue-components'
+import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const selectedTab = ref('users')
 </script>
 
 <template>
-  <ContentPage :title="$t('user_manager.title')" class="max-w-full">
+  <ContentPage :title="t('user_manager.title')" class="max-w-full">
     <template #divider>
       <NeTabs
         :tabs="[
           {
             name: 'users',
-            label: $t('user_manager.tabs.users')
+            label: t('user_manager.tabs.users')
           },
           {
             name: 'groups',
-            label: $t('user_manager.tabs.groups')
+            label: t('user_manager.tabs.groups')
           }
         ]"
         class="mt-4!"

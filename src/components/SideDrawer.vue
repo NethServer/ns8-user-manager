@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faX } from '@fortawesome/free-solid-svg-icons'
-import { NeButton } from '@nethesis/vue-components'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { Dialog, DialogPanel, TransitionChild, TransitionRoot } from '@headlessui/vue'
+import { NeButton } from '@nethesis/vue-components'
 
 defineProps<{
   show: boolean
