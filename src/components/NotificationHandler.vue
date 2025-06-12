@@ -49,7 +49,7 @@ notificationEngine.$onAction(({ name, after }) => {
 </template>
 
 <style scoped>
-@reference "@/assets/main.css"
+@reference "@/assets/main.css";
 
 .v-enter-active,
 .v-leave-active {

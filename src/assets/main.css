@@ -21,7 +21,7 @@
   --color-primary-900: var(--color-blue-900);
   --color-primary-950: var(--color-blue-950);
 
-  --breakpoint-sidebar: var(--breakpoint-lg)
+  --breakpoint-sidebar: var(--breakpoint-lg);
 }
 
 @layer base {

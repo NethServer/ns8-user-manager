@@ -30,11 +30,11 @@ function handleLogout() {
 </script>
 
 <template>
-  <div class="min-w-screen flex min-h-screen">
+  <div class="flex min-h-screen min-w-screen">
     <!-- Side bar -->
     <div ref="sidebarRef" class="side-bar">
       <div>
-        <NeButton class="sidebar:hidden absolute right-4 top-4 h-8 w-8" @click="toggleSidebar">
+        <NeButton class="sidebar:hidden absolute top-4 right-4 h-8 w-8" @click="toggleSidebar">
           <FontAwesomeIcon :icon="faXmark" class="h-full w-full text-gray-900 dark:text-gray-50" />
         </NeButton>
         <div class="mb-8 flex flex-col items-center justify-center gap-y-2">
@@ -73,7 +73,7 @@ function handleLogout() {
               <FontAwesomeIcon :icon="faAngleDown" />
             </MenuButton>
             <MenuItems
-              class="absolute right-0 top-10 z-10 w-32 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-700"
+              class="absolute top-10 right-0 z-10 w-32 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-700"
             >
               <MenuItem>
                 <button
@@ -90,7 +90,7 @@ function handleLogout() {
       <main class="relative grow bg-gray-50 p-6 dark:bg-gray-900">
         <!-- Notification handler -->
         <div class="sticky top-0 z-20">
-          <div class="absolute right-0 top-0 max-w-lg">
+          <div class="absolute top-0 right-0 max-w-lg">
             <NotificationHandler />
           </div>
         </div>
@@ -101,18 +101,18 @@ function handleLogout() {
 </template>
 
 <style scoped>
-@reference "@/assets/main.css"
+@reference "@/assets/main.css";
 
 .side-bar {
   @apply sidebar:flex hidden w-full shrink-0 flex-col gap-y-8 border-r border-gray-300 bg-white px-2 py-8 sm:w-80 dark:border-gray-800 dark:bg-gray-950;
 }
 
 .side-bar.active {
-  @apply sidebar:relative sidebar:z-auto absolute bottom-0 left-0 top-0 z-20 flex;
+  @apply sidebar:relative sidebar:z-auto absolute top-0 bottom-0 left-0 z-20 flex;
 }
 
 .side-bar-overlay {
-  @apply absolute bottom-0 left-0 right-0 top-0 z-10 hidden bg-gray-800 opacity-70;
+  @apply absolute top-0 right-0 bottom-0 left-0 z-10 hidden bg-gray-800 opacity-70;
 }
 
 .side-bar.active + .side-bar-overlay {
