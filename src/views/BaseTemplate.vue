@@ -10,12 +10,15 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { NeButton } from '@nethesis/vue-components'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
 const { logout, uid } = useAuth()
 
 const router = useRouter()
 const config = useConfig()
+
+const { t } = useI18n()
 
 const sidebarRef = ref<HTMLElement | null>(null)
 
@@ -80,7 +83,7 @@ function handleLogout() {
                   class="flex w-full px-6 py-2 text-gray-900 hover:bg-gray-100 dark:text-gray-50 dark:hover:bg-gray-700"
                   @click="handleLogout()"
                 >
-                  {{ $t('base_template.logout') }}
+                  {{ t('base_template.logout') }}
                 </button>
               </MenuItem>
             </MenuItems>

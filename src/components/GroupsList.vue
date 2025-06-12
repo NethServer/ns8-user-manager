@@ -68,20 +68,20 @@ function handleGroupEdited() {
         <template #prefix>
           <FontAwesomeIcon :icon="faPlusCircle" />
         </template>
-        {{ $t('user_manager.add_group') }}
+        {{ t('user_manager.add_group') }}
       </NeButton>
     </div>
     <NeInlineNotification
       v-if="error"
-      :description="$t(error?.message)"
-      :title="$t('errors.generic')"
+      :description="t(error?.message)"
+      :title="t('errors.generic')"
       kind="error"
     />
     <NeSkeleton v-if="loading" :lines="10" />
     <NeTable v-else>
       <NeTableHead>
-        <NeTableHeadCell>{{ $t('user_manager.group_name') }}</NeTableHeadCell>
-        <NeTableHeadCell>{{ $t('user_manager.group_description') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ t('user_manager.group_name') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ t('user_manager.group_description') }}</NeTableHeadCell>
         <NeTableHeadCell><!-- Actions --></NeTableHeadCell>
       </NeTableHead>
       <NeTableBody>
@@ -92,14 +92,14 @@ function handleGroupEdited() {
             <div class="flex items-center justify-end gap-2">
               <NeButton kind="tertiary" size="sm" @click="groupToEdit = group">
                 <FontAwesomeIcon :icon="faEdit" class="pr-2" />
-                {{ $t('edit') }}
+                {{ t('edit') }}
               </NeButton>
               <NeDropdown
                 :items="[
                   {
                     id: 'delete',
                     danger: true,
-                    label: $t('user_manager.group_delete'),
+                    label: t('user_manager.group_delete'),
                     action: () => (groupToDelete = group)
                   }
                 ]"

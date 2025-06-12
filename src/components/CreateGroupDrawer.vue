@@ -10,8 +10,11 @@ import {
 } from '@nethesis/vue-components'
 import axios from 'axios'
 import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const { comboboxChoices: userComboboxChoices, loading: userLoading } = useUsers()
+
+const { t } = useI18n()
 
 const props = defineProps<{
   show: boolean
@@ -60,19 +63,19 @@ async function submit() {
 </script>
 
 <template>
-  <SideDrawer :show="show" :title="$t('user_manager.add_group')" @cancel="$emit('cancel')">
+  <SideDrawer :show="show" :title="t('user_manager.add_group')" @cancel="$emit('cancel')">
     <template #default>
       <form id="create-group" class="space-y-4" @submit.prevent="submit">
         <NeTextInput
           v-model="name"
           :disabled="loading"
-          :label="$t('user_manager.group_name')"
+          :label="t('user_manager.group_name')"
           required
         />
         <NeTextInput
           v-model="description"
           :disabled="loading"
-          :label="$t('user_manager.group_description')"
+          :label="t('user_manager.group_description')"
           required
         />
         <NeSkeleton v-if="userLoading" :lines="2" />
@@ -80,24 +83,24 @@ async function submit() {
           v-else
           v-model="users"
           :disabled="loading"
-          :label="$t('user_manager.users')"
+          :label="t('user_manager.users')"
           :options="userComboboxChoices"
-          :placeholder="$t('user_manager.choose_users')"
+          :placeholder="t('user_manager.choose_users')"
           multiple
           name="users"
-          :no-results-label="$t('ne_combobox.no_results')"
-          :limited-options-label="$t('ne_combobox.limited_options_label')"
-          :no-options-label="$t('ne_combobox.no_options_label')"
-          :selected-label="$t('ne_combobox.selected')"
-          :user-input-label="$t('ne_combobox.user_input_label')"
-          :optional-label="$t('common.optional')"
+          :no-results-label="t('ne_combobox.no_results')"
+          :limited-options-label="t('ne_combobox.limited_options_label')"
+          :no-options-label="t('ne_combobox.no_options_label')"
+          :selected-label="t('ne_combobox.selected')"
+          :user-input-label="t('ne_combobox.user_input_label')"
+          :optional-label="t('common.optional')"
         />
       </form>
     </template>
     <template #footer>
       <div class="flex flex-col justify-end gap-4 sm:flex-row">
         <NeButton :disabled="loading" kind="tertiary" @click="$emit('cancel')">
-          {{ $t('user_manager.cancel') }}
+          {{ t('user_manager.cancel') }}
         </NeButton>
         <NeButton
           :disabled="loading"
@@ -106,7 +109,7 @@ async function submit() {
           kind="primary"
           type="submit"
         >
-          {{ $t('user_manager.add_group') }}
+          {{ t('user_manager.add_group') }}
         </NeButton>
       </div>
     </template>

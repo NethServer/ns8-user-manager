@@ -125,13 +125,13 @@ async function changePassword() {
 </script>
 
 <template>
-  <ContentPage :title="$t('account_settings.title')">
+  <ContentPage :title="t('account_settings.title')">
     <div class="grid grid-cols-1 gap-x-6 gap-y-6 lg:grid-cols-2">
       <div class="space-y-1">
         <p>
-          {{ $t('account_settings.change_password') }}
+          {{ t('account_settings.change_password') }}
         </p>
-        <p class="description-text">{{ $t('account_settings.change_password_description') }}</p>
+        <p class="description-text">{{ t('account_settings.change_password_description') }}</p>
         <ul class="description-text list-disc pl-6">
           <li v-for="(product, key) in config.services" :key="key">
             {{ t(product) }}
@@ -152,7 +152,7 @@ async function changePassword() {
           v-model="oldPassword"
           :disabled="loading"
           :invalid-message="validationMessages.getFirstMessage('old_password')"
-          :label="$t('account_settings.current_password')"
+          :label="t('account_settings.current_password')"
           autocomplete="current-password"
           autofocus
           is-password
@@ -164,7 +164,7 @@ async function changePassword() {
             v-model="newPassword"
             :disabled="loading"
             :invalid-message="validationMessages.getFirstMessage('new_password')"
-            :label="$t('account_settings.new_password')"
+            :label="t('account_settings.new_password')"
             autocomplete="new-password"
             is-password
             name="new_password"
@@ -184,7 +184,7 @@ async function changePassword() {
           v-model="confirmPassword"
           :disabled="loading"
           :invalid-message="validationMessages.getFirstMessage('confirm_password')"
-          :label="$t('account_settings.confirm_password')"
+          :label="t('account_settings.confirm_password')"
           autocomplete="new-password"
           is-password
           name="confirm_password"
@@ -198,7 +198,7 @@ async function changePassword() {
           type="submit"
         >
           <FontAwesomeIcon :icon="faSave" aria-hidden="true" class="mr-2 h-4 w-4" />
-          {{ $t('account_settings.save_password') }}
+          {{ t('account_settings.save_password') }}
         </NeButton>
       </form>
     </div>

@@ -3,10 +3,13 @@ import type { User } from '@/composables/useUsers'
 import { NeInlineNotification, NeModal } from '@nethesis/vue-components'
 import axios from 'axios'
 import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
   user?: User
 }>()
+
+const { t } = useI18n()
 
 const emit = defineEmits(['delete', 'cancel'])
 
@@ -50,26 +53,26 @@ function deleteUser() {
 
 <template>
   <NeModal
-    :primary-label="$t('user_manager.user_delete')"
-    :title="$t('user_manager.user_delete_modal_title')"
+    :primary-label="t('user_manager.user_delete')"
+    :title="t('user_manager.user_delete_modal_title')"
     :visible="user != undefined"
     kind="warning"
     primary-button-kind="danger"
     :primary-button-loading="loading"
     :primary-button-disabled="loading"
-    :close-aria-label="$t('close')"
+    :close-aria-label="t('close')"
     @primary-click="deleteUser"
     @close="handleClose"
   >
     <div class="space-y-4">
       <NeInlineNotification
         v-if="error"
-        :description="$t(error.message)"
-        :title="$t('errors.generic')"
+        :description="t(error.message)"
+        :title="t('errors.generic')"
         kind="error"
       />
       <p>
-        {{ $t('user_manager.user_delete_modal_description', { name: userToDelete!.user }) }}
+        {{ t('user_manager.user_delete_modal_description', { name: userToDelete!.user }) }}
       </p>
     </div>
   </NeModal>

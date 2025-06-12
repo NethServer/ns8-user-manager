@@ -3,6 +3,9 @@ import type { Group } from '@/composables/useGroups'
 import { NeInlineNotification, NeModal } from '@nethesis/vue-components'
 import axios from 'axios'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 
 const props = defineProps<{
   group?: Group
@@ -40,14 +43,14 @@ function deleteGroup() {
 
 <template>
   <NeModal
-    :primary-label="$t('user_manager.group_delete')"
-    :title="$t('user_manager.group_delete_modal_title')"
+    :primary-label="t('user_manager.group_delete')"
+    :title="t('user_manager.group_delete_modal_title')"
     :visible="group != undefined"
     kind="warning"
     primary-button-kind="danger"
     :primary-button-loading="loading"
     :primary-button-disabled="loading"
-    :close-aria-label="$t('close')"
+    :close-aria-label="t('close')"
     @primary-click="deleteGroup"
     @close="handleClose"
   >
@@ -55,11 +58,11 @@ function deleteGroup() {
       <NeInlineNotification
         v-if="error"
         kind="error"
-        :title="$t('errors.generic')"
-        :description="$t(error.message)"
+        :title="t('errors.generic')"
+        :description="t(error.message)"
       />
       <p>
-        {{ $t('user_manager.group_delete_modal_description', { name: group?.group }) }}
+        {{ t('user_manager.group_delete_modal_description', { name: group?.group }) }}
       </p>
     </div>
   </NeModal>

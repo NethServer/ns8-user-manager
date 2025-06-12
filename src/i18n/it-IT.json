@@ -116,5 +116,12 @@
         "minimum_special": "Almeno {count} carattere speciale (!{'@'}#^&_?-) | Almeno {count} caratteri speciali (!{'@'}#^&_?-)",
         "password_policy_error": "Al momento non è possibile recuperare i criteri della password, riprovare più tardi."
     },
-    "close": "Chiudi"
+    "close": "Chiudi",
+    "ns_combobox": {
+        "no_results": "Nessun risultato",
+        "limited_options_label": "Continua a digitare per mostrare più opzioni",
+        "no_options_label": "Nessuna opzione disponibile",
+        "selected": "Selezionato",
+        "user_input_label": "Input utente"
+    }
 }

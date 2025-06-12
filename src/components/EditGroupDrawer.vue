@@ -12,12 +12,15 @@ import {
 } from '@nethesis/vue-components'
 import axios from 'axios'
 import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const {
   comboboxChoices: userComboboxChoices,
   loading: loadingUsers,
   error: errorUsers
 } = useUsers()
+
+const { t } = useI18n()
 
 const emit = defineEmits(['cancel', 'success'])
 
@@ -80,22 +83,22 @@ function handleCancel() {
 <template>
   <SideDrawer
     :show="group != undefined"
-    :title="$t('user_manager.group_edit')"
+    :title="t('user_manager.group_edit')"
     @cancel="handleCancel"
   >
     <template #default>
       <form id="edit-group" class="space-y-4" @submit.prevent="edit">
-        <NeTextInput v-model="name" :label="$t('user_manager.group_name')" disabled />
+        <NeTextInput v-model="name" :label="t('user_manager.group_name')" disabled />
         <NeTextInput
           v-model="description"
           :disabled="loading"
-          :label="$t('user_manager.group_description')"
+          :label="t('user_manager.group_description')"
           required
         />
         <NeInlineNotification
           v-if="errorUsers"
-          :description="$t(errorUsers.message)"
-          :title="$t('errors.generic_error')"
+          :description="t(errorUsers.message)"
+          :title="t('errors.generic_error')"
           kind="error"
         />
         <NeSkeleton v-if="loadingUsers" />
@@ -103,23 +106,23 @@ function handleCancel() {
           v-else
           v-model="users"
           :disabled="loading"
-          :label="$t('user_manager.users')"
+          :label="t('user_manager.users')"
           :options="userComboboxChoices"
-          :placeholder="$t('user_manager.choose_users')"
+          :placeholder="t('user_manager.choose_users')"
           multiple
-          :no-results-label="$t('ne_combobox.no_results')"
-          :limited-options-label="$t('ne_combobox.limited_options_label')"
-          :no-options-label="$t('ne_combobox.no_options_label')"
-          :selected-label="$t('ne_combobox.selected')"
-          :user-input-label="$t('ne_combobox.user_input_label')"
-          :optional-label="$t('common.optional')"
+          :no-results-label="t('ne_combobox.no_results')"
+          :limited-options-label="t('ne_combobox.limited_options_label')"
+          :no-options-label="t('ne_combobox.no_options_label')"
+          :selected-label="t('ne_combobox.selected')"
+          :user-input-label="t('ne_combobox.user_input_label')"
+          :optional-label="t('common.optional')"
         />
       </form>
     </template>
     <template #footer>
       <div class="flex flex-col justify-end gap-4 sm:flex-row">
         <NeButton :disabled="loading" kind="secondary" @click="handleCancel">
-          {{ $t('user_manager.cancel') }}
+          {{ t('user_manager.cancel') }}
         </NeButton>
         <NeButton
           :disabled="loading"
@@ -128,7 +131,7 @@ function handleCancel() {
           kind="primary"
           type="submit"
         >
-          {{ $t('user_manager.edit_group') }}
+          {{ t('user_manager.edit_group') }}
         </NeButton>
       </div>
     </template>

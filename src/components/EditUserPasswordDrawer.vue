@@ -106,21 +106,21 @@ function submit() {
 <template>
   <SideDrawer
     :show="user != undefined"
-    :title="$t('user_manager.change_user_password', { name: username })"
+    :title="t('user_manager.change_user_password', { name: username })"
     @cancel="handleCancel"
   >
     <template #default>
       <form id="change-user-password" class="space-y-4" @submit.prevent="submit">
         <NeInlineNotification
           v-if="error"
-          :description="$t(error.message)"
-          :title="$t('errors.generic')"
+          :description="t(error.message)"
+          :title="t('errors.generic')"
           kind="error"
         />
         <NeTextInput
           v-model="username"
           autocomplete="username"
-          :label="$t('user_manager.user_username')"
+          :label="t('user_manager.user_username')"
           disabled
         />
         <NeSkeleton v-if="passwordPolicyLoading" :lines="2" />
@@ -134,7 +134,7 @@ function submit() {
             v-model="password"
             :disabled="loading"
             :invalid-message="validationErrors.getFirstMessage('password')"
-            :label="$t('user_manager.user_password')"
+            :label="t('user_manager.user_password')"
             autocomplete="new-password"
             is-password
             required
