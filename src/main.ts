@@ -12,6 +12,9 @@ import enJson from './i18n/en-US.json'
 import itJson from './i18n/it-IT.json'
 import axios, { AxiosError } from 'axios'
 
+import { config } from '@fortawesome/fontawesome-svg-core'
+config.autoAddCss = false
+
 const app = createApp(App)
 
 app.use(createPinia())

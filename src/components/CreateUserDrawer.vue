@@ -178,6 +178,12 @@ function submit() {
           :placeholder="$t('user_manager.choose_groups')"
           multiple
           name="users"
+          :no-results-label="$t('ne_combobox.no_results')"
+          :limited-options-label="$t('ne_combobox.limited_options_label')"
+          :no-options-label="$t('ne_combobox.no_options_label')"
+          :selected-label="$t('ne_combobox.selected')"
+          :user-input-label="$t('ne_combobox.user_input_label')"
+          :optional-label="$t('common.optional')"
         />
         <NeSkeleton v-if="passwordPolicyLoading" :lines="2" />
         <NeInlineNotification
