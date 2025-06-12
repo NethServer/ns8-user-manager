@@ -11,10 +11,8 @@ COPY package-lock.json .
 RUN npm ci
 COPY public public
 COPY src src
-COPY .postcssrc.json .
 COPY env.d.ts .
 COPY index.html .
-COPY tailwind.config.ts .
 COPY tsconfig.app.json .
 COPY tsconfig.json .
 COPY tsconfig.node.json .
