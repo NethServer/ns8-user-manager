@@ -1,20 +1,20 @@
 <script lang="ts" setup>
+import SideDrawer from '@/components/SideDrawer.vue'
 import type { UserList } from '@/components/UserList.vue'
-import { computed, ref, watch } from 'vue'
 import { useGroups } from '@/composables/useGroups'
+import type { BaseResponse } from '@/lib/axiosHelpers'
 import {
-  NeInlineNotification,
-  NeSkeleton,
   NeButton,
   NeCombobox,
-  type NeComboboxOption,
   NeFormItemLabel,
+  NeInlineNotification,
+  NeSkeleton,
   NeTextInput,
-  NeToggle
+  NeToggle,
+  type NeComboboxOption
 } from '@nethesis/vue-components'
-import type { BaseResponse } from '@/lib/axiosHelpers'
 import axios from 'axios'
-import SideDrawer from '@/components/SideDrawer.vue'
+import { computed, ref, watch } from 'vue'
 
 const { data: remoteGroups, loading: groupsLoading, error: groupsError } = useGroups()
 

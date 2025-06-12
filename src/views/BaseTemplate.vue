@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons/faCircleUser'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons/faAngleDown'
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { useAuth } from '@/composables/useAuth'
-import SidebarMenu from '@/components/SidebarMenu.vue'
-import { useRouter } from 'vue-router'
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
-import { ref } from 'vue'
-import { NeButton } from '@nethesis/vue-components'
 import NotificationHandler from '@/components/NotificationHandler.vue'
+import SidebarMenu from '@/components/SidebarMenu.vue'
+import { useAuth } from '@/composables/useAuth'
 import { useConfig } from '@/stores/config'
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons/faAngleDown'
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons/faCircleUser'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { NeButton } from '@nethesis/vue-components'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const { logout, uid } = useAuth()
 

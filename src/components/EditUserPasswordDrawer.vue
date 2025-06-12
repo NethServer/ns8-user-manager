@@ -1,14 +1,14 @@
 <script lang="ts" setup>
-import type { User } from '@/composables/useUsers'
-import { ref, watch } from 'vue'
-import SideDrawer from '@/components/SideDrawer.vue'
-import { MessageBag } from '@/lib/validation'
-import { useI18n } from 'vue-i18n'
-import axios from 'axios'
-import type { BaseResponse } from '@/lib/axiosHelpers'
-import { NeInlineNotification, NeSkeleton, NeButton, NeTextInput } from '@nethesis/vue-components'
 import PasswordRequirementList from '@/components/PasswordRequirementList.vue'
+import SideDrawer from '@/components/SideDrawer.vue'
 import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
+import type { User } from '@/composables/useUsers'
+import type { BaseResponse } from '@/lib/axiosHelpers'
+import { MessageBag } from '@/lib/validation'
+import { NeButton, NeInlineNotification, NeSkeleton, NeTextInput } from '@nethesis/vue-components'
+import axios from 'axios'
+import { ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 

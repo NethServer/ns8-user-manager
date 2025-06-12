@@ -1,16 +1,16 @@
-import './assets/main.css'
 import '@fontsource/poppins'
+import './assets/main.css'
 
-import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { createApp } from 'vue'
 
 import App from './App.vue'
 import router from './router'
 
+import axios, { AxiosError } from 'axios'
 import { createI18n } from 'vue-i18n'
 import enJson from './i18n/en-US.json'
 import itJson from './i18n/it-IT.json'
-import axios, { AxiosError } from 'axios'
 
 import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false

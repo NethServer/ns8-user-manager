@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { NeInlineNotification, NeModal } from '@nethesis/vue-components'
 import type { User } from '@/composables/useUsers'
-import { ref, watch } from 'vue'
+import { NeInlineNotification, NeModal } from '@nethesis/vue-components'
 import axios from 'axios'
+import { ref, watch } from 'vue'
 
 const props = defineProps<{
   user?: User

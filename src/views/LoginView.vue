@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { NeInlineNotification, NeButton, NeCheckbox, NeTextInput } from '@nethesis/vue-components'
-import { ref } from 'vue'
 import { useAuth } from '@/composables/useAuth'
-import axios from 'axios'
-import { useRouter } from 'vue-router'
 import { useConfig } from '@/stores/config'
+import { NeButton, NeCheckbox, NeInlineNotification, NeTextInput } from '@nethesis/vue-components'
+import axios from 'axios'
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const { login } = useAuth()
 const router = useRouter()

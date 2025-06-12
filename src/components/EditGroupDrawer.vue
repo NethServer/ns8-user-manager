@@ -1,17 +1,17 @@
 <script lang="ts" setup>
 import SideDrawer from '@/components/SideDrawer.vue'
 import type { Group } from '@/composables/useGroups'
-import { ref, watch } from 'vue'
+import { useUsers } from '@/composables/useUsers'
 import {
-  NeSkeleton,
   NeButton,
   NeCombobox,
-  type NeComboboxOption,
   NeInlineNotification,
-  NeTextInput
+  NeSkeleton,
+  NeTextInput,
+  type NeComboboxOption
 } from '@nethesis/vue-components'
-import { useUsers } from '@/composables/useUsers'
 import axios from 'axios'
+import { ref, watch } from 'vue'
 
 const {
   comboboxChoices: userComboboxChoices,

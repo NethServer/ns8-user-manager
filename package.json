@@ -10,9 +10,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
     "lint": "eslint .",
-    "lint-fix": "npm run lint -- --fix",
-    "format": "prettier --list-different src/",
-    "format-fix": "prettier --write src/"
+    "lint-fix": "npm run lint -- --fix"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
@@ -34,9 +32,10 @@
     "@vue/eslint-config-typescript": "^14.1.4",
     "@vue/tsconfig": "^0.5.1",
     "eslint": "^9.16.0",
-    "eslint-plugin-vue": "^9.32.0",
+    "eslint-plugin-vue": "^10.2.0",
     "npm-run-all2": "^6.1.1",
     "prettier": "^3.0.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-tailwindcss": "^0.6.12",
     "tailwindcss": "^4.1.10",
     "typescript": "~5.4.0",

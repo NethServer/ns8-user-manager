@@ -1,23 +1,23 @@
 <script lang="ts" setup>
+import PasswordRequirementList from '@/components/PasswordRequirementList.vue'
 import SideDrawer from '@/components/SideDrawer.vue'
-import {
-  NeInlineNotification,
-  NeSkeleton,
-  NeButton,
-  NeCombobox,
-  type NeComboboxOption,
-  NeFormItemLabel,
-  NeTextInput,
-  NeToggle
-} from '@nethesis/vue-components'
-import { computed, ref, watch } from 'vue'
-import axios from 'axios'
-import type { BaseResponse } from '@/lib/axiosHelpers'
-import { MessageBag } from '@/lib/validation'
-import { useI18n } from 'vue-i18n'
 import { useGroups } from '@/composables/useGroups'
 import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
-import PasswordRequirementList from '@/components/PasswordRequirementList.vue'
+import type { BaseResponse } from '@/lib/axiosHelpers'
+import { MessageBag } from '@/lib/validation'
+import {
+  NeButton,
+  NeCombobox,
+  NeFormItemLabel,
+  NeInlineNotification,
+  NeSkeleton,
+  NeTextInput,
+  NeToggle,
+  type NeComboboxOption
+} from '@nethesis/vue-components'
+import axios from 'axios'
+import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 interface ErrorResponse extends BaseResponse {
   error: Array<{ error: string; field: string; parameter: string; value: string }>

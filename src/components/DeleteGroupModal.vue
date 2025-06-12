@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { NeInlineNotification, NeModal } from '@nethesis/vue-components'
 import type { Group } from '@/composables/useGroups'
+import { NeInlineNotification, NeModal } from '@nethesis/vue-components'
 import axios from 'axios'
 import { ref } from 'vue'
 

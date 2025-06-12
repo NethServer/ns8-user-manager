@@ -1,35 +1,35 @@
 <script lang="ts" setup>
+import CreateUserDrawer from '@/components/CreateUserDrawer.vue'
+import DeleteUserModal from '@/components/DeleteUserModal.vue'
+import EditUserDrawer from '@/components/EditUserDrawer.vue'
+import EditUserPasswordDrawer from '@/components/EditUserPasswordDrawer.vue'
+import { useGroups } from '@/composables/useGroups'
+import { useUsers, type User } from '@/composables/useUsers'
+import { useNotificationEngine } from '@/stores/notifications'
 import {
   faCircleCheck,
   faCircleXmark,
   faEdit,
-  faPlusCircle,
-  faExclamationTriangle
+  faExclamationTriangle,
+  faPlusCircle
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { type User, useUsers } from '@/composables/useUsers'
-import { useGroups } from '@/composables/useGroups'
-import { computed, ref } from 'vue'
 import {
+  NeButton,
+  NeDropdown,
+  NeInlineNotification,
+  NeSkeleton,
   NeTable,
   NeTableBody,
   NeTableCell,
   NeTableHead,
   NeTableHeadCell,
   NeTableRow,
-  NeButton,
-  type NeComboboxOption,
-  NeDropdown,
-  NeInlineNotification,
-  NeSkeleton
+  type NeComboboxOption
 } from '@nethesis/vue-components'
-import DeleteUserModal from '@/components/DeleteUserModal.vue'
-import { useI18n } from 'vue-i18n'
-import { useNotificationEngine } from '@/stores/notifications'
-import CreateUserDrawer from '@/components/CreateUserDrawer.vue'
-import EditUserDrawer from '@/components/EditUserDrawer.vue'
-import EditUserPasswordDrawer from '@/components/EditUserPasswordDrawer.vue'
 import axios from 'axios'
+import { computed, ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 export interface UserList extends User {
   groups: NeComboboxOption[]

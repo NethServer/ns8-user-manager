@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { faGear, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 import SidebarLink from '@/components/SidebarLink.vue'
 import { useAuth } from '@/composables/useAuth'
+import { faGear, faUserFriends } from '@fortawesome/free-solid-svg-icons'
 
 const { scopes } = useAuth()
 
