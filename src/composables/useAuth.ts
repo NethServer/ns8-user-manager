@@ -50,7 +50,7 @@ export function useAuth() {
    */
   async function login(username: string, password: string) {
     const response = await axios.post<LoginResponse>('/api/login', {
-      username: username,
+      username: username.toLowerCase(),
       password: password
     })
     localStorage.setItem(TOKEN_KEY, response.data.token)
