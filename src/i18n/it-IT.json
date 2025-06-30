@@ -60,7 +60,7 @@
         "email": "Indirizzo mail",
         "user_mail": "Indirizzo mail",
         "password_expired_tooltip": "Password scaduta",
-        "invalid_username": "Sono consentiti solo caratteri alfanumerici minuscoli e trattini bassi"
+        "invalid_username": "Sono consentiti solo caratteri alfanumerici minuscoli e underscore"
     },
     "edit": "Modifica",
     "save": "Salva",
