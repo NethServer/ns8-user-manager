@@ -59,7 +59,8 @@
         "group_created_description": "Gruppo creato con successo",
         "email": "Indirizzo mail",
         "user_mail": "Indirizzo mail",
-        "password_expired_tooltip": "Password scaduta"
+        "password_expired_tooltip": "Password scaduta",
+        "invalid_username": "Sono consentiti solo caratteri alfanumerici minuscoli e trattini bassi"
     },
     "edit": "Modifica",
     "save": "Salva",
@@ -117,11 +118,12 @@
         "password_policy_error": "Al momento non è possibile recuperare i criteri della password, riprovare più tardi."
     },
     "close": "Chiudi",
-    "ns_combobox": {
+    "ne_combobox": {
         "no_results": "Nessun risultato",
         "limited_options_label": "Continua a digitare per mostrare più opzioni",
         "no_options_label": "Nessuna opzione disponibile",
         "selected": "Selezionato",
         "user_input_label": "Input utente"
-    }
+    },
+    "optional": "Opzionale"
 }
