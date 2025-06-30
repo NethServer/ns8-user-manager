@@ -8,14 +8,15 @@ import { MessageBag } from '@/lib/validation'
 import {
   NeButton,
   NeCombobox,
+  type NeComboboxOption,
   NeFormItemLabel,
   NeInlineNotification,
   NeSkeleton,
   NeTextInput,
-  NeToggle,
-  type NeComboboxOption
+  NeToggle
 } from '@nethesis/vue-components'
 import axios from 'axios'
+import * as v from 'valibot'
 import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
@@ -92,6 +93,18 @@ function validate(): boolean {
   validatePassword(password.value, confirmPassword.value).forEach((item, key) => {
     validationErrors.value.set(key, item)
   })
+  // username must be a string and be lowercase
+  const UsernameSchema = v.pipe(
+    v.string(),
+    v.regex(/^[a-z0-9_]+$/, 'user_manager.invalid_username'),
+    v.minLength(1)
+  )
+  const validate = v.safeParse(UsernameSchema, username.value)
+  if (!validate.success) {
+    for (const error of v.flatten(validate.issues).root ?? []) {
+      validationErrors.value.append('username', t(error))
+    }
+  }
   return validationErrors.value.size < 1
 }
 
@@ -183,7 +196,7 @@ function submit() {
           :no-options-label="t('ne_combobox.no_options_label')"
           :selected-label="t('ne_combobox.selected')"
           :user-input-label="t('ne_combobox.user_input_label')"
-          :optional-label="t('common.optional')"
+          :optional-label="t('optional')"
         />
         <NeSkeleton v-if="passwordPolicyLoading" :lines="2" />
         <NeInlineNotification
