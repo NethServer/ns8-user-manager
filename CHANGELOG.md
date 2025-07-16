@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.6](https://github.com/NethServer/ns8-user-manager/compare/v1.1.5...v1.1.6) (2025-07-16)
+
+
+### Bug Fixes
+
+* restricted username characters to only lowercase ([#99](https://github.com/NethServer/ns8-user-manager/issues/99)) ([648b892](https://github.com/NethServer/ns8-user-manager/commit/648b8920c60538f84da66d9c5162d4cf489a2d2a))
+
+
+### Reverts
+
+* "fix: restricted username characters to only lowercase ([#99](https://github.com/NethServer/ns8-user-manager/issues/99))" ([a7854e5](https://github.com/NethServer/ns8-user-manager/commit/a7854e59d9423f445649e213a8ed8ade71c8ba35))
+
 ## [1.1.5](https://github.com/NethServer/ns8-user-manager/compare/v1.1.4...v1.1.5) (2025-06-12)
 
 
