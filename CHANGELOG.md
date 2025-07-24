@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.6](https://github.com/NethServer/ns8-user-manager/compare/v1.1.5...v1.1.6) (2025-07-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.11.0 [security] ([#107](https://github.com/NethServer/ns8-user-manager/issues/107)) ([6fbd00c](https://github.com/NethServer/ns8-user-manager/commit/6fbd00cc510b71be314d58768abd1c4b31e3055d))
+* **deps:** update dependency vue-i18n to v11.1.10 [security] ([#108](https://github.com/NethServer/ns8-user-manager/issues/108)) ([3eb4128](https://github.com/NethServer/ns8-user-manager/commit/3eb4128475f577d0b364c6bd83bbe907b15c0e4a))
+* restricted username characters to only lowercase ([#99](https://github.com/NethServer/ns8-user-manager/issues/99)) ([648b892](https://github.com/NethServer/ns8-user-manager/commit/648b8920c60538f84da66d9c5162d4cf489a2d2a))
+
+
+### Reverts
+
+* "fix: restricted username characters to only lowercase ([#99](https://github.com/NethServer/ns8-user-manager/issues/99))" ([a7854e5](https://github.com/NethServer/ns8-user-manager/commit/a7854e59d9423f445649e213a8ed8ade71c8ba35))
+
 ## [1.1.5](https://github.com/NethServer/ns8-user-manager/compare/v1.1.4...v1.1.5) (2025-06-12)
 
 
