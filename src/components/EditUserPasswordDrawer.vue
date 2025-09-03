@@ -5,7 +5,13 @@ import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
 import type { User } from '@/composables/useUsers'
 import type { BaseResponse } from '@/lib/axiosHelpers'
 import { MessageBag } from '@/lib/validation'
-import { NeButton, NeInlineNotification, NeSkeleton, NeTextInput } from '@nethesis/vue-components'
+import {
+  NeButton,
+  NeInlineNotification,
+  NeSkeleton,
+  NeTextInput,
+  NeToggle
+} from '@nethesis/vue-components'
 import axios from 'axios'
 import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -34,6 +40,7 @@ const emit = defineEmits(['success', 'cancel'])
 const username = ref('')
 const password = ref('')
 const confirmPassword = ref('')
+const mustChangePassword = ref(false)
 
 const loading = ref(false)
 const error = ref<Error>()
@@ -46,6 +53,7 @@ watch(
       username.value = props.user.user
       password.value = ''
       confirmPassword.value = ''
+      mustChangePassword.value = props.user.must_change
     }
   },
   { immediate: true }
@@ -72,7 +80,8 @@ function submit() {
     axios
       .post<BaseResponse>('/api/alter-user', {
         user: props.user!.user,
-        password: password.value
+        password: password.value,
+        must_change_password: mustChangePassword.value
       })
       .then((response) => {
         if (response.data.status == 'success') {
@@ -157,6 +166,26 @@ function submit() {
             is-password
             required
           />
+          <div>
+            <NeFormItemLabel>{{ t('user_manager.must_change_password') }} </NeFormItemLabel>
+            <NeToggle
+              v-model="mustChangePassword"
+              :disabled="loading || props.user?.must_change"
+              :label="
+                mustChangePassword
+                  ? t('user_manager.user_enabled')
+                  : t('user_manager.user_disabled')
+              "
+            >
+            </NeToggle>
+          </div>
+          <template v-if="props.user?.must_change">
+            <NeInlineNotification
+              :description="t('user_manager.must_change_password_info')"
+              :title="t('user_manager.must_change_password')"
+              kind="info"
+            />
+          </template>
         </template>
       </form>
     </template>
