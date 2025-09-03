@@ -15,6 +15,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
+  NeBadge,
   NeButton,
   NeDropdown,
   NeInlineNotification,
@@ -108,6 +109,7 @@ function handleEditedUser() {
 
 function handleUserChangedPassword() {
   userToChangePassword.value = undefined
+  fetchUsers()
   notifications.add(
     'success',
     'user_manager.user_changed_password',
@@ -163,6 +165,7 @@ function toggleUserLock(user: User) {
         <NeTableHeadCell>{{ t('user_manager.user_group') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ t('user_manager.user_mail') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ t('user_manager.user_status') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ t('user_manager.password_attributes') }}</NeTableHeadCell>
         <NeTableHeadCell></NeTableHeadCell>
       </NeTableHead>
       <NeTableBody>
@@ -194,6 +197,26 @@ function toggleUserLock(user: User) {
             <div v-else class="flex items-center gap-2">
               <FontAwesomeIcon :icon="faCircleCheck" class="text-green-700 dark:text-green-500" />
               <p>{{ t('user_manager.user_enabled') }}</p>
+            </div>
+          </NeTableCell>
+          <NeTableCell>
+            <div v-if="user.must_change" class="mt-1 flex items-center gap-2">
+              <NeBadge
+                :icon-clickable="false"
+                kind="secondary"
+                rounded
+                size="sm"
+                :text="t('user_manager.password_must_change')"
+              />
+            </div>
+            <div v-if="user.password_expiration === -1" class="mt-1 flex items-center gap-2">
+              <NeBadge
+                :icon-clickable="false"
+                kind="secondary"
+                rounded
+                size="sm"
+                :text="t('user_manager.no_password_expiration')"
+              />
             </div>
           </NeTableCell>
           <NeTableCell>
