@@ -243,7 +243,8 @@ function toggleUserLock(user: User) {
                     id: 'delete',
                     danger: true,
                     label: t('user_manager.user_delete'),
-                    action: () => (userToDelete = user)
+                    action: () => (userToDelete = user),
+                    disabled: user.user.toLowerCase() === 'administrator'
                   }
                 ]"
                 align-to-right
