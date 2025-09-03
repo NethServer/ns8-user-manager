@@ -119,9 +119,9 @@
         "no_password_expiration": "Password never expires",
         "password_must_change": "Required password change",
         "password_attributes": "Password attributes",
-        "no_password_expiration_policy": "No password expiration policy",
-        "must_change_password": "User must change password at next login",
-        "must_change_password_info": "The user is required to change the password at the next login."
+        "no_password_expiration_policy": "Password never expires",
+        "must_change_password": "User has to change password at next login",
+        "must_change_password_info": "If enabled, the user will be prompted to change its password at next login"
     },
     "ns_combobox": {
         "no_results": "No results",
