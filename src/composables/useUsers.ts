@@ -9,6 +9,7 @@ export interface User {
   mail: string
   password_expiration: number
   expired: boolean
+  must_change: boolean
 }
 
 interface UserListResponse {
