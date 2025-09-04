@@ -15,7 +15,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
-  NeBadge,
+  NeBadgeV2,
   NeButton,
   NeDropdown,
   NeInlineNotification,
@@ -200,23 +200,22 @@ function toggleUserLock(user: User) {
             </div>
           </NeTableCell>
           <NeTableCell>
-            <div v-if="user.must_change" class="mt-1 flex items-center gap-2">
-              <NeBadge
+            <div class="flex flex-wrap items-center gap-2">
+              <NeBadgeV2 v-if="user.must_change" :icon-clickable="false" kind="gray" size="sm">
+                <p class="text-nowrap">
+                  {{ t('user_manager.password_must_change') }}
+                </p>
+              </NeBadgeV2>
+              <NeBadgeV2
+                v-if="user.password_expiration == -1"
                 :icon-clickable="false"
-                kind="secondary"
-                rounded
+                kind="gray"
                 size="sm"
-                :text="t('user_manager.password_must_change')"
-              />
-            </div>
-            <div v-if="user.password_expiration === -1" class="mt-1 flex items-center gap-2">
-              <NeBadge
-                :icon-clickable="false"
-                kind="secondary"
-                rounded
-                size="sm"
-                :text="t('user_manager.no_password_expiration')"
-              />
+              >
+                <p class="text-nowrap">
+                  {{ t('user_manager.no_password_expiration') }}
+                </p>
+              </NeBadgeV2>
             </div>
           </NeTableCell>
           <NeTableCell>
