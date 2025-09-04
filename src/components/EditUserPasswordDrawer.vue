@@ -7,6 +7,7 @@ import type { BaseResponse } from '@/lib/axiosHelpers'
 import { MessageBag } from '@/lib/validation'
 import {
   NeButton,
+  NeFormItemLabel,
   NeInlineNotification,
   NeSkeleton,
   NeTextInput,
