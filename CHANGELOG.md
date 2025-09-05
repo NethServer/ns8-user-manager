@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/NethServer/ns8-user-manager/compare/v1.1.6...v1.2.0) (2025-09-05)
+
+
+### Features
+
+* add password management options in user forms ([#118](https://github.com/NethServer/ns8-user-manager/issues/118)) ([b60d2ef](https://github.com/NethServer/ns8-user-manager/commit/b60d2ef44a6faa46ad44b00393d6d59d4174ba38))
+
 ## [1.1.6](https://github.com/NethServer/ns8-user-manager/compare/v1.1.5...v1.1.6) (2025-07-24)
 
 
