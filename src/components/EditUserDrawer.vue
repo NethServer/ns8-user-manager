@@ -32,6 +32,7 @@ const username = ref('')
 const name = ref('')
 const groups = ref<Array<NeComboboxOption>>([])
 const email = ref('')
+const noPasswordExpirationPolicy = ref(false)
 
 const loading = ref(false)
 const error = ref<Error>()
@@ -45,6 +46,7 @@ watch(
       name.value = props.user.display_name
       groups.value = props.user.groups
       email.value = props.user.mail
+      noPasswordExpirationPolicy.value = props.user.password_expiration === -1 ? true : false
     }
   },
   { immediate: true }
@@ -72,7 +74,8 @@ function submit() {
       display_name: name.value,
       locked: !enabled.value,
       groups: groups.value.map((group) => group.id),
-      mail: email.value ? email.value : ''
+      mail: email.value ? email.value : '',
+      no_password_expiration: noPasswordExpirationPolicy.value
     })
     .then(() => {
       emit('success')
@@ -146,6 +149,18 @@ function submit() {
           optional
           type="email"
         />
+        <div>
+          <NeFormItemLabel>{{ t('user_manager.no_password_expiration_policy') }}</NeFormItemLabel>
+          <NeToggle
+            v-model="noPasswordExpirationPolicy"
+            :disabled="loading"
+            :label="
+              noPasswordExpirationPolicy
+                ? t('user_manager.user_enabled')
+                : t('user_manager.user_disabled')
+            "
+          />
+        </div>
       </form>
     </template>
     <template #footer>

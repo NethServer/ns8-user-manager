@@ -15,6 +15,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
+  NeBadgeV2,
   NeButton,
   NeDropdown,
   NeInlineNotification,
@@ -108,6 +109,7 @@ function handleEditedUser() {
 
 function handleUserChangedPassword() {
   userToChangePassword.value = undefined
+  fetchUsers()
   notifications.add(
     'success',
     'user_manager.user_changed_password',
@@ -163,6 +165,7 @@ function toggleUserLock(user: User) {
         <NeTableHeadCell>{{ t('user_manager.user_group') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ t('user_manager.user_mail') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ t('user_manager.user_status') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ t('user_manager.password_attributes') }}</NeTableHeadCell>
         <NeTableHeadCell></NeTableHeadCell>
       </NeTableHead>
       <NeTableBody>
@@ -197,6 +200,25 @@ function toggleUserLock(user: User) {
             </div>
           </NeTableCell>
           <NeTableCell>
+            <div class="flex flex-wrap items-center gap-2">
+              <NeBadgeV2 v-if="user.must_change" :icon-clickable="false" kind="gray" size="sm">
+                <p class="text-nowrap">
+                  {{ t('user_manager.password_must_change') }}
+                </p>
+              </NeBadgeV2>
+              <NeBadgeV2
+                v-if="user.password_expiration == -1"
+                :icon-clickable="false"
+                kind="gray"
+                size="sm"
+              >
+                <p class="text-nowrap">
+                  {{ t('user_manager.no_password_expiration') }}
+                </p>
+              </NeBadgeV2>
+            </div>
+          </NeTableCell>
+          <NeTableCell>
             <div class="flex justify-center gap-2">
               <NeButton kind="tertiary" size="sm" @click="userToEdit = user">
                 <FontAwesomeIcon :icon="faEdit" class="pr-2" />
@@ -220,7 +242,8 @@ function toggleUserLock(user: User) {
                     id: 'delete',
                     danger: true,
                     label: t('user_manager.user_delete'),
-                    action: () => (userToDelete = user)
+                    action: () => (userToDelete = user),
+                    disabled: user.user.toLowerCase() === 'administrator'
                   }
                 ]"
                 align-to-right

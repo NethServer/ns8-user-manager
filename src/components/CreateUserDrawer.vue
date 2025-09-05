@@ -52,6 +52,8 @@ const password = ref('')
 const confirmPassword = ref('')
 const groups = ref<Array<NeComboboxOption>>([])
 const email = ref('')
+const mustChangePassword = ref(false)
+const noPasswordExpirationPolicy = ref(false)
 
 const validationErrors = ref(new MessageBag())
 const loading = ref(false)
@@ -70,6 +72,8 @@ watch(
       password.value = ''
       confirmPassword.value = ''
       email.value = ''
+      mustChangePassword.value = false
+      noPasswordExpirationPolicy.value = false
     }
   }
 )
@@ -106,7 +110,9 @@ function submit() {
         password: password.value,
         locked: !enabled.value,
         groups: groups.value.map((group) => group.id),
-        mail: email.value ? email.value : ''
+        mail: email.value ? email.value : '',
+        must_change_password: mustChangePassword.value,
+        no_password_expiration: noPasswordExpirationPolicy.value
       })
       .then((response) => {
         if (response.data.status == 'success') {
@@ -227,6 +233,30 @@ function submit() {
             type="email"
             optional
           />
+          <div>
+            <NeFormItemLabel>{{ t('user_manager.must_change_password') }}</NeFormItemLabel>
+            <NeToggle
+              v-model="mustChangePassword"
+              :disabled="loading"
+              :label="
+                mustChangePassword
+                  ? t('user_manager.user_enabled')
+                  : t('user_manager.user_disabled')
+              "
+            />
+          </div>
+          <div>
+            <NeFormItemLabel>{{ t('user_manager.no_password_expiration_policy') }}</NeFormItemLabel>
+            <NeToggle
+              v-model="noPasswordExpirationPolicy"
+              :disabled="loading"
+              :label="
+                noPasswordExpirationPolicy
+                  ? t('user_manager.user_enabled')
+                  : t('user_manager.user_disabled')
+              "
+            />
+          </div>
         </template>
       </form>
     </template>

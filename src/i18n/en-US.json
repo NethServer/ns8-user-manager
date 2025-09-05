@@ -115,7 +115,13 @@
         "user_enabled_notification_description": "User enabled successfully",
         "email": "Mail address",
         "user_mail": "Mail address",
-        "password_expired_tooltip": "Password expired"
+        "password_expired_tooltip": "Password expired",
+        "no_password_expiration": "Password never expires",
+        "password_must_change": "Required password change",
+        "password_attributes": "Password attributes",
+        "no_password_expiration_policy": "Password never expires",
+        "must_change_password": "User has to change password at next login",
+        "must_change_password_info": "If enabled, the user will be prompted to change its password at next login"
     },
     "ns_combobox": {
         "no_results": "No results",
