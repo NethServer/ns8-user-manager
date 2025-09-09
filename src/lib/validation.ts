@@ -17,7 +17,7 @@ export class MessageBag extends Map<string, Array<string>> {
    */
   getFirstMessage(key: string): string {
     if (this.has(key)) {
-      return this.get(key)![0]
+      return this.get(key)![0]!
     } else {
       return ''
     }
