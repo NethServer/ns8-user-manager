@@ -169,7 +169,7 @@ function submit() {
             is-password
             required
           />
-          <div v-if="config.schema === 'ad'">
+          <div v-if="config.schema == 'ad'">
             <NeFormItemLabel>{{ t('user_manager.must_change_password') }} </NeFormItemLabel>
             <NeToggle
               v-model="mustChangePassword"

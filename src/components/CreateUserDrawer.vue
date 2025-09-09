@@ -235,7 +235,7 @@ function submit() {
             type="email"
             optional
           />
-          <div v-if="config.schema === 'ad'">
+          <div v-if="config.schema == 'ad'">
             <NeFormItemLabel>{{ t('user_manager.must_change_password') }}</NeFormItemLabel>
             <NeToggle
               v-model="mustChangePassword"
@@ -247,7 +247,7 @@ function submit() {
               "
             />
           </div>
-          <div v-if="config.schema === 'ad'">
+          <div v-if="config.schema == 'ad'">
             <NeFormItemLabel>{{ t('user_manager.no_password_expiration_policy') }}</NeFormItemLabel>
             <NeToggle
               v-model="noPasswordExpirationPolicy"
