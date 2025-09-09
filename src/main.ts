@@ -7,10 +7,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
+import messages from '@intlify/unplugin-vue-i18n/messages'
 import axios, { AxiosError } from 'axios'
 import { createI18n } from 'vue-i18n'
-import enJson from './i18n/en-US.json'
-import itJson from './i18n/it-IT.json'
 
 import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
@@ -25,10 +24,7 @@ app.use(
     legacy: false,
     locale: navigator.language,
     fallbackLocale: 'en-US',
-    messages: {
-      'en-US': enJson,
-      'it-IT': itJson
-    }
+    messages
   })
 )
 
