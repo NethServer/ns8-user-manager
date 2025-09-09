@@ -2,6 +2,7 @@
     "edit": "Edit",
     "save": "Save",
     "close": "Close",
+    "optional": "Optional",
     "errors": {
         "generic": "Error",
         "connection_aborted": "Couldn't connect to the server",
@@ -123,7 +124,7 @@
         "must_change_password": "User has to change password at next login",
         "must_change_password_info": "If enabled, the user will be prompted to change its password at next login"
     },
-    "ns_combobox": {
+    "ne_combobox": {
         "no_results": "No results",
         "limited_options_label": "Continue typing to show more options",
         "no_options_label": "No options available",

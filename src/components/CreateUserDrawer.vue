@@ -189,7 +189,7 @@ function submit() {
           :no-options-label="t('ne_combobox.no_options_label')"
           :selected-label="t('ne_combobox.selected')"
           :user-input-label="t('ne_combobox.user_input_label')"
-          :optional-label="t('common.optional')"
+          :optional-label="t('optional')"
         />
         <NeSkeleton v-if="passwordPolicyLoading" :lines="2" />
         <NeInlineNotification
