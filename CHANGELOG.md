@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/NethServer/ns8-user-manager/compare/v1.2.1...v1.2.2) (2025-09-09)
+
+
+### Bug Fixes
+
+* show password expiration only on ad ([#124](https://github.com/NethServer/ns8-user-manager/issues/124)) ([43706a8](https://github.com/NethServer/ns8-user-manager/commit/43706a8a7d37c6bc47877077729ee3f828d29e8b))
+
 ## [1.2.1](https://github.com/NethServer/ns8-user-manager/compare/v1.2.0...v1.2.1) (2025-09-09)
 
 
