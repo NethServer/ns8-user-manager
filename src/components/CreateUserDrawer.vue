@@ -5,6 +5,7 @@ import { useGroups } from '@/composables/useGroups'
 import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
 import type { BaseResponse } from '@/lib/axiosHelpers'
 import { MessageBag } from '@/lib/validation'
+import { useConfig } from '@/stores/config'
 import {
   NeButton,
   NeCombobox,
@@ -54,6 +55,7 @@ const groups = ref<Array<NeComboboxOption>>([])
 const email = ref('')
 const mustChangePassword = ref(false)
 const noPasswordExpirationPolicy = ref(false)
+const config = useConfig()
 
 const validationErrors = ref(new MessageBag())
 const loading = ref(false)
@@ -233,7 +235,7 @@ function submit() {
             type="email"
             optional
           />
-          <div>
+          <div v-if="config.schema == 'ad'">
             <NeFormItemLabel>{{ t('user_manager.must_change_password') }}</NeFormItemLabel>
             <NeToggle
               v-model="mustChangePassword"
@@ -245,7 +247,7 @@ function submit() {
               "
             />
           </div>
-          <div>
+          <div v-if="config.schema == 'ad'">
             <NeFormItemLabel>{{ t('user_manager.no_password_expiration_policy') }}</NeFormItemLabel>
             <NeToggle
               v-model="noPasswordExpirationPolicy"

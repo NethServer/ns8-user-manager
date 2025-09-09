@@ -5,6 +5,7 @@ import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
 import type { User } from '@/composables/useUsers'
 import type { BaseResponse } from '@/lib/axiosHelpers'
 import { MessageBag } from '@/lib/validation'
+import { useConfig } from '@/stores/config'
 import {
   NeButton,
   NeFormItemLabel,
@@ -42,6 +43,7 @@ const username = ref('')
 const password = ref('')
 const confirmPassword = ref('')
 const mustChangePassword = ref(false)
+const config = useConfig()
 
 const loading = ref(false)
 const error = ref<Error>()
@@ -167,7 +169,7 @@ function submit() {
             is-password
             required
           />
-          <div>
+          <div v-if="config.schema == 'ad'">
             <NeFormItemLabel>{{ t('user_manager.must_change_password') }} </NeFormItemLabel>
             <NeToggle
               v-model="mustChangePassword"
