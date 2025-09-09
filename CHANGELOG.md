@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.1](https://github.com/NethServer/ns8-user-manager/compare/v1.2.0...v1.2.1) (2025-09-09)
+
+
+### Bug Fixes
+
+* lang fixes ([aa09da2](https://github.com/NethServer/ns8-user-manager/commit/aa09da2a5dccff8774e4b535741990022256d85a))
+* scroll for side drawer ([81bae01](https://github.com/NethServer/ns8-user-manager/commit/81bae012fa3747f7a943ab8fea0a8cef11995c0c))
+
 ## [1.2.0](https://github.com/NethServer/ns8-user-manager/compare/v1.1.6...v1.2.0) (2025-09-05)
 
 
