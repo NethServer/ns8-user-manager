@@ -2,6 +2,7 @@
 import SideDrawer from '@/components/SideDrawer.vue'
 import type { UserList } from '@/components/UserList.vue'
 import { useGroups } from '@/composables/useGroups'
+import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
 import type { BaseResponse } from '@/lib/axiosHelpers'
 import { useConfig } from '@/stores/config'
 import {
@@ -35,6 +36,7 @@ const groups = ref<Array<NeComboboxOption>>([])
 const email = ref('')
 const noPasswordExpirationPolicy = ref(false)
 const config = useConfig()
+const { expirationEnforced } = usePasswordPolicy()
 
 const loading = ref(false)
 const error = ref<Error>()
@@ -151,7 +153,7 @@ function submit() {
           optional
           type="email"
         />
-        <div v-if="config.schema == 'ad'">
+        <div v-if="config.schema == 'ad' && expirationEnforced">
           <NeFormItemLabel>{{ t('user_manager.no_password_expiration_policy') }}</NeFormItemLabel>
           <NeToggle
             v-model="noPasswordExpirationPolicy"
