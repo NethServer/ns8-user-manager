@@ -37,7 +37,8 @@ const {
   minimumSpecialCharacters,
   minimumUppercaseCharacters,
   complexityCheck,
-  strengthEnforced
+  strengthEnforced,
+  expirationEnforced
 } = usePasswordPolicy()
 
 const props = defineProps<{
@@ -247,7 +248,7 @@ function submit() {
               "
             />
           </div>
-          <div v-if="config.schema == 'ad'">
+          <div v-if="config.schema == 'ad' && expirationEnforced">
             <NeFormItemLabel>{{ t('user_manager.no_password_expiration_policy') }}</NeFormItemLabel>
             <NeToggle
               v-model="noPasswordExpirationPolicy"

@@ -70,7 +70,10 @@ export function usePasswordPolicy() {
    * Note: this field is just a reference, no data is fetched from the server.
    */
   const minimumSpecialCharacters = ref(1)
-
+  /**
+   * If the expiration of the password is enforced (age policy), true or false.
+   */
+  const expirationEnforced = ref(false)
   /**
    * Fetch the password policy from the server.
    */
@@ -81,6 +84,7 @@ export function usePasswordPolicy() {
         minimumLength.value = response.data.policy.strength.password_min_length
         strengthEnforced.value = response.data.policy.strength.enforced
         complexityCheck.value = response.data.policy.strength.complexity_check
+        expirationEnforced.value = response.data.policy.expiration.enforced
       })
       .catch((reason) => {
         error.value = reason
@@ -151,6 +155,7 @@ export function usePasswordPolicy() {
     // password policy
     minimumLength,
     strengthEnforced,
+    expirationEnforced,
     complexityCheck,
     minimumNumberCharacters,
     minimumSpecialCharacters,

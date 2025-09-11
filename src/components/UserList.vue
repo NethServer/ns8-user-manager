@@ -4,6 +4,7 @@ import DeleteUserModal from '@/components/DeleteUserModal.vue'
 import EditUserDrawer from '@/components/EditUserDrawer.vue'
 import EditUserPasswordDrawer from '@/components/EditUserPasswordDrawer.vue'
 import { useGroups } from '@/composables/useGroups'
+import { usePasswordPolicy } from '@/composables/usePasswordPolicy'
 import { useUsers, type User } from '@/composables/useUsers'
 import { useNotificationEngine } from '@/stores/notifications'
 import {
@@ -52,6 +53,7 @@ const createUser = ref(false)
 const userToDelete = ref<User>()
 const userToEdit = ref<UserList>()
 const userToChangePassword = ref<User>()
+const { expirationEnforced } = usePasswordPolicy()
 
 const loading = computed((): boolean => {
   return userLoading.value || groupLoading.value
@@ -207,7 +209,7 @@ function toggleUserLock(user: User) {
                 </p>
               </NeBadgeV2>
               <NeBadgeV2
-                v-if="user.password_expiration == -1"
+                v-if="user.password_expiration == -1 && expirationEnforced"
                 :icon-clickable="false"
                 kind="gray"
                 size="sm"
