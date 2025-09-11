@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/NethServer/ns8-user-manager/compare/v1.2.2...v1.2.3) (2025-09-11)
+
+
+### Bug Fixes
+
+* hide password attribute and age toggle following age policy ([#126](https://github.com/NethServer/ns8-user-manager/issues/126)) ([6d7ef0d](https://github.com/NethServer/ns8-user-manager/commit/6d7ef0df96550e3fa31cd8c85970a0a8c03e87f5))
+
 ## [1.2.2](https://github.com/NethServer/ns8-user-manager/compare/v1.2.1...v1.2.2) (2025-09-09)
 
 
