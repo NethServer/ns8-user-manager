@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/NethServer/ns8-user-manager/compare/v1.2.3...v1.2.4) (2025-09-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency axios to v1.12.0 [security] ([#128](https://github.com/NethServer/ns8-user-manager/issues/128)) ([fd550a1](https://github.com/NethServer/ns8-user-manager/commit/fd550a178a796cc46c4a6b93ada79a3f346e6131))
+
 ## [1.2.3](https://github.com/NethServer/ns8-user-manager/compare/v1.2.2...v1.2.3) (2025-09-11)
 
 
