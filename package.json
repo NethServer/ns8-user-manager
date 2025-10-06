@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.16",
-    "@nethesis/vue-components": "3.2",
+    "@nethesis/vue-components": "3.3",
     "axios": "^1.6.2",
     "pinia": "^3.0.3",
     "vue": "^3.3.7",
