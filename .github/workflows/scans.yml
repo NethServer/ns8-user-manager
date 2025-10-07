@@ -34,7 +34,7 @@ jobs:
           format: sarif
           output: trivy.sarif.json
       - name: Upload report to GitHub
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: trivy.sarif.json
 
