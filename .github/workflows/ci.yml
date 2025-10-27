@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@v5
       - run: ./build.sh
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         id: dist-artifact
         with:
           name: dist-${{ github.sha }}
