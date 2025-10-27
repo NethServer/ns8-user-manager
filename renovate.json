@@ -12,7 +12,10 @@
       "matchPackageNames": [
         "node"
       ],
-      "allowedVersions": "<= 24"
+      "allowedVersions": "<= 24",
+      "schedule": [
+        "* * 1-7 * 2"
+      ]
     },
     {
       "matchManagers": [
