@@ -13,7 +13,7 @@ jobs:
     name: Publishing release assets
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - run: |
           ./build.sh
       - name: Attach Release
