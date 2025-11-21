@@ -17,7 +17,7 @@ jobs:
     name: SBOM
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Update Dependency Graph
         uses: aquasecurity/trivy-action@0.33.1
         with:
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-24.04
     if: github.event_name == 'release'
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Generate CycloneDX SBOM
         uses: aquasecurity/trivy-action@0.33.1
         with:
