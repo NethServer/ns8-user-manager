@@ -15,7 +15,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^20.0.0",
-    "@eslint/js": "^9.16.0",
+    "@eslint/js": "^10.0.0",
     "@fontsource/poppins": "^5.0.8",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "github:nethesis/Font-Awesome#regular",
@@ -32,7 +32,7 @@
     "@vue/eslint-config-prettier": "^10.1.0",
     "@vue/eslint-config-typescript": "^14.1.4",
     "@vue/tsconfig": "^0.8.1",
-    "eslint": "^9.16.0",
+    "eslint": "^10.0.0",
     "eslint-plugin-vue": "^10.2.0",
     "npm-run-all2": "^8.0.4",
     "prettier": "^3.0.3",
