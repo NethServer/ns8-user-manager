@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.5](https://github.com/NethServer/ns8-user-manager/compare/v1.2.4...v1.2.5) (2026-04-29)
+
+Maintenance release
+
+### Bug Fixes
+
+* **deps:** update dependency @nethesis/vue-components to 3.7 ([#166](https://github.com/NethServer/ns8-user-manager/issues/166)) ([6ec06a3](https://github.com/NethServer/ns8-user-manager/commit/6ec06a3247cf3d77228a3063caf5dbf1de7f9c6c))
+* **deps:** update dependency vue-router to v5 ([#149](https://github.com/NethServer/ns8-user-manager/issues/149)) ([da515dd](https://github.com/NethServer/ns8-user-manager/commit/da515dd2ea65403ef13dc2cdfd23dce19b42df60))
+
 ## [1.2.4](https://github.com/NethServer/ns8-user-manager/compare/v1.2.3...v1.2.4) (2025-09-14)
 
 
