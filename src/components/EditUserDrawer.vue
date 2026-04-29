@@ -153,7 +153,7 @@ function submit() {
           optional
           type="email"
         />
-        <div v-if="config.schema == 'ad' && expirationEnforced">
+        <div v-if="expirationEnforced">
           <NeFormItemLabel>{{ t('user_manager.no_password_expiration_policy') }}</NeFormItemLabel>
           <NeToggle
             v-model="noPasswordExpirationPolicy"
