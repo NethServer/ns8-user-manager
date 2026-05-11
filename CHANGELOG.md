@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.6](https://github.com/NethServer/ns8-user-manager/compare/v1.2.5...v1.2.6) (2026-05-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nethesis/vue-components to 3.8 ([#176](https://github.com/NethServer/ns8-user-manager/issues/176)) ([bc17a0d](https://github.com/NethServer/ns8-user-manager/commit/bc17a0dbe1ef110214d4bea5375316f97a4039e9))
+* **EditUserDrawer:** allow openldap for no password expiration policy ([#171](https://github.com/NethServer/ns8-user-manager/issues/171)) ([4f36c02](https://github.com/NethServer/ns8-user-manager/commit/4f36c025dbcf0b211f6563693aa3c0a10ff0de2f))
+
 ## [1.2.5](https://github.com/NethServer/ns8-user-manager/compare/v1.2.4...v1.2.5) (2026-04-29)
 
 Maintenance release
