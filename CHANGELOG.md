@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.7](https://github.com/NethServer/ns8-user-manager/compare/v1.2.6...v1.2.7) (2026-05-26)
+
+
+### Bug Fixes
+
+* **CreateUserDrawer:** remove unnecessary config check for expirationEnforced ([#178](https://github.com/NethServer/ns8-user-manager/issues/178)) ([18bf4e3](https://github.com/NethServer/ns8-user-manager/commit/18bf4e3096f8dd0007d36818ca6726f388f44c7a))
+
 ## [1.2.6](https://github.com/NethServer/ns8-user-manager/compare/v1.2.5...v1.2.6) (2026-05-11)
 
 
