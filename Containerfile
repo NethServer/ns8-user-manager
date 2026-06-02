@@ -1,4 +1,4 @@
-FROM node:24.15.0 AS base
+FROM node:24.16.0 AS base
 WORKDIR /app
 RUN npm config set update-notifier false
 
