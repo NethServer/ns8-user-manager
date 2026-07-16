@@ -48,7 +48,7 @@
     "@headlessui/vue": "^1.7.16",
     "@nethesis/vue-components": "3.11",
     "axios": "^1.6.2",
-    "pinia": "^3.0.3",
+    "pinia": "^4.0.0",
     "vue": "^3.3.7",
     "vue-i18n": "^11.1.5",
     "vue-router": "^5.0.0"
