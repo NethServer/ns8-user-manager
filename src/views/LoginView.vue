@@ -7,7 +7,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 
-const { login } = useAuth()
+const { login, landingRouteName } = useAuth()
 const router = useRouter()
 const config = useConfig()
 
@@ -27,7 +27,7 @@ async function handleLogin() {
     loading.value = true
     try {
       await login(username.value, password.value)
-      await router.replace({ name: 'user_account' })
+      await router.replace({ name: landingRouteName.value })
     } catch (exception: unknown) {
       if (axios.isAxiosError(exception) && exception.response != undefined) {
         if (exception.response.status == 401) {
