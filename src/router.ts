@@ -12,7 +12,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      redirect: { name: 'user_account' },
+      redirect: () => {
+        const { landingRouteName } = useAuth()
+        return { name: landingRouteName.value }
+      },
       component: () => import('@/views/BaseTemplate.vue'),
       beforeEnter: () => {
         const { previouslyLogged } = useAuth()
@@ -44,9 +47,9 @@ const router = createRouter({
       name: 'login',
       component: () => import('@/views/LoginView.vue'),
       beforeEnter: () => {
-        const { previouslyLogged } = useAuth()
+        const { previouslyLogged, landingRouteName } = useAuth()
         if (previouslyLogged.value) {
-          return { name: 'user_account' }
+          return { name: landingRouteName.value }
         }
       }
     }
