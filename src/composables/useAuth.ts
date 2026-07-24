@@ -44,6 +44,13 @@ export function useAuth() {
   })
 
   /**
+   * Route name to land on based on role: admins go to the user list, restricted users go to their account page
+   */
+  const landingRouteName = computed((): string =>
+    scopes.value.length === 0 ? 'user_manager' : 'user_account'
+  )
+
+  /**
    * Login to the API, saving the token and expire date to localStorage
    * @param username
    * @param password
@@ -70,5 +77,5 @@ export function useAuth() {
     localStorage.removeItem(SCOPES_KEY)
   }
 
-  return { token, expire, uid, scopes, previouslyLogged, login, logout }
+  return { token, expire, uid, scopes, previouslyLogged, landingRouteName, login, logout }
 }
