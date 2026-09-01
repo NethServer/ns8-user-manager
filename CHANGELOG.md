@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.9](https://github.com/NethServer/ns8-user-manager/compare/v1.2.8...v1.2.9) (2026-09-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nethesis/vue-components to 3.12 ([#196](https://github.com/NethServer/ns8-user-manager/issues/196)) ([1f99056](https://github.com/NethServer/ns8-user-manager/commit/1f9905633710e53f06a480463c4ad39b995f723b))
+* **deps:** update dependency pinia to v4 ([#193](https://github.com/NethServer/ns8-user-manager/issues/193)) ([0712264](https://github.com/NethServer/ns8-user-manager/commit/07122647e855713520e673a987654b47fa807ddd))
+
 ## [1.2.8](https://github.com/NethServer/ns8-user-manager/compare/v1.2.7...v1.2.8) (2026-07-24)
 
 
