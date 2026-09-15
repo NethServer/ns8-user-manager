@@ -7,6 +7,7 @@ export interface User {
   locked: boolean
   user: string
   mail: string
+  phone_extension: string
   password_expiration: number
   expired: boolean
   must_change: boolean
