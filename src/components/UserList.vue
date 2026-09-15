@@ -166,6 +166,7 @@ function toggleUserLock(user: User) {
         <NeTableHeadCell>{{ t('user_manager.user_display_name') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ t('user_manager.user_group') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ t('user_manager.user_mail') }}</NeTableHeadCell>
+        <NeTableHeadCell>{{ t('user_manager.user_phone_extension') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ t('user_manager.user_status') }}</NeTableHeadCell>
         <NeTableHeadCell>{{ t('user_manager.password_attributes') }}</NeTableHeadCell>
         <NeTableHeadCell></NeTableHeadCell>
@@ -190,6 +191,8 @@ function toggleUserLock(user: User) {
           </NeTableCell>
           <NeTableCell v-else>-</NeTableCell>
           <NeTableCell v-if="user.mail">{{ user.mail }}</NeTableCell>
+          <NeTableCell v-else>-</NeTableCell>
+          <NeTableCell v-if="user.phone_extension">{{ user.phone_extension }}</NeTableCell>
           <NeTableCell v-else>-</NeTableCell>
           <NeTableCell>
             <div v-if="user.locked" class="flex items-center gap-2">

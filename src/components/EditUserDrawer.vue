@@ -33,6 +33,7 @@ const username = ref('')
 const name = ref('')
 const groups = ref<Array<NeComboboxOption>>([])
 const email = ref('')
+const phoneExtension = ref('')
 const noPasswordExpirationPolicy = ref(false)
 const { expirationEnforced } = usePasswordPolicy()
 
@@ -48,6 +49,7 @@ watch(
       name.value = props.user.display_name
       groups.value = props.user.groups
       email.value = props.user.mail
+      phoneExtension.value = props.user.phone_extension
       noPasswordExpirationPolicy.value = props.user.password_expiration === -1 ? true : false
     }
   },
@@ -77,6 +79,7 @@ function submit() {
       locked: !enabled.value,
       groups: groups.value.map((group) => group.id),
       mail: email.value ? email.value : '',
+      phone_extension: phoneExtension.value ? phoneExtension.value : '',
       no_password_expiration: noPasswordExpirationPolicy.value
     })
     .then(() => {
@@ -150,6 +153,13 @@ function submit() {
           autocomplete="email"
           optional
           type="email"
+        />
+        <NeTextInput
+          v-model="phoneExtension"
+          :disabled="loading"
+          :label="t('user_manager.phone_extension')"
+          autocomplete="off"
+          optional
         />
         <div v-if="expirationEnforced">
           <NeFormItemLabel>{{ t('user_manager.no_password_expiration_policy') }}</NeFormItemLabel>

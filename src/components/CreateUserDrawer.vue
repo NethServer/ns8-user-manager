@@ -54,6 +54,7 @@ const password = ref('')
 const confirmPassword = ref('')
 const groups = ref<Array<NeComboboxOption>>([])
 const email = ref('')
+const phoneExtension = ref('')
 const mustChangePassword = ref(false)
 const noPasswordExpirationPolicy = ref(false)
 const config = useConfig()
@@ -75,6 +76,7 @@ watch(
       password.value = ''
       confirmPassword.value = ''
       email.value = ''
+      phoneExtension.value = ''
       mustChangePassword.value = false
       noPasswordExpirationPolicy.value = false
     }
@@ -114,6 +116,7 @@ function submit() {
         locked: !enabled.value,
         groups: groups.value.map((group) => group.id),
         mail: email.value ? email.value : '',
+        phone_extension: phoneExtension.value ? phoneExtension.value : '',
         must_change_password: mustChangePassword.value,
         no_password_expiration: noPasswordExpirationPolicy.value
       })
@@ -234,6 +237,13 @@ function submit() {
             :label="t('user_manager.email')"
             autocomplete="email"
             type="email"
+            optional
+          />
+          <NeTextInput
+            v-model="phoneExtension"
+            :disabled="loading"
+            :label="t('user_manager.phone_extension')"
+            autocomplete="off"
             optional
           />
           <div v-if="config.schema == 'ad'">
